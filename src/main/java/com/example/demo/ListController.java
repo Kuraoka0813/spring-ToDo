@@ -21,9 +21,9 @@ public class ListController {
 	public ModelAndView update(
 			@PathVariable(name="code") int code,
 			ModelAndView mv) {
-		Optional<List> record = listRepository.findById(code);
+		Optional<List> record = listRepository.findByCode(code);
 
-		mv.addObject("record", record);
+		mv.addObject("record", record.get());
 
 		mv.setViewName("update");
 		return mv;
