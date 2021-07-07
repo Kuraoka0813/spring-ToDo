@@ -79,6 +79,8 @@ public class ListController {
 		ToDoList list = new ToDoList(category_code, content, date, userid, title);
 		listRepository.saveAndFlush(list);
 
+//		List<ToDoList> record = listRepository.findByUserid(userid);
+//		session.setAttribute("todolists", record.get(0));
 
 		mv.setViewName("list");
 
