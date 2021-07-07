@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
@@ -56,6 +57,12 @@ public class ListController {
 		ToDoList list = new ToDoList(code, category_code, content, date, rank, userid, title);
 		listRepository.saveAndFlush(list);
 
+		//Listの中身を取得
+		List<ToDoList> record = listRepository.findByUserid(userid);
+
+		//ToDoListの中身をセッションスコープに格納する
+		session.setAttribute("todolists", record);
+
 		mv.setViewName("list");
 
 		return mv;
@@ -86,6 +93,12 @@ public class ListController {
 		// ToDoListをDBに格納する
 		ToDoList list = new ToDoList(category_code, content, date, rank, userid, title);
 		listRepository.saveAndFlush(list);
+
+		//Listの中身を取得
+		List<ToDoList> record = listRepository.findByUserid(userid);
+
+		//ToDoListの中身をセッションスコープに格納する
+		session.setAttribute("todolists", record);
 
 		mv.setViewName("list");
 
