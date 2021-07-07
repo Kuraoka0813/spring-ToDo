@@ -26,14 +26,8 @@ public class ToDoList {
 	public ToDoList() {
 
 	}
-	public ToDoList(Integer code, Integer category_code, String content, Date date) {
-		this.code = code;
-		this.category_code = category_code;
-		this.content = content;
-		this.date = date;
-	}
 
-	public ToDoList(Integer category_code, String content, Date date, Integer rank, Integer id,
+	public ToDoList(Integer category_code, String content, Date date, Integer rank, Integer userid,
 			String title) {
 		this.category_code = category_code;
 		this.content = content;
@@ -43,15 +37,17 @@ public class ToDoList {
 		this.title = title;
 	}
 
-	public ToDoList(Integer category_code, String content, Date date, Integer userid,
+	public ToDoList(Integer code, Integer category_code, String content, Date date, Integer rank, Integer userid,
 			String title) {
+		super();
+		this.code = code;
 		this.category_code = category_code;
 		this.content = content;
 		this.date = date;
+		this.rank = rank;
 		this.userid = userid;
 		this.title = title;
 	}
-
 	//アクセッサメソッド
 	public Integer getCode() {
 		return code;

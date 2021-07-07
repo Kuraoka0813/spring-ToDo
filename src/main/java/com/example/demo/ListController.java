@@ -40,13 +40,20 @@ public class ListController {
 	//編集
 	@PostMapping("/update")
 	public ModelAndView signupRegi(
+			@RequestParam("title") String title,
 			@RequestParam("content") String content,
-			@RequestParam("date") Date date,
+			@RequestParam("date") String Date,
 			@RequestParam("category_code") Integer category_code,
+			@RequestParam("rank") Integer rank,
 			@RequestParam("code") Integer code,
 			ModelAndView mv) {
-		// お客様情報をDBに格納する
-		ToDoList list = new ToDoList(code, category_code, content, date);
+		User u = (User) session.getAttribute("userInfo");
+		Integer userid = u.getId();
+
+		Date date = java.sql.Date.valueOf(Date);
+
+		// 編集情報をDBに格納する
+		ToDoList list = new ToDoList(code, category_code, content, date, rank, userid, title);
 		listRepository.saveAndFlush(list);
 
 		mv.setViewName("list");
@@ -68,6 +75,7 @@ public class ListController {
 			@RequestParam("content") String content,
 			@RequestParam("date") String Date,
 			@RequestParam("category_code") Integer category_code,
+			@RequestParam("rank") Integer rank,
 			@RequestParam("title") String title,
 			ModelAndView mv) {
 		User u = (User) session.getAttribute("userInfo");
@@ -76,11 +84,8 @@ public class ListController {
 		Date date = java.sql.Date.valueOf(Date);
 
 		// ToDoListをDBに格納する
-		ToDoList list = new ToDoList(category_code, content, date, userid, title);
+		ToDoList list = new ToDoList(category_code, content, date, rank, userid, title);
 		listRepository.saveAndFlush(list);
-
-//		List<ToDoList> record = listRepository.findByUserid(userid);
-//		session.setAttribute("todolists", record.get(0));
 
 		mv.setViewName("list");
 

@@ -70,8 +70,7 @@ public class AccountController {
 			List<ToDoList> record = listRepository.findByUserid(id);
 
 			//ToDoListの中身をセッションスコープに格納する
-			session.setAttribute("todolists", record.get(0));
-			mv.addObject("todolists", record.get(0));
+			session.setAttribute("todolists", record);
 
 			mv.setViewName("list");
 			return mv;
