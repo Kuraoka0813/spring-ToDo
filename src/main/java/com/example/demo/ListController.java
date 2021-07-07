@@ -60,7 +60,7 @@ public class ListController {
 	}
 
 	//追加
-	@PostMapping("/update")
+	@PostMapping("/addList")
 	public ModelAndView addRegi(
 			@RequestParam("content") String content,
 			@RequestParam("date") Date date,
