@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
 <title>ログイン</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" media="all" th:href="@{/css/login.css}"/>
+<link rel="stylesheet" media="all" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
 </head>
 <body>
-<h1 style="font-family:fantasy">TODOリスト</h1>
+<div  class="ribbon1">
+<h1>TODOリスト</h1>
+</div>
 <form action="/login" method="post" style="text-align:center">
 	<input type="text" name="email" placeholder="メールアドレス"><br>
 	<input type="password" name="password" placeholder="パスワード"><br>

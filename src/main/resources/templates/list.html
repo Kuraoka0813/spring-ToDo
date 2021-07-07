@@ -22,7 +22,7 @@
 			<td><a th:href="'/update/' + ${todolist.code}"
 				th:text="${todolist.title}"></a></td>
 			<td th:text="${todolist.date}"></td>
-			<td><a href="/delete"><input type="submit" value="削除"></a></td>
+			<td><a href="'/delete'+ ${todolist.code}"><input type="submit" value="削除"></a></td>
 		</tr>
 	</table>
 	<a href="/addList">追加</a>
