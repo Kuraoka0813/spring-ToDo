@@ -8,6 +8,11 @@
 	<form action="/update" method="post">
 		<input type="hidden" name="code" th:value="${record.code}">
 		<table border="1">
+		<tr>
+				<th>タイトル</th>
+				<td><input type="text" th:value="${record.title}"
+					name="title"></td>
+			</tr>
 			<tr>
 				<th>やること</th>
 				<td><input type="text" th:value="${record.content}"
@@ -22,6 +27,7 @@
 				<td><input type="text" th:value="${record.category_code}"
 					name="category_code"></td>
 			</tr>
+
 		</table>
 		<input type="submit" value="登録">
 	</form>
