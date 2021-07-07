@@ -104,4 +104,26 @@ public class ListController {
 
 		return mv;
 	}
+
+	//削除
+	@RequestMapping("/delete/{code}")
+	public ModelAndView deleteList(
+			@PathVariable(name = "code") int code,
+			ModelAndView mv) {
+		// セッションスコープからリストの情報を取得する
+		User u = (User) session.getAttribute("userInfo");
+		Integer userid = u.getId();
+
+		// データベースから削除
+		listRepository.deleteById(code);
+
+		//Listの中身を取得
+		List<ToDoList> record = listRepository.findByUserid(userid);
+
+		//ToDoListの中身をセッションスコープに格納する
+		session.setAttribute("todolists", record);
+
+		mv.setViewName("list");
+		return mv;
+	}
 }
