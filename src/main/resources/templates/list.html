@@ -1,10 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Items</title>
 </head>
 <body>
+
+	<span th:replace="menu"></span>
+
+	<hr>
+
+	<table border="1">
+	<tr>
+		<th>チェック</th><th>やること</th><th>期日</th><th>編集</th><th>削除</th>
+	</tr>
+	<tr th:each="todolist:${todolists}">
+		<td><input type="checkbox" name="check"></td>
+		<td th:text="${todolist.content}"></td>
+		<td th:text="${todolist.date}"></td>
+		<td><a href="/update"><input type="submit" value="編集"></a></td>
+		<td><a href="/delete"><input type="submit" value="削除"></a></td>
+	</tr>
+	</table>
+
+	<hr>
+
+	<span th:replace="logout"></span>
 
 </body>
 </html>
