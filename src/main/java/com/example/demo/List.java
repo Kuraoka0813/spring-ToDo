@@ -42,6 +42,15 @@ public class List {
 		this.title = title;
 	}
 
+	public List(Integer category_code, String content, Date date, Integer id,
+			String title) {
+		this.category_code = category_code;
+		this.content = content;
+		this.date = date;
+		this.id = id;
+		this.title = title;
+	}
+
 	//アクセッサメソッド
 	public Integer getCode() {
 		return code;
