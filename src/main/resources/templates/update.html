@@ -8,10 +8,9 @@
 	<form action="/update" method="post">
 		<input type="hidden" name="code" th:value="${record.code}">
 		<table border="1">
-		<tr>
+			<tr>
 				<th>タイトル</th>
-				<td><input type="text" th:value="${record.title}"
-					name="title"></td>
+				<td><input type="text" th:value="${record.title}" name="title"></td>
 			</tr>
 			<tr>
 				<th>やること</th>
