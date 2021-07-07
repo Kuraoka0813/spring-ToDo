@@ -29,7 +29,7 @@ public class ListController {
 	public ModelAndView update(
 			@PathVariable(name = "code") int code,
 			ModelAndView mv) {
-		Optional<List> record = listRepository.findByCode(code);
+		Optional<ToDoList> record = listRepository.findByCode(code);
 
 		mv.addObject("record", record.get());
 
@@ -46,7 +46,7 @@ public class ListController {
 			@RequestParam("code") Integer code,
 			ModelAndView mv) {
 		// お客様情報をDBに格納する
-		List list = new List(code, category_code, content, date);
+		ToDoList list = new ToDoList(code, category_code, content, date);
 		listRepository.saveAndFlush(list);
 
 		mv.setViewName("list");
@@ -70,14 +70,15 @@ public class ListController {
 			@RequestParam("category_code") Integer category_code,
 			@RequestParam("title") String title,
 			ModelAndView mv) {
-		User user = (User) session.getAttribute("userInfo");
-		Integer id = user.getId();
+		User u = (User) session.getAttribute("userInfo");
+		Integer userid = u.getId();
 
 		Date date = java.sql.Date.valueOf(Date);
 
 		// ToDoListをDBに格納する
-		List list = new List(category_code, content, date, id, title);
+		ToDoList list = new ToDoList(category_code, content, date, userid, title);
 		listRepository.saveAndFlush(list);
+
 
 		mv.setViewName("list");
 

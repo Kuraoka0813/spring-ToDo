@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
@@ -66,11 +67,11 @@ public class AccountController {
 
 			//ToDoListの中身をとる。
 			Integer id =u.getId();
-			Optional<List> record = listRepository.findById(id);
+			List<ToDoList> record = listRepository.findByUserid(id);
 
 			//ToDoListの中身をセッションスコープに格納する
-			session.setAttribute("todolists", record.get());
-			//mv.addObject("todolists", record.get());
+			session.setAttribute("todolists", record.get(0));
+			mv.addObject("todolists", record.get(0));
 
 			mv.setViewName("list");
 			return mv;

@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="todolist")
-public class List {
+public class ToDoList {
 	//フィールド
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,36 +19,36 @@ public class List {
 	private String content;
 	private Date date;
 	private Integer rank;
-	private Integer id;
+	private Integer userid;
 	private String title;
 
 	//コンストラクタ
-	public List() {
+	public ToDoList() {
 
 	}
-	public List(Integer code, Integer category_code, String content, Date date) {
+	public ToDoList(Integer code, Integer category_code, String content, Date date) {
 		this.code = code;
 		this.category_code = category_code;
 		this.content = content;
 		this.date = date;
 	}
 
-	public List(Integer category_code, String content, Date date, Integer rank, Integer id,
+	public ToDoList(Integer category_code, String content, Date date, Integer rank, Integer id,
 			String title) {
 		this.category_code = category_code;
 		this.content = content;
 		this.date = date;
 		this.rank = rank;
-		this.id = id;
+		this.userid = userid;
 		this.title = title;
 	}
 
-	public List(Integer category_code, String content, Date date, Integer id,
+	public ToDoList(Integer category_code, String content, Date date, Integer userid,
 			String title) {
 		this.category_code = category_code;
 		this.content = content;
 		this.date = date;
-		this.id = id;
+		this.userid = userid;
 		this.title = title;
 	}
 
@@ -83,11 +83,11 @@ public class List {
 	public void setRank(Integer rank) {
 		this.rank = rank;
 	}
-	public Integer getId() {
-		return id;
+	public Integer getUserId() {
+		return userid;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+	public void setUserId(Integer userid) {
+		this.userid = userid;
 	}
 	public String getTitle() {
 		return title;
