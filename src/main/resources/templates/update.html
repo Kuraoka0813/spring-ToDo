@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>リスト編集</title>
+</head>
+<body>
+<table border="1">
+	<tr th:each="todolist:${session.todolists}">
+		<td>やること</td><td th:text="${todolist.title}"></td>
+		<td>期日</td><td th:text="${todolist.date}"></td>
+		<td><a href="/delete"><input type="submit" value="削除"></a></td>
+	</tr>
+	</table>
+
+</body>
+</html>
