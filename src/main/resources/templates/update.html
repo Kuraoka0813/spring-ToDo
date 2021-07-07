@@ -5,13 +5,16 @@
 <title>リスト編集</title>
 </head>
 <body>
+<form action="/update" method="post">
+<input type="hidden" name="code" th:value="${record.code}">
 <table border="1">
-	<tr th:each="todolist:${session.todolists}">
-		<td>やること</td><td th:text="${todolist.title}"></td>
-		<td>期日</td><td th:text="${todolist.date}"></td>
-		<td><a href="/delete"><input type="submit" value="削除"></a></td>
-	</tr>
+	<tr>
+		<th>やること</th><td><input type="text" name="content"></td>
+		<th>期日</th><td><input type="text" name="date"></td>
+		<th>カテゴリー</th><td><input type="text" name="category_code"></td>
+		</tr>
 	</table>
-
+	<input type="submit" value="登録">
+</form>
 </body>
 </html>
