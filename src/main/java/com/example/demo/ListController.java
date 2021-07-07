@@ -21,6 +21,9 @@ public class ListController {
 	@Autowired
 	ListRepository listRepository;
 
+	@Autowired
+	UserRepository userRepository;
+
 	//編集画面に
 	@RequestMapping("/update/{code}")
 	public ModelAndView update(
@@ -63,12 +66,14 @@ public class ListController {
 	@PostMapping("/addList")
 	public ModelAndView addRegi(
 			@RequestParam("content") String content,
-			@RequestParam("date") Date date,
+			@RequestParam("date") String Date,
 			@RequestParam("category_code") Integer category_code,
 			@RequestParam("title") String title,
 			ModelAndView mv) {
-		User user = (User) session.getAttribute("todolists");
+		User user = (User) session.getAttribute("userInfo");
 		Integer id = user.getId();
+
+		Date date = java.sql.Date.valueOf(Date);
 
 		// ToDoListをDBに格納する
 		List list = new List(category_code, content, date, id, title);
