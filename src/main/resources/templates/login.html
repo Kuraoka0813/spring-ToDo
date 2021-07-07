@@ -5,14 +5,15 @@
 <title>ログイン</title>
 </head>
 <body>
-
-<form action="/login" method="post">
-	<input type="text" name="email" placeholder="メールアドレス">
-	<input type="password" name="password" placeholder="パスワード">
+<h1 style="font-family:fantasy",font-size="80px">TODOリスト</h1>
+<form action="/login" method="post" style="text-align:center">
+	<input type="text" name="email" placeholder="メールアドレス"><br>
+	<input type="password" name="password" placeholder="パスワード"><br>
 	<input type="submit" value="ログイン">
 	<br>
 	<span th:text="${message}" style="color:red"></span>
+	<hr>
+	<a href="/signup">新規会員登録</a>
 </form>
-	<a href="/signup">新規登録</a>
 </body>
 </html>
