@@ -59,7 +59,7 @@ public class ListController {
 		return mv;
 	}
 
-	//追加
+	//追加機能
 	@PostMapping("/addList")
 	public ModelAndView addRegi(
 			@RequestParam("content") String content,
