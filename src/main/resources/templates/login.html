@@ -8,11 +8,11 @@
 
 <form action="/login" method="post">
 	<input type="text" name="email" placeholder="メールアドレス">
-	<input type="text" name="password" placeholder="パスワード">
+	<input type="password" name="password" placeholder="パスワード">
 	<input type="submit" value="ログイン">
 	<br>
 	<span th:text="${message}" style="color:red"></span>
 </form>
-
+	<a href="/signup">新規登録</a>
 </body>
 </html>
