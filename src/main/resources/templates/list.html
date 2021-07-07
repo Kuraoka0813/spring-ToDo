@@ -11,15 +11,19 @@
 	<hr>
 
 	<table border="1">
-	<tr>
-		<th>チェック</th><th>TODO</th><th>期日</th><th>削除</th>
-	</tr>
-	<tr th:each="todolist:${session.todolists}">
-		<td><input type="checkbox" name="check"></td>
-		<td><a th:href="'/update/' + ${todolist.code}"th:text="${todolist.title}"></a></td>
-		<td th:text="${todolist.date}"></td>
-		<td><a href="/delete"><input type="submit" value="削除"></a></td>
-	</tr>
+		<tr>
+			<th>チェック</th>
+			<th>TODO</th>
+			<th>期日</th>
+			<th>削除</th>
+		</tr>
+		<tr th:each="todolist:${session.todolists}">
+			<td><input type="checkbox" name="check"></td>
+			<td><a th:href="'/update/' + ${todolist.code}"
+				th:text="${todolist.title}"></a></td>
+			<td th:text="${todolist.date}"></td>
+			<td><a href="/delete"><input type="submit" value="削除"></a></td>
+		</tr>
 	</table>
 	<a href="/addList">追加</a>
 

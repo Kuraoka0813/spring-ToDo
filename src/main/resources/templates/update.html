@@ -5,16 +5,25 @@
 <title>リスト編集</title>
 </head>
 <body>
-<form action="/update" method="post">
-<input type="hidden" name="code" th:value="${record.code}">
-<table border="1">
-	<tr>
-		<th>やること</th><td><input type="text" th:value="${record.content}" name="content"></td>
-		<th>期日</th><td><input type="date" th:value="${record.date}" name="date"></td>
-		<th>カテゴリー</th><td><input type="text" th:value="${record.category_code}" name="category_code"></td>
-		</tr>
-	</table>
-	<input type="submit" value="登録">
-</form>
+	<form action="/update" method="post">
+		<input type="hidden" name="code" th:value="${record.code}">
+		<table border="1">
+			<tr>
+				<th>やること</th>
+				<td><input type="text" th:value="${record.content}"
+					name="content"></td>
+			</tr>
+			<tr>
+				<th>期日</th>
+				<td><input type="date" th:value="${record.date}" name="date"></td>
+			</tr>
+			<tr>
+				<th>カテゴリー</th>
+				<td><input type="text" th:value="${record.category_code}"
+					name="category_code"></td>
+			</tr>
+		</table>
+		<input type="submit" value="登録">
+	</form>
 </body>
 </html>
