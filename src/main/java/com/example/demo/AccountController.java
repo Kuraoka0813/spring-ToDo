@@ -29,7 +29,7 @@ public class AccountController {
 	public String login() {
 		// セッション情報はクリアする
 		session.invalidate();
-		return "index";
+		return "login";
 	}
 
 	/**
@@ -56,7 +56,7 @@ public class AccountController {
 		//情報取得
 		if (user.isEmpty()) {
 			mv.addObject("message", "入力されたメールアドレスは登録されていません。");
-			mv.setViewName("index");
+			mv.setViewName("login");
 			return mv;
 		} else {
 			// セッションスコープにユーザ情報を格納する
@@ -64,8 +64,11 @@ public class AccountController {
 
 
 			//ToDoListの中身をとる
-//			int id =user.
-//			Optional<List> record = listRepository.findById(id);
+			int id =user.hashCode();
+			Optional<List> record = listRepository.findById(id);
+
+			//ToDoListの中身をセッションスコープに格納する
+			session.setAttribute("ToDoList", record);
 
 			mv.setViewName("list");
 			return mv;
