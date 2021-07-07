@@ -25,10 +25,15 @@ public class List {
 	public List() {
 
 	}
-	public List(Integer code, Integer category_code, String content, Date date, Integer rank, Integer id,
-			String title) {
-		super();
+	public List(Integer code, Integer category_code, String content, Date date) {
 		this.code = code;
+		this.category_code = category_code;
+		this.content = content;
+		this.date = date;
+	}
+
+	public List(Integer category_code, String content, Date date, Integer rank, Integer id,
+			String title) {
 		this.category_code = category_code;
 		this.content = content;
 		this.date = date;

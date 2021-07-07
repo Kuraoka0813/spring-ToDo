@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ListRepository extends JpaRepository<List, Integer>{
 	Optional<List> findById(Integer id);
+	Optional<List> findByCode(Integer code);
 }
