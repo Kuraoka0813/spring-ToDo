@@ -9,7 +9,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="users")
 public class User {
-	//フィールド
+	//フィールド。
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;

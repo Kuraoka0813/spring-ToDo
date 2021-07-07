@@ -64,7 +64,7 @@ public class AccountController {
 			session.setAttribute("userInfo", user.get());
 
 
-			//ToDoListの中身をとる
+			//ToDoListの中身をとる。
 			Integer id =u.getId();
 			Optional<List> record = listRepository.findById(id);
 

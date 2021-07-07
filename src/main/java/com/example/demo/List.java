@@ -11,6 +11,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="todolist")
 public class List {
+	//フィールド
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer code;
