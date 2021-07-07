@@ -60,15 +60,17 @@ public class AccountController {
 			return mv;
 		} else {
 			// セッションスコープにユーザ情報を格納する
+			User u = user.get();
 			session.setAttribute("userInfo", user.get());
 
 
 			//ToDoListの中身をとる
-			int id =user.hashCode();
+			Integer id =u.getId();
 			Optional<List> record = listRepository.findById(id);
 
 			//ToDoListの中身をセッションスコープに格納する
-			session.setAttribute("ToDoList", record);
+//			session.setAttribute("todolists", record);
+			mv.addObject("todolists", record);
 
 			mv.setViewName("list");
 			return mv;
