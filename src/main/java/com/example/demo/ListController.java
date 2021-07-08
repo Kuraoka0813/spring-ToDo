@@ -47,6 +47,16 @@ public class ListController {
 		return mv;
 	}
 
+	//リストの並び替え
+	@RequestMapping("/sort")
+	public ModelAndView sort(ModelAndView mv) {
+		List<ToDoList> todoList = listRepository.findAllByOrderByRankAsc();
+		session.setAttribute("todolists", todoList);
+
+		mv.setViewName("list");
+		return mv;
+	}
+
 	//編集画面に
 	@RequestMapping("/update/{code}")
 	public ModelAndView update(

@@ -11,4 +11,5 @@ public interface ListRepository extends JpaRepository<ToDoList, Integer>{
 	List<ToDoList> findByUserid(Integer userid);
 	Optional<ToDoList> findByCode(Integer code);
 	List<ToDoList> findByCategoryCode(Integer categoryCode);
+	List<ToDoList> findAllByOrderByRankAsc();
 }
