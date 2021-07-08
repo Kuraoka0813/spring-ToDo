@@ -44,6 +44,7 @@ public class AccountController {
 			@RequestParam("email") String email,
 			@RequestParam("password") String password,
 			ModelAndView mv) {
+		session.invalidate();
 		// メールアドレスが空の場合にエラーとする
 		if (email == null || email.length() == 0) {
 			mv.addObject("message", "メールアドレスを入力してください");
@@ -76,8 +77,8 @@ public class AccountController {
 			session.setAttribute("category", categoryRepository.findAll());
 
 			//ToDoListの中身をとる。
-			Integer id = u.getId();
-			List<ToDoList> record = listRepository.findByUserid(id);
+			Integer Userid = u.getId();
+			List<ToDoList> record = listRepository.findByUserid(Userid);
 
 			//ToDoListの中身をセッションスコープに格納する
 			session.setAttribute("todolists", record);
