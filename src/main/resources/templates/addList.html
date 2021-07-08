@@ -6,48 +6,48 @@
 <title>新規リスト</title>
 </head>
 <body>
-<div class="ribbon1-wrapper">
+	<div class="ribbon1-wrapper">
 		<div class="ribbon1">
 			<h1>
 				<span th:text="'（'+${session.userInfo.name}+' さんのTODOリスト）'"></span>
 			</h1>
 		</div>
-		<p style="text-align:center">リスト追加</p>
+		<p style="text-align: center">リスト追加</p>
 	</div>
 
 	<form action="/addList" method="post">
 		<table border="1">
-		<tr>
-			<td>カテゴリー</td>
-			<td>
-			<select name="category" >
-			<option th:each="c:${session.category}" th:value="${c.code}" th:text="${c.name}" th:selected="${c.code==category}"></option>
-			</select></td>
-		</tr>
-		<tr>
-			<td>タイトル</td>
-			<td><input type="text" name="title" th:value="${title}"></td>
-		</tr>
-		<tr>
-			<td>やること</td>
-			<td><input type="text" name="content" th:value="${content}"></td>
-		</tr>
-		<tr>
-			<td>期日</td>
-			<td><input type="date" name="date" th:value="${date}"></td>
-		</tr>
-		<tr>
-			<td>優先順位</td>
-			<td><input type="number" name="rank" th:value="${rank}"></td>
-		</tr>
+			<tr>
+				<td>カテゴリー</td>
+				<td><select name="category">
+						<option th:each="c:${session.category}" th:value="${c.code}"
+							th:text="${c.name}" th:selected="${c.code==category}"></option>
+				</select></td>
+			</tr>
+			<tr>
+				<td>タイトル</td>
+				<td><input type="text" name="title" th:value="${title}"></td>
+			</tr>
+			<tr>
+				<td>やること</td>
+				<td><input type="text" name="content" th:value="${content}"></td>
+			</tr>
+			<tr>
+				<td>期日</td>
+				<td><input type="date" name="date" th:value="${date}"></td>
+			</tr>
+			<tr>
+				<td>優先順位</td>
+				<td><input type="number" name="rank" th:value="${rank}"></td>
+			</tr>
 		</table>
 		<input type="submit" value="登録">
 	</form>
 	<br>
-	<span th:text="${message}" style="color:red"></span>
+	<span th:text="${message}" style="color: red"></span>
 
 	<hr>
-
+	<a href="/list">マイページへ</a>
 
 </body>
 </html>
