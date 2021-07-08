@@ -66,7 +66,7 @@ public class ListController {
 			@RequestParam("title") String title,
 			@RequestParam("content") String content,
 			@RequestParam("date") String Date,
-			@RequestParam("category_code") Integer categoryCode,
+			@RequestParam("category") Integer categoryCode,
 			@RequestParam("rank") Integer rank,
 			@RequestParam("code") Integer code,
 			ModelAndView mv) {
@@ -104,9 +104,25 @@ public class ListController {
 			@RequestParam("content") String content,
 			@RequestParam("date") String Date,
 			@RequestParam("category") Integer categoryCode,
-			@RequestParam("rank") Integer rank,
+			@RequestParam(name= "rank" , defaultValue = "1") Integer rank,
 			@RequestParam("title") String title,
 			ModelAndView mv) {
+		//未入力項目があった場合
+		if (content == null || content.length() == 0 ||
+				Date == null || Date.length() == 0 ||
+				rank == null ||
+				title == null || title.length() == 0) {
+			// 名前が空の場合にエラーとする
+			mv.addObject("message", "未入力の項目があります");
+			mv.addObject("content", content);
+			mv.addObject("date", Date);
+			mv.addObject("rank", rank);
+			mv.addObject("title", title);
+			mv.addObject("category", categoryCode);
+			mv.setViewName("addList");
+			return mv;
+		}
+
 		User u = (User) session.getAttribute("userInfo");
 		Integer userid = u.getId();
 
