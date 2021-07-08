@@ -48,11 +48,19 @@ public class ListController {
 	}
 
 	//リストの並び替え
-	@RequestMapping("/sort")
-	public ModelAndView sort(ModelAndView mv) {
-		List<ToDoList> todoList = listRepository.findAllByOrderByRankAsc();
-		session.setAttribute("todolists", todoList);
-
+	@PostMapping("/sort")
+	public ModelAndView sort(
+			@RequestParam(name = "sort", defaultValue = "") String sort,
+			ModelAndView mv) {
+		if (sort.equals("asc")) {
+			//優先度のみでのソート
+			List<ToDoList> todoList = listRepository.findAllByOrderByRankAsc();
+			session.setAttribute("todolists", todoList);
+		} else if (sort.equals("until")) {
+			//日付のみでのソート
+			List<ToDoList> todoList = listRepository.findAllByOrderByDateAsc();
+			session.setAttribute("todolists", todoList);
+		}
 		mv.setViewName("list");
 		return mv;
 	}
@@ -116,7 +124,7 @@ public class ListController {
 			@RequestParam("content") String content,
 			@RequestParam("date") String Date,
 			@RequestParam("category") Integer categoryCode,
-			@RequestParam(name= "rank" , defaultValue = "1") Integer rank,
+			@RequestParam(name = "rank", defaultValue = "1") Integer rank,
 			@RequestParam("title") String title,
 			ModelAndView mv) {
 		//未入力項目があった場合

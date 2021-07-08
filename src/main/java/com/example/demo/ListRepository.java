@@ -8,8 +8,18 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ListRepository extends JpaRepository<ToDoList, Integer>{
+	//ユーザidごとの検索
 	List<ToDoList> findByUserid(Integer userid);
+
+	//単一検索
 	Optional<ToDoList> findByCode(Integer code);
+
+	//カテゴリーコード検索
 	List<ToDoList> findByCategoryCode(Integer categoryCode);
+
+	//優先度のみでのソート
 	List<ToDoList> findAllByOrderByRankAsc();
+
+	//日付のみでのソート
+	List<ToDoList> findAllByOrderByDateAsc();
 }
