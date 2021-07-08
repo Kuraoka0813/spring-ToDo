@@ -39,37 +39,44 @@ public class AccountController {
 	/**
 	 * ログインを実行
 	 */
-	@RequestMapping(value="/login", method=RequestMethod.POST)
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView doLogin(
 			@RequestParam("email") String email,
 			@RequestParam("password") String password,
-			ModelAndView mv
-	) {
+			ModelAndView mv) {
 		// メールアドレスが空の場合にエラーとする
-		if(email == null || email.length() == 0) {
+		if (email == null || email.length() == 0) {
 			mv.addObject("message", "メールアドレスを入力してください");
 			mv.setViewName("login");
 			return mv;
-		} else if(password == null || password.length() == 0){
+		} else if (password == null || password.length() == 0) {
+			//パスワードが空の場合エラーとする
 			mv.addObject("message", "パスワードを入力してください");
 			mv.setViewName("login");
+			return mv;
 		}
 
 		Optional<User> user = userRepository.findByEmail(email);
+		User u = user.get();
 
 		//情報取得
+		//メールアドレスが登録されているか確認する
 		if (user.isEmpty()) {
 			mv.addObject("message", "入力されたメールアドレスは登録されていません。");
 			mv.setViewName("login");
 			return mv;
+		} else if (!u.getPassword().equals(password)) {
+			//登録されたメールアドレスのパスワードと一致しているか確認する
+			mv.addObject("message", "パスワードが正しくありません。");
+			mv.setViewName("login");
+			return mv;
 		} else {
 			// セッションスコープにユーザ情報を格納する
-			User u = user.get();
 			session.setAttribute("userInfo", user.get());
 			session.setAttribute("category", categoryRepository.findAll());
 
 			//ToDoListの中身をとる。
-			Integer id =u.getId();
+			Integer id = u.getId();
 			List<ToDoList> record = listRepository.findByUserid(id);
 
 			//ToDoListの中身をセッションスコープに格納する

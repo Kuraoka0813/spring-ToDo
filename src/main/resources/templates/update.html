@@ -23,12 +23,12 @@
 			</tr>
 			<tr>
 				<th>カテゴリー</th>
-				<td><input type="text" th:value="${record.category_code}"
+				<td><input type="text" th:value="${record.categoryCode}"
 					name="category_code"></td>
 			</tr>
 			<tr>
 				<td>優先順位</td>
-				<td><input type="number" name="rank"></td>
+				<td><input type="number" th:value="${record.rank}" name="rank"></td>
 			</tr>
 
 		</table>
