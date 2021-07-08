@@ -13,7 +13,7 @@
 			<td>カテゴリー</td>
 			<td>
 			<select name="category" >
-			<option th:each="c:${session.category}" th:value="${c}" th:text="${c.name}"></option>
+			<option th:each="c:${session.category}" th:value="${c}" th:text="${c.name}" th:href="'/addList/'+${c.code}"></option>
 			</select></td>
 		</tr>
 		<tr>
