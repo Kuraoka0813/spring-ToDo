@@ -28,7 +28,7 @@
 			</tr>
 			<tr>
 				<th>期日</th>
-				<td><input type="date" th:value="${date}" name="date"></td>
+				<td><input type="date" th:value="${#dates.format(date, 'yyyy-MM-dd')}" name="date"></td>
 			</tr>
 			<tr>
 				<th>カテゴリー</th>
