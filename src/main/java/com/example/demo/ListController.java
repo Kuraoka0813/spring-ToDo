@@ -28,8 +28,15 @@ public class ListController {
 	//全リストを表示
 	@RequestMapping("/list")
 	public ModelAndView items(ModelAndView mv) {
-		List<ToDoList> todoList = listRepository.findAll();
-		session.setAttribute("todolists", todoList);
+		//ユーザ情報の取得
+		User u = (User) session.getAttribute("userInfo");
+
+		//ToDoListの中身をとる。
+		Integer Userid = u.getId();
+		List<ToDoList> record = listRepository.findByUserid(Userid);
+
+		//ToDoListの中身をセッションスコープに格納する
+		session.setAttribute("todolists", record);
 
 		mv.setViewName("list");
 		return mv;
@@ -40,7 +47,12 @@ public class ListController {
 	public ModelAndView listByCode(
 			@PathVariable(name = "code") int categoryCode,
 			ModelAndView mv) {
-		List<ToDoList> listByCategoryCode = listRepository.findByCategoryCode(categoryCode);
+		//ユーザ情報の取得
+		User u = (User) session.getAttribute("userInfo");
+
+		//ToDoListの中身をとる。
+		Integer Userid = u.getId();
+		List<ToDoList> listByCategoryCode = listRepository.findByUseridAndCategoryCode(Userid, categoryCode);
 		session.setAttribute("todolists", listByCategoryCode);
 
 		mv.setViewName("list");
