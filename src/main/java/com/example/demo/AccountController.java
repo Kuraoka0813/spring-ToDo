@@ -83,6 +83,8 @@ public class AccountController {
 			//ToDoListの中身をセッションスコープに格納する
 			session.setAttribute("todolists", record);
 
+			session.setAttribute("categoryCode", 0);
+
 			mv.setViewName("list");
 			return mv;
 		}

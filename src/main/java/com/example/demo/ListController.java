@@ -38,6 +38,8 @@ public class ListController {
 		//ToDoListの中身をセッションスコープに格納する
 		session.setAttribute("todolists", record);
 
+		session.setAttribute("categoryCode", 0);
+
 		mv.setViewName("list");
 		return mv;
 	}
@@ -55,6 +57,7 @@ public class ListController {
 		List<ToDoList> listByCategoryCode = listRepository.findByUseridAndCategoryCode(Userid, categoryCode);
 		session.setAttribute("todolists", listByCategoryCode);
 
+		session.setAttribute("categoryCode", categoryCode);
 		mv.setViewName("list");
 		return mv;
 	}
@@ -64,14 +67,34 @@ public class ListController {
 	public ModelAndView sort(
 			@RequestParam(name = "sort", defaultValue = "") String sort,
 			ModelAndView mv) {
-		if (sort.equals("asc")) {
-			//優先度のみでのソート
-			List<ToDoList> todoList = listRepository.findAllByOrderByRankAsc();
-			session.setAttribute("todolists", todoList);
-		} else if (sort.equals("until")) {
-			//日付のみでのソート
-			List<ToDoList> todoList = listRepository.findAllByOrderByDateAsc();
-			session.setAttribute("todolists", todoList);
+		//ユーザ情報の取得
+		User u = (User) session.getAttribute("userInfo");
+
+		//ToDoListの中身をとる。
+		Integer Userid = u.getId();
+
+		int categoryCode = (int) session.getAttribute("categoryCode");
+
+		if (categoryCode == 0) {
+			if (sort.equals("asc")) {
+				//優先度のみでのソート
+				List<ToDoList> todoList = listRepository.findByUseridOrderByRankAsc(Userid);
+				session.setAttribute("todolists", todoList);
+			} else if (sort.equals("until")) {
+				//日付のみでのソート
+				List<ToDoList> todoList = listRepository.findByUseridOrderByDateAsc(Userid);
+				session.setAttribute("todolists", todoList);
+			}
+		} else {
+			if (sort.equals("asc")) {
+				//優先度のみでのソート
+				List<ToDoList> todoList = listRepository.findByUseridAndCategoryCodeOrderByRankAsc(Userid, categoryCode);
+				session.setAttribute("todolists", todoList);
+			} else if (sort.equals("until")) {
+				//日付のみでのソート
+				List<ToDoList> todoList = listRepository.findByUseridAndCategoryCodeOrderByDateAsc(Userid, categoryCode);
+				session.setAttribute("todolists", todoList);
+			}
 		}
 		mv.setViewName("list");
 		return mv;
@@ -84,8 +107,6 @@ public class ListController {
 			ModelAndView mv) {
 		Optional<ToDoList> record = listRepository.findById(code);
 		ToDoList r = record.get();
-
-
 
 		mv.addObject("record", record.get());
 		mv.addObject("date", r.getDate());

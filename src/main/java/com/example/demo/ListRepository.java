@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ListRepository extends JpaRepository<ToDoList, Integer>{
+public interface ListRepository extends JpaRepository<ToDoList, Integer> {
 	//ユーザidごとの検索
 	List<ToDoList> findByUserid(Integer userid);
 
@@ -18,8 +18,14 @@ public interface ListRepository extends JpaRepository<ToDoList, Integer>{
 	List<ToDoList> findByUseridAndCategoryCode(Integer userid, Integer categoryCode);
 
 	//優先度のみでのソート
-	List<ToDoList> findAllByOrderByRankAsc();
+	List<ToDoList> findByUseridOrderByRankAsc(Integer userid);
+
+	//カテゴリーコードでの優先度でのソート
+	List<ToDoList> findByUseridAndCategoryCodeOrderByRankAsc(Integer userid, Integer categoryCode);
 
 	//日付のみでのソート
-	List<ToDoList> findAllByOrderByDateAsc();
+	List<ToDoList> findByUseridOrderByDateAsc(Integer userid);
+
+	//カテゴリーコードでの日付のみでのソート
+	List<ToDoList> findByUseridAndCategoryCodeOrderByDateAsc(Integer userid, Integer categoryCode);
 }
