@@ -25,19 +25,27 @@ public class ListController {
 	@Autowired
 	UserRepository userRepository;
 
+	//全リストを表示
+	@RequestMapping("/items")
+	public ModelAndView items(ModelAndView mv) {
+		List<ToDoList> todoList = listRepository.findAll();
+		session.setAttribute("todolists", todoList);
 
-//	//指定したカテゴリコードの商品を表示
-//	@RequestMapping(value="/list/{code}")
-//	public ModelAndView listByCode(
-//			@PathVariable(name="code") int categoryCode,
-//			ModelAndView mv
-//	) {
-//		List<ToDoList> listByCategory_Code = listRepository.findByCategorycode(categoryCode);
-//		session.setAttribute("todolists", listByCategory_Code);
-//
-//		mv.setViewName("list");
-//		return mv;
-//	}
+		mv.setViewName("list");
+		return mv;
+	}
+
+	//指定したカテゴリコードのリストを表示
+	@RequestMapping(value = "/list/{code}")
+	public ModelAndView listByCode(
+			@PathVariable(name = "code") int categoryCode,
+			ModelAndView mv) {
+		List<ToDoList> listByCategoryCode = listRepository.findByCategoryCode(categoryCode);
+		session.setAttribute("todolists", listByCategoryCode);
+
+		mv.setViewName("list");
+		return mv;
+	}
 
 	//編集画面に
 	@RequestMapping("/update/{code}")
@@ -58,7 +66,7 @@ public class ListController {
 			@RequestParam("title") String title,
 			@RequestParam("content") String content,
 			@RequestParam("date") String Date,
-			@RequestParam("category_code") Integer category_code,
+			@RequestParam("category_code") Integer categoryCode,
 			@RequestParam("rank") Integer rank,
 			@RequestParam("code") Integer code,
 			ModelAndView mv) {
@@ -68,7 +76,7 @@ public class ListController {
 		Date date = java.sql.Date.valueOf(Date);
 
 		// 編集情報をDBに格納する
-		ToDoList list = new ToDoList(code, category_code, content, date, rank, userid, title);
+		ToDoList list = new ToDoList(code, categoryCode, content, date, rank, userid, title);
 		listRepository.saveAndFlush(list);
 
 		//Listの中身を取得
@@ -95,7 +103,7 @@ public class ListController {
 	public ModelAndView addRegi(
 			@RequestParam("content") String content,
 			@RequestParam("date") String Date,
-			@RequestParam("category_code") Integer category_code,
+			@RequestParam("category_code") Integer categoryCode,
 			@RequestParam("rank") Integer rank,
 			@RequestParam("title") String title,
 			ModelAndView mv) {
@@ -107,7 +115,7 @@ public class ListController {
 		Date date = java.sql.Date.valueOf(Date);
 
 		// ToDoListをDBに格納する
-		ToDoList list = new ToDoList(category_code, content, date, rank, userid, title);
+		ToDoList list = new ToDoList(categoryCode, content, date, rank, userid, title);
 		listRepository.saveAndFlush(list);
 
 		//Listの中身を取得

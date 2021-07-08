@@ -2,6 +2,7 @@ package com.example.demo;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,7 +16,8 @@ public class ToDoList {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer code;
-	private Integer category_code;
+	@Column(name="categorycode")
+	private Integer categoryCode;
 	private String content;
 	private Date date;
 	private Integer rank;
@@ -27,9 +29,9 @@ public class ToDoList {
 
 	}
 
-	public ToDoList(Integer category_code, String content, Date date, Integer rank, Integer userid,
+	public ToDoList(Integer categoryCode, String content, Date date, Integer rank, Integer userid,
 			String title) {
-		this.category_code = category_code;
+		this.categoryCode = categoryCode;
 		this.content = content;
 		this.date = date;
 		this.rank = rank;
@@ -37,11 +39,11 @@ public class ToDoList {
 		this.title = title;
 	}
 
-	public ToDoList(Integer code, Integer category_code, String content, Date date, Integer rank, Integer userid,
+	public ToDoList(Integer code, Integer categoryCode, String content, Date date, Integer rank, Integer userid,
 			String title) {
 		super();
 		this.code = code;
-		this.category_code = category_code;
+		this.categoryCode = categoryCode;
 		this.content = content;
 		this.date = date;
 		this.rank = rank;
@@ -55,11 +57,11 @@ public class ToDoList {
 	public void setCode(Integer code) {
 		this.code = code;
 	}
-	public Integer getCategory_code() {
-		return category_code;
+	public Integer getCategoryCode() {
+		return categoryCode;
 	}
-	public void setCategory_code(Integer category_code) {
-		this.category_code = category_code;
+	public void setCategoryCode(Integer categoryCode) {
+		this.categoryCode = categoryCode;
 	}
 	public String getContent() {
 		return content;
