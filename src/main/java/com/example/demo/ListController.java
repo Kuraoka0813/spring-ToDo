@@ -53,9 +53,11 @@ public class ListController {
 			@PathVariable(name = "code") int code,
 			ModelAndView mv) {
 		Optional<ToDoList> record = listRepository.findByCode(code);
+		ToDoList r = record.get();
 
 		mv.addObject("record", record.get());
-
+		mv.addObject("date", r.getDate());
+		mv.addObject("category", r.getCategoryCode());
 		mv.setViewName("update");
 		return mv;
 	}
