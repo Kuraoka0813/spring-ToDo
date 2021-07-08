@@ -12,29 +12,32 @@
 				<span th:text="'（'+${session.userInfo.name}+' さんのTODOリスト）'"></span>
 			</h1>
 		</div>
-		<br>
-		<br>
-		<span th:replace="menu"></span>
+		<br> <br> <span th:replace="menu"></span>
 	</div>
 	<hr>
 	<span th:replace="sort"></span>
+
 	<table border="1">
+
 		<tr>
 			<th>チェック</th>
 			<th>TODO</th>
 			<th>期日</th>
 			<th>削除</th>
 		</tr>
-		<tr th:each="todolist:${session.todolists}">
-			<td><input type="checkbox" name="check"></td>
+		<tr th:each="todolist:${session.todolists}" >
+			<td><input type="checkbox" name="check">チェック</td>
 			<td><a th:href="'/update/' + ${todolist.code}"
 				th:text="${todolist.title}"></a></td>
 			<td th:text="${#dates.format(todolist.date,'yyyy-MM-dd')}"></td>
 			<td><a th:href="'/delete/'+ ${todolist.code}">削除</a></td>
 		</tr>
 	</table>
-	<a href="/addList">追加</a>
+	<form action="/selectdelete" method="get">
+	<input type="submit" value="まとめて削除">
+	</form>
 
+	<a href="/addList">追加</a>
 	<hr>
 
 	<span th:replace="logout"></span>
