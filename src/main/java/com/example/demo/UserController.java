@@ -33,7 +33,7 @@ public class UserController {
 
 		if (name == null || name.length() == 0) {
 			// 名前が空の場合にエラーとする
-			mv.addObject("message", "名前を入力してください");
+			mv.addObject("message", "未入力の項目があります");
 			mv.addObject("name", name);
 			mv.addObject("email", email);
 			mv.addObject("password", password);
@@ -41,7 +41,7 @@ public class UserController {
 			return mv;
 		}else if (email == null || email.length() == 0) {
 			//メールアドレスが空の場合エラーとする
-			mv.addObject("message", "メールアドレスを入力してください");
+			mv.addObject("message", "未入力の項目があります");
 			mv.addObject("name", name);
 			mv.addObject("email", email);
 			mv.addObject("password", password);
@@ -49,7 +49,7 @@ public class UserController {
 			return mv;
 		} else if (password == null || password.length() == 0) {
 			//パスワードが空の場合エラーとする
-			mv.addObject("message", "パスワードを入力してください");
+			mv.addObject("message", "未入力の項目があります");
 			mv.addObject("name", name);
 			mv.addObject("email", email);
 			mv.addObject("password", password);

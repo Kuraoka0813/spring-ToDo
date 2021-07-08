@@ -99,11 +99,11 @@ public class ListController {
 	}
 
 	//追加機能
-	@PostMapping("/addList")
+	@PostMapping("/addList/{code}")
 	public ModelAndView addRegi(
 			@RequestParam("content") String content,
 			@RequestParam("date") String Date,
-			@RequestParam("category_code") Integer categoryCode,
+			@PathVariable(name = "code") int categoryCode,
 			@RequestParam("rank") Integer rank,
 			@RequestParam("title") String title,
 			ModelAndView mv) {
