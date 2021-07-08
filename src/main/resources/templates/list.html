@@ -9,8 +9,8 @@
 	<span th:replace="menu"></span>
 	<hr>
 	<form action="/sort" method="post">
-	<input type="checkbox" name="asc" value="1" th:checked="${'1'==AscFlag}">優先度が高い順
-	<input type="checkbox" name="until" value="1" th:checked="${'1'==UntilFlag}">期日が近い順
+	<input type="checkbox" name="asc" value="1" th:checked="${AscFlag}">優先度が高い順
+	<input type="checkbox" name="until" value="1" th:checked="${UntilFlag}">期日が近い順
 	<input type="submit" value="並べ替え">
 	</form>
 	<table border="1">
