@@ -23,9 +23,12 @@
 			</tr>
 			<tr>
 				<th>カテゴリー</th>
-				<td><input type="text" th:value="${record.categoryCode}"
-					name="category_code"></td>
+				<td><select name="category">
+						<option th:each="c:${session.category}" th:value="${c.code}"
+							th:text="${c.name}" th:selected="${c.code==category}"></option>
+				</select></td>
 			</tr>
+
 			<tr>
 				<td>優先順位</td>
 				<td><input type="number" th:value="${record.rank}" name="rank"></td>
