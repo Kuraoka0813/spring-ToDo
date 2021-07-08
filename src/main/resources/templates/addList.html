@@ -11,7 +11,10 @@
 		<table border="1">
 		<tr>
 			<td>カテゴリー</td>
-			<td><input type="text" name="category_code"></td>
+			<td>
+			<select name="category" >
+			<option th:each="c:${session.category}" th:value="${c}" th:text="${c.name}"></option>
+			</select></td>
 		</tr>
 		<tr>
 			<td>タイトル</td>
