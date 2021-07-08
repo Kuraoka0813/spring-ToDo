@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -88,11 +90,13 @@ public class ListController {
 		} else {
 			if (sort.equals("asc")) {
 				//優先度のみでのソート
-				List<ToDoList> todoList = listRepository.findByUseridAndCategoryCodeOrderByRankAsc(Userid, categoryCode);
+				List<ToDoList> todoList = listRepository.findByUseridAndCategoryCodeOrderByRankAsc(Userid,
+						categoryCode);
 				session.setAttribute("todolists", todoList);
 			} else if (sort.equals("until")) {
 				//日付のみでのソート
-				List<ToDoList> todoList = listRepository.findByUseridAndCategoryCodeOrderByDateAsc(Userid, categoryCode);
+				List<ToDoList> todoList = listRepository.findByUseridAndCategoryCodeOrderByDateAsc(Userid,
+						categoryCode);
 				session.setAttribute("todolists", todoList);
 			}
 		}
@@ -205,7 +209,7 @@ public class ListController {
 	public ModelAndView deleteList(
 			@PathVariable(name = "code") int code,
 			ModelAndView mv) {
-		// セッションスコープからリストの情報を取得する
+		// セッションスコープからユーザの情報を取得する
 		User u = (User) session.getAttribute("userInfo");
 		Integer userid = u.getId();
 
@@ -218,6 +222,29 @@ public class ListController {
 		//ToDoListの中身をセッションスコープに格納する
 		session.setAttribute("todolists", record);
 
+		mv.setViewName("list");
+		return mv;
+	}
+
+	//選択項目の削除
+	@GetMapping("/selectdelete")
+	public ModelAndView selectAdd(
+			@RequestParam(name = "check", defaultValue = "") ArrayList<String> check,
+			ModelAndView mv) {
+		// セッションスコープからユーザの情報を取得する
+		User u = (User) session.getAttribute("userInfo");
+		Integer userid = u.getId();
+
+		if (check != null || check.size() != 0) {
+			for (int y = 0; y < check.size(); y++) {
+				int x = Integer.parseInt(check.get(y));
+
+				listRepository.deleteById(x);
+			}
+		}
+		List<ToDoList> record = listRepository.findByUserid(userid);
+
+		session.setAttribute("todolists", record);
 		mv.setViewName("list");
 		return mv;
 	}
