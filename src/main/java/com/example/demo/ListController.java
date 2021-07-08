@@ -25,6 +25,20 @@ public class ListController {
 	@Autowired
 	UserRepository userRepository;
 
+
+//	//指定したカテゴリコードの商品を表示
+//	@RequestMapping(value="/list/{code}")
+//	public ModelAndView listByCode(
+//			@PathVariable(name="code") int categoryCode,
+//			ModelAndView mv
+//	) {
+//		List<ToDoList> listByCategory_Code = listRepository.findByCategorycode(categoryCode);
+//		session.setAttribute("todolists", listByCategory_Code);
+//
+//		mv.setViewName("list");
+//		return mv;
+//	}
+
 	//編集画面に
 	@RequestMapping("/update/{code}")
 	public ModelAndView update(
@@ -87,6 +101,8 @@ public class ListController {
 			ModelAndView mv) {
 		User u = (User) session.getAttribute("userInfo");
 		Integer userid = u.getId();
+
+		System.out.println(Date);
 
 		Date date = java.sql.Date.valueOf(Date);
 

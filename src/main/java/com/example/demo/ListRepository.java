@@ -10,4 +10,5 @@ import org.springframework.stereotype.Repository;
 public interface ListRepository extends JpaRepository<ToDoList, Integer>{
 	List<ToDoList> findByUserid(Integer userid);
 	Optional<ToDoList> findByCode(Integer code);
+	//List<ToDoList> findByCategorycode(Integer categorycode);
 }
