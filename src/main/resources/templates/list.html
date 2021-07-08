@@ -21,7 +21,7 @@
 			<td><input type="checkbox" name="check"></td>
 			<td><a th:href="'/update/' + ${todolist.code}"
 				th:text="${todolist.title}"></a></td>
-			<td th:text="${todolist.date}"></td>
+			<td th:text="${#dates.format(todolist.date,'yyyy-MM-dd')}"></td>
 			<td><a th:href="'/delete/'+ ${todolist.code}">削除</a></td>
 		</tr>
 	</table>
