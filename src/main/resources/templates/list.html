@@ -2,16 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<link th:href="@{/login.css}" rel="stylesheet" type="text/css" />
 <title>TODOリスト</title>
 </head>
 <body>
-
+<div class="ribbon1">
 	<span th:replace="menu"></span>
+	</div>
 	<hr>
 	<form action="/sort" method="post">
-	<input type="checkbox" name="asc" value="1" th:checked="${AscFlag}">優先度が高い順
-	<input type="checkbox" name="until" value="1" th:checked="${UntilFlag}">期日が近い順
-	<input type="submit" value="並べ替え">
+	<select name="sort">
+	<option value="asc">優先度が高い順</option>
+	<option value="until">期日が近い順</option>
+	</select><input type="submit" value="並べ替え">
 	</form>
 	<table border="1">
 		<tr>
