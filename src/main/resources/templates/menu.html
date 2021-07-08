@@ -1,5 +1,5 @@
 <a href="/list">全リスト</a>
-<a th:each="c:${session.categories}" th:href="'/list/'+${c.code}">
+<a th:each="c:${session.category}" th:href="'/list/'+${c.code}">
 	<span th:text="${c.name}" style="padding-left:10px;"></span>
 </a>
 <span th:text="'（'+${session.userInfo.name}+' さんがログイン中）'"></span>
