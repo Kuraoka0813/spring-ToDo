@@ -7,10 +7,12 @@
 <body>
 
 	<span th:replace="menu"></span>
-
 	<hr>
-	<input type="radio" name="asc">優先度が高い順</td>
-	<input type="radio" name="until">期日が近い順</td>
+	<form action="/sort">
+	<input type="checkbox" name="asc">優先度が高い順
+	<input type="checkbox" name="until">期日が近い順
+	<input type="submit" value="並べ替え">
+	</form>
 	<table border="1">
 		<tr>
 			<th>チェック</th>
