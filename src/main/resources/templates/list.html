@@ -2,20 +2,20 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<link th:href="@{/login.css}" rel="stylesheet" type="text/css" />
+<link th:href="@{/list.css}" rel="stylesheet" type="text/css" />
 <title>TODOリスト</title>
 </head>
 <body>
-<div class="ribbon1">
-	<span th:replace="menu"></span>
+	<div class="ribbon1-wrapper">
+		<div class="ribbon1">
+			<h1>
+				<span th:text="'（'+${session.userInfo.name}+' さんのTODOリスト）'"></span>
+			</h1>
+		</div>
+		<span th:replace="menu"></span>
 	</div>
 	<hr>
-	<form action="/sort" method="post">
-	<select name="sort">
-	<option value="asc">優先度が高い順</option>
-	<option value="until">期日が近い順</option>
-	</select><input type="submit" value="並べ替え">
-	</form>
+	<span th:replace="sort"></span>
 	<table border="1">
 		<tr>
 			<th>チェック</th>

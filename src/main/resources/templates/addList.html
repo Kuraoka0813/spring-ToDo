@@ -2,10 +2,18 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<link th:href="@{/list.css}" rel="stylesheet" type="text/css" />
 <title>新規リスト</title>
 </head>
 <body>
-<h3>リスト登録</h3>
+<div class="ribbon1-wrapper">
+		<div class="ribbon1">
+			<h1>
+				<span th:text="'（'+${session.userInfo.name}+' さんのTODOリスト）'"></span>
+			</h1>
+		</div>
+		<p style="text-align:center">リスト追加</p>
+	</div>
 
 	<form action="/addList" method="post">
 		<table border="1">
