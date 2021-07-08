@@ -26,7 +26,7 @@ public class ListController {
 	UserRepository userRepository;
 
 	//全リストを表示
-	@RequestMapping("/items")
+	@RequestMapping("/list")
 	public ModelAndView items(ModelAndView mv) {
 		List<ToDoList> todoList = listRepository.findAll();
 		session.setAttribute("todolists", todoList);
