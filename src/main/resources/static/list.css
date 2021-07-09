@@ -85,7 +85,7 @@ tr:nth-child(odd) {
 }
 
 th, td {
-	padding: 5px 10px; /* 余白指定 */
+	padding: 30px 40px; /* 余白指定 */
 }
 
 option {

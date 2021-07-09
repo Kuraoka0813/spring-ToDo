@@ -1,5 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link th:href="@{/list.css}" rel="stylesheet" type="text/css" />
 <title>TODOリスト</title>
 </head>
+
 <body>
 	<div class="ribbon1-wrapper">
 		<div class="ribbon1">
@@ -9,7 +15,6 @@
 		</div>
 	</div>
 	<hr>
-	<span th:replace="sort"></span>
 	<form action="/selectdeletelog" method="post">
 		<table border="1">
 
@@ -20,8 +25,8 @@
 				<th>完全削除</th>
 			</tr>
 			<tr th:each="todolist:${session.todolists}">
-				<td><input type="checkbox"  name="check" th:value="${todolist.code}"
-				><label class="checkbox">チェック</label></td>
+				<td><label><input type="checkbox"  name="check" th:value="${todolist.code}"
+				>チェック</label></td>
 				<td><a th:href="'/update/' + ${todolist.code}"
 					th:text="${todolist.title}"></a></td>
 				<td th:text="${#dates.format(todolist.date,'yyyy-MM-dd')}"></td>
