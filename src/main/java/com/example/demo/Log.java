@@ -10,8 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="todolist")
-public class log {
+@Table(name="log")
+public class Log {
 	//フィールド
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,11 +25,11 @@ public class log {
 	private String title;
 
 	//コンストラクタ
-	public log() {
+	public Log() {
 
 	}
 
-	public log(Integer categoryCode, String content, Date date, Integer rank, Integer userid,
+	public Log(Integer categoryCode, String content, Date date, Integer rank, Integer userid,
 			String title) {
 		this.categoryCode = categoryCode;
 		this.content = content;
@@ -39,7 +39,7 @@ public class log {
 		this.title = title;
 	}
 
-	public log(Integer code, Integer categoryCode, String content, Date date, Integer rank, Integer userid,
+	public Log(Integer code, Integer categoryCode, String content, Date date, Integer rank, Integer userid,
 			String title) {
 		super();
 		this.code = code;
