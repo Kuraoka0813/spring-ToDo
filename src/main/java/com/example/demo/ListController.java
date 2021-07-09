@@ -256,6 +256,21 @@ public class ListController {
 			for (int y = 0; y < check.size(); y++) {
 				int x = Integer.parseInt(check.get(y));
 
+				//セッションスコープからリストから削除する項目を読み取る
+				Optional<ToDoList> logList = listRepository.findByCode(x);
+				ToDoList l = logList.get();
+				Integer categoryCode = l.getCategoryCode();
+				String content = l.getContent();
+				Date date = l.getDate();
+				Integer rank = l.getRank();
+				String title = l.getTitle();
+
+				Log list = new Log(categoryCode, content, date, rank, userid, title);
+
+				//削除履歴に登録する
+				logRepository.saveAndFlush(list);
+
+				//削除する
 				listRepository.deleteById(x);
 			}
 		}
@@ -265,4 +280,20 @@ public class ListController {
 		mv.setViewName("list");
 		return mv;
 	}
+
+	//削除履歴へ
+	@RequestMapping("/log")
+	public ModelAndView logList(ModelAndView mv) {
+		// セッションスコープからユーザの情報を取得する
+		User u = (User) session.getAttribute("userInfo");
+		Integer userid = u.getId();
+
+		//リストの検索
+		List<Log> record = logRepository.findByUserid(userid);
+
+		session.setAttribute("todolists", record);
+		mv.setViewName("log");
+		return mv;
+	}
+
 }
