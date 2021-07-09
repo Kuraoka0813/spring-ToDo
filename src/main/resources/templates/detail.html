@@ -27,7 +27,7 @@
 			</tr>
 			<tr>
 				<th>期日</th>
-				<td th:text="${record.date}"></td>
+				<td th:text="${#dates.format(record.date,'yyyy-MM-dd')}"></td>
 			<tr>
 				<th>カテゴリー</th>
 				<td th:text="${category}" >
