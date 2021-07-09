@@ -75,6 +75,19 @@ public class AccountController {
 			mv.setViewName("login");
 			return mv;
 		} else {
+			//管理者の場合
+			String manageremail = "manager@gmail.com";
+			String managerpassword = "manager";
+			if(email.equals(manageremail) && password.equals(managerpassword)) {
+				//ユーザ情報を全件取得
+				List<User> users = userRepository.findAll();
+				session.setAttribute("users", users);
+
+				mv.setViewName("manager");
+				return mv;
+			}
+
+			//一般ユーザの場合
 			// セッションスコープにユーザ情報を格納する
 			session.setAttribute("userInfo", user.get());
 			session.setAttribute("category", categoryRepository.findAll());

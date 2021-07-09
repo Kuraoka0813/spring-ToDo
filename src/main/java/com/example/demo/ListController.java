@@ -196,8 +196,6 @@ public class ListController {
 		User u = (User) session.getAttribute("userInfo");
 		Integer userid = u.getId();
 
-		System.out.println(Date);
-
 		Date date = java.sql.Date.valueOf(Date);
 
 		// ToDoListをDBに格納する
