@@ -88,6 +88,10 @@ th, td {
 	padding: 10px 20px; /* 余白指定 */
 }
 
-checkbox {
-	size:50px
+pre{
+	font-size:20px;
+}
+
+a{
+	font-size:20px;
 }

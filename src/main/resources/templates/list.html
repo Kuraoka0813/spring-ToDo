@@ -14,7 +14,7 @@ $(function() {
       $("input[name='check']").prop('checked', this.checked);
     });
     // 2. 「全選択」以外のチェックボックスがクリックされたら、
-    $("input[name='chk[]']").on('click', function() {
+    $("input[name='check']").on('click', function() {
       if ($('#check :checked').length == $('#check :input').length) {
         // 全てのチェックボックスにチェックが入っていたら、「全選択」 = checked
         $('#all').prop('checked', true);
@@ -42,7 +42,7 @@ $(function() {
 		<table border="1" align="center">
 
 			<tr>
-				<th><label for="all"><input type="checkbox" name="allChecked" id="all">全選択</label>チェック</th>
+				<th><label for="all"><input type="checkbox" name="allChecked" id="all">全選択</label></th>
 				<th>TODO</th>
 				<th>期日</th>
 				<th>削除</th>
@@ -56,10 +56,12 @@ $(function() {
 				<td><a th:href="'/delete/'+ ${todolist.code}">削除</a></td>
 			</tr>
 		</table>
-		<a href="/log">削除履歴</a><br> <input type="submit" value="まとめて削除">
+		<br> <input type="submit" value="まとめて削除">
+		<br>
+		<pre><a href="/addList">追加</a>   <a href="/log">削除履歴</a></pre>
 	</form>
 
-	<a href="/addList">追加</a>
+
 	<hr>
 
 	<span th:replace="logout"></span>
