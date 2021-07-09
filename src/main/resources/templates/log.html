@@ -27,13 +27,14 @@
 				<td th:text="${#dates.format(todolist.date,'yyyy-MM-dd')}"></td>
 				<td><a th:href="'/delete/'+ ${todolist.code}">削除</a></td>
 			</tr>
+
 		</table>
 		<input type="button" value="すべて選択" onclick="allcheck(true);">
 		<input type="submit" value="まとめて完全削除">
 	</form>
 
 	<hr>
-
+	<a href="/list">リストに戻る</a>
 	<span th:replace="logout"></span>
 
 </body>
