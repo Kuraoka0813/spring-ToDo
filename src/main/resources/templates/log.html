@@ -1,0 +1,40 @@
+<title>TODOリスト</title>
+</head>
+<body>
+	<div class="ribbon1-wrapper">
+		<div class="ribbon1">
+			<h1>
+				<span th:text="'（'+${session.userInfo.name}+' さんのTODOリスト）'"></span>
+			</h1>
+		</div>
+	</div>
+	<hr>
+	<span th:replace="sort"></span>
+	<form action="/log" method="post">
+		<table border="1">
+
+			<tr>
+				<th>チェック</th>
+				<th>TODO</th>
+				<th>期日</th>
+				<th>完全削除</th>
+			</tr>
+			<tr th:each="todolist:${session.todolists}">
+				<td><input type="checkbox"  name="check" th:value="${todolist.code}"
+				><label class="checkbox">チェック</label></td>
+				<td><a th:href="'/update/' + ${todolist.code}"
+					th:text="${todolist.title}"></a></td>
+				<td th:text="${#dates.format(todolist.date,'yyyy-MM-dd')}"></td>
+				<td><a th:href="'/delete/'+ ${todolist.code}">削除</a></td>
+			</tr>
+		</table>
+		<input type="button" value="すべて選択" onclick="allcheck(true);">
+		<input type="submit" value="まとめて完全削除">
+	</form>
+
+	<hr>
+
+	<span th:replace="logout"></span>
+
+</body>
+</html>
