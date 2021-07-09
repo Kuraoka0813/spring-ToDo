@@ -111,6 +111,7 @@ public class ListController {
 	public ModelAndView update(
 			@PathVariable(name = "code") int code,
 			ModelAndView mv) {
+		//編集の対象のデータの取得
 		Optional<ToDoList> record = listRepository.findById(code);
 		ToDoList r = record.get();
 
@@ -131,6 +132,7 @@ public class ListController {
 			@RequestParam("rank") Integer rank,
 			@RequestParam("code") Integer code,
 			ModelAndView mv) {
+		//編集の対象のテータの取得
 		User u = (User) session.getAttribute("userInfo");
 		Integer userid = u.getId();
 
@@ -251,6 +253,7 @@ public class ListController {
 		User u = (User) session.getAttribute("userInfo");
 		Integer userid = u.getId();
 
+		//選択されている箇所の判定、削除、履歴への追加
 		if (check != null || check.size() != 0) {
 			for (int y = 0; y < check.size(); y++) {
 				int x = Integer.parseInt(check.get(y));
@@ -326,6 +329,7 @@ public class ListController {
 		User u = (User) session.getAttribute("userInfo");
 		Integer userid = u.getId();
 
+		//選択されている箇所の判定、削除
 		if (check != null || check.size() != 0) {
 			for (int y = 0; y < check.size(); y++) {
 				int x = Integer.parseInt(check.get(y));
@@ -338,6 +342,23 @@ public class ListController {
 
 		session.setAttribute("todolists", record);
 		mv.setViewName("log");
+		return mv;
+	}
+
+	//削除履歴の詳細画面に
+	@RequestMapping("/detail/{code}")
+	public ModelAndView deletedetail(
+			@PathVariable(name = "code") int code,
+			ModelAndView mv) {
+		//対象の履歴を取得
+		Optional<Log> record = logRepository.findById(code);
+		Log r = record.get();
+
+		//表示
+		mv.addObject("record", record.get());
+		mv.addObject("date", r.getDate());
+		mv.addObject("category", r.getCategoryCode());
+		mv.setViewName("detail");
 		return mv;
 	}
 }
