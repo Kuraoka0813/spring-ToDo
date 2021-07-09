@@ -76,8 +76,8 @@
 
 table {
 	border-collapse: collapse; /* セルの線を重ねる */
-	font-size:30px;
-	text-align:center;
+    font-size: 35px;
+	text-align: center;
 }
 
 tr:nth-child(odd) {
@@ -88,10 +88,39 @@ th, td {
 	padding: 10px 20px; /* 余白指定 */
 }
 
-pre{
-	font-size:20px;
+pre {
+	font-size: 20px;
 }
 
-a{
-	font-size:20px;
+.menu {
+	width: 50%;
+	margin: 20px auto;
+	position: relative;
 }
+
+select {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 100%;
+	padding: 6px 5px;
+	box-sizing: border-box;
+	font-size: 20px;
+	border: #ccc 1px solid;
+	border-radius: 0;
+	background: #fff;
+}
+
+.menu::after {
+	content: "";
+	display: block;
+	width: 10px;
+	height: 10px;
+	position: absolute;
+	right: 5%;
+	top: 35%;
+	border-bottom: #333 2px solid;
+	border-right: #333 2px solid;
+	transform: rotate(45deg) translateY(-150%);
+}
+
+
