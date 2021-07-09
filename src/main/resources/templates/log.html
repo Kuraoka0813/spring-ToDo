@@ -27,7 +27,7 @@
 			<tr th:each="todolist:${session.todolists}">
 				<td><label><input type="checkbox"  name="check" th:value="${todolist.code}"
 				>チェック</label></td>
-				<td><a th:href="'/update/' + ${todolist.code}"
+				<td><a th:href="'/detail/' + ${todolist.code}"
 					th:text="${todolist.title}"></a></td>
 				<td th:text="${#dates.format(todolist.date,'yyyy-MM-dd')}"></td>
 				<td><a th:href="'/deletelog/'+ ${todolist.code}">削除</a></td>

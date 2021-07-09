@@ -85,9 +85,9 @@ tr:nth-child(odd) {
 }
 
 th, td {
-	padding: 30px 40px; /* 余白指定 */
+	padding: 10px 20px; /* 余白指定 */
 }
 
-option {
-	font-size:50px
+checkbox {
+	size:50px
 }
