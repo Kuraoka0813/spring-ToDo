@@ -3,12 +3,12 @@
 .ribbon1-wrapper {
 	display: block;
 	position: relative;
-	padding:100px 0;
+	padding: 100px 0;
 	width: 1500px;
 	background: #f1f1f1;
 	text-align: center;
 	height: 200px;
-	font-size:40px;
+	font-size: 40px;
 }
 
 .ribbon1 {
@@ -74,4 +74,20 @@
 	border-left: solid 15px #c6821e;
 }
 
+table {
+	border-collapse: collapse; /* セルの線を重ねる */
+	font-size:30px;
+	text-align:center;
+}
 
+tr:nth-child(odd) {
+	background-color: pink; /* 背景色指定 */
+}
+
+th, td {
+	padding: 5px 10px; /* 余白指定 */
+}
+
+option {
+	font-size:50px
+}
