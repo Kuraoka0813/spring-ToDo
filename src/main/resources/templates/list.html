@@ -5,25 +5,25 @@
 <link th:href="@{/list.css}" rel="stylesheet" type="text/css" />
 <title>TODOリスト</title>
 <script src="https://code.jquery.com/jquery-3.6.0.js"
-		integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-		crossorigin="anonymous"></script>
+	integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+	crossorigin="anonymous"></script>
 <script type="text/javascript">
-$(function() {
-    // 1. 「全選択」する
-    $('#all').on('click', function() {
-      $("input[name='check']").prop('checked', this.checked);
-    });
-    // 2. 「全選択」以外のチェックボックスがクリックされたら、
-    $("input[name='check']").on('click', function() {
-      if ($('#check :checked').length == $('#check :input').length) {
-        // 全てのチェックボックスにチェックが入っていたら、「全選択」 = checked
-        $('#all').prop('checked', true);
-      } else {
-        // 1つでもチェックが入っていたら、「全選択」 = checked
-        $('#all').prop('checked', false);
-      }
-    });
-  });
+	$(function() {
+		// 1. 「全選択」する
+		$('#all').on('click', function() {
+			$("input[name='check']").prop('checked', this.checked);
+		});
+		// 2. 「全選択」以外のチェックボックスがクリックされたら、
+		$("input[name='check']").on('click', function() {
+			if ($('#check :checked').length == $('#check :input').length) {
+				// 全てのチェックボックスにチェックが入っていたら、「全選択」 = checked
+				$('#all').prop('checked', true);
+			} else {
+				// 1つでもチェックが入っていたら、「全選択」 = checked
+				$('#all').prop('checked', false);
+			}
+		});
+	});
 </script>
 </head>
 <body>
@@ -37,28 +37,32 @@ $(function() {
 		<br> <br> <span th:replace="menu"></span>
 	</div>
 	<hr>
-	<div class="menu"><span th:replace="sort"></span></div><br>
 	<form action="/selectdelete" method="post">
 		<table border="1" align="center">
+			<div class="menu">
+				<span th:replace="sort"></span>
+			</div>
 
-			<tr>
-				<th><label for="all"><input type="checkbox" name="allChecked" id="all">全選択</label></th>
+			<tr style="font-size: 30px">
+				<th><label for="all"><input type="checkbox"
+						name="allChecked" id="all">全選択</label></th>
 				<th>TODO</th>
 				<th>期日</th>
 				<th>削除</th>
 			</tr>
-			<tr th:each="todolist:${session.todolists}">
-				<td><div id="check"><input type="checkbox" name="check"
-					th:value="${todolist.code}"><label class="checkbox">チェック</label></div></td>
+			<tr th:each="todolist:${session.todolists}" style="font-size: 25px">
+				<td><div id="check">
+						<input type="checkbox" name="check" th:value="${todolist.code}"><label
+							class="checkbox">チェック</label>
+					</div></td>
 				<td><a th:href="'/update/' + ${todolist.code}"
 					th:text="${todolist.title}"></a></td>
 				<td th:text="${#dates.format(todolist.date,'yyyy-MM-dd')}"></td>
 				<td><a th:href="'/delete/'+ ${todolist.code}">削除</a></td>
 			</tr>
 		</table>
-		<br> <input type="submit" value="まとめて削除">
-		<br>
-		<pre><a href="/addList">追加</a>   <a href="/log">削除履歴</a></pre>
+		<br><div class="da"><input type="submit" value="まとめて削除"></div><br>
+		<pre><a href="/addList" >追加</a>   <a href="/log" >削除履歴</a></pre>
 	</form>
 
 
@@ -67,5 +71,5 @@ $(function() {
 	<span th:replace="logout"></span>
 
 
-	</body>
+</body>
 </html>

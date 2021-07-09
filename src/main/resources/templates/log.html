@@ -33,13 +33,14 @@
 			<h1>
 				<span th:text="'（'+${session.userInfo.name}+' さんのTODOリスト）'"></span>
 			</h1>
-		</div>
+		</div><br><br>
+		削除履歴
 	</div>
 	<hr>
 	<form action="/selectdeletelog" method="post">
-		<table border="1">
+		<table border="1" align="center">
 
-			<tr>
+			<tr style="font-size:30px">
 				<th><label for="all"><input type="checkbox"
 						name="allChecked" id="all">全選択</label></th>
 				<th>TODO</th>
@@ -58,12 +59,11 @@
 			</tr>
 
 		</table>
-		<input type="submit" value="まとめて完全削除">
+		<div class="da"><input type="submit" value="まとめて完全削除" ></div>
 	</form>
 
-	<hr>
-	<a href="/list">リストに戻る</a>
-	<span th:replace="logout"></span>
+	<a href="/list" style="font-size:20px">リストに戻る</a>
+	<hr><span th:replace="logout"></span>
 
 </body>
 </html>
