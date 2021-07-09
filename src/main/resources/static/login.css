@@ -50,14 +50,14 @@
   text-decoration: none;
   color: #668ad8;
   width: 120px;
-  height: 120px;
-  line-height: 120px;
-  border-radius: 50%;
+  height: 40px;
+  line-height: 40px;
   border: double 4px #668ad8;
   text-align: center;
   overflow: hidden;
   transition: .6s;
   background-color:blue;
+  shape:square;
 }
 
 .button1:hover {
