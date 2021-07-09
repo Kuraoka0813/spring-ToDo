@@ -29,6 +29,9 @@ public class ListController {
 	@Autowired
 	LogRepository logRepository;
 
+	@Autowired
+	CategoryRepository categoryRepository;
+
 	//全リストを表示
 	@RequestMapping("/list")
 	public ModelAndView items(ModelAndView mv) {
@@ -354,10 +357,17 @@ public class ListController {
 		Optional<Log> record = logRepository.findById(code);
 		Log r = record.get();
 
+		//カテゴリーの取得
+		Optional<Category> c = categoryRepository.findById(r.getCategoryCode());
+		Category _c = c.get();
+		String categoty = _c.getName();
+
 		//表示
 		mv.addObject("record", record.get());
 		mv.addObject("date", r.getDate());
-		mv.addObject("category", r.getCategoryCode());
+		mv.addObject("category", categoty);
+		session.setAttribute("todolists", record);
+
 		mv.setViewName("detail");
 		return mv;
 	}
