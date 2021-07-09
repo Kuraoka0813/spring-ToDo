@@ -12,7 +12,7 @@
 				<span th:text="'（'+${session.userInfo.name}+' さんのTODOリスト）'"></span>
 			</h1>
 		</div>
-		<p style="text-align:center">編集画面</p>
+		<p style="text-align: center">編集画面</p>
 	</div>
 	<form action="/update" method="post">
 		<input type="hidden" name="code" th:value="${record.code}">
@@ -28,7 +28,8 @@
 			</tr>
 			<tr>
 				<th>期日</th>
-				<td><input type="date" th:value="${#dates.format(date, 'yyyy-MM-dd')}" name="date"></td>
+				<td><input type="date"
+					th:value="${#dates.format(date, 'yyyy-MM-dd')}" name="date"></td>
 			</tr>
 			<tr>
 				<th>カテゴリー</th>
@@ -40,7 +41,10 @@
 
 			<tr>
 				<td>優先順位</td>
-				<td><input type="number" th:value="${record.rank}" name="rank"></td>
+				<td><select name="rank">
+						<option th:each="r:${session.rank}" th:value="${r.code}"
+							th:text="${r.name}" th:selected="${r.code==rank}"></option>
+				</select></td>
 			</tr>
 
 		</table>

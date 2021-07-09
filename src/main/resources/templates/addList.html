@@ -38,7 +38,10 @@
 			</tr>
 			<tr>
 				<td>優先順位</td>
-				<td><input type="number" name="rank" th:value="${rank}"></td>
+				<td><select name="rank">
+						<option th:each="r:${session.rank}" th:value="${r.code}"
+							th:text="${r.name}" th:selected="${r.code==rank}"></option>
+				</select></td>
 			</tr>
 		</table>
 		<input type="submit" value="登録">
