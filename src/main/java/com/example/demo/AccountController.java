@@ -83,6 +83,11 @@ public class AccountController {
 				List<User> users = userRepository.findAll();
 				session.setAttribute("users", users);
 
+				//todolistを全件表示
+				List<ToDoList> allList = listRepository.findByOrderByUseridAsc();
+				mv.addObject("allList", allList);
+				session.setAttribute("allList", allList);
+
 				mv.setViewName("manager");
 				return mv;
 			}

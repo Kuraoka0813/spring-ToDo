@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html  xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>管理者画面</title>
@@ -20,6 +20,24 @@
 			<td th:text="${users.name}"></td>
 			<td th:text="${users.email}"></td>
 			<td th:text="${users.password}"></td>
+		</tr>
+	</table>
+	<hr>
+	<h3>全ToDoList情報</h3>
+	<table border="1">
+		<tr>
+			<th>ユーザID</th>
+			<th>タイトル</th>
+			<th>内容</th>
+			<th>カテゴリー</th>
+			<th>優先度</th>
+		</tr>
+		<tr th:each="a:${session.allList}">
+			<td th:text="${a.code}"></td>
+			<td th:text="${a.code}"></td>
+			<td th:text="${a.code}"></td>
+			<td th:text="${a.code}"></td>
+			<td th:text="${a.code}"></td>
 		</tr>
 	</table>
 </body>
