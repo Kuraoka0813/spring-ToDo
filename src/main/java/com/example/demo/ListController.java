@@ -124,6 +124,7 @@ public class ListController {
 		mv.addObject("record", record.get());
 		mv.addObject("date", r.getDate());
 		mv.addObject("category", r.getCategoryCode());
+		mv.addObject("rank", r.getRank());
 		mv.setViewName("update");
 		return mv;
 	}
@@ -365,11 +366,16 @@ public class ListController {
 		Category _c = c.get();
 		String categoty = _c.getName();
 
+		//ランクの取得
+		Optional<Rank> ra = rankRepository.findById(r.getRank());
+		Rank _ra = ra.get();
+		String rank = _ra.getName();
+
 		//表示
 		mv.addObject("record", record.get());
 		mv.addObject("date", r.getDate());
 		mv.addObject("category", categoty);
-		session.setAttribute("todolists", record);
+		mv.addObject("rank", rank);
 
 		mv.setViewName("detail");
 		return mv;
