@@ -9,7 +9,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -244,7 +243,7 @@ public class ListController {
 	}
 
 	//選択項目の削除
-	@GetMapping("/selectdelete")
+	@PostMapping("/selectdelete")
 	public ModelAndView selectAdd(
 			@RequestParam(name = "check", defaultValue = "") ArrayList<String> check,
 			ModelAndView mv) {
@@ -296,4 +295,49 @@ public class ListController {
 		return mv;
 	}
 
+	//完全削除削除
+	@RequestMapping("/deletelog/{code}")
+	public ModelAndView deletelog(
+			@PathVariable(name = "code") int code,
+			ModelAndView mv) {
+		// セッションスコープからユーザの情報を取得する
+		User u = (User) session.getAttribute("userInfo");
+		Integer userid = u.getId();
+
+		// データベースから削除
+		logRepository.deleteById(code);
+
+		//Listの中身を取得
+		List<Log> record = logRepository.findByUserid(userid);
+
+		//ToDoListの中身をセッションスコープに格納する
+		session.setAttribute("todolists", record);
+
+		mv.setViewName("log");
+		return mv;
+	}
+
+	//選択して完全削除削除
+	@RequestMapping("/selectdeletelog")
+	public ModelAndView selectdeletelog(
+			@RequestParam(name = "check", defaultValue = "") ArrayList<String> check,
+			ModelAndView mv) {
+		// セッションスコープからユーザの情報を取得する
+		User u = (User) session.getAttribute("userInfo");
+		Integer userid = u.getId();
+
+		if (check != null || check.size() != 0) {
+			for (int y = 0; y < check.size(); y++) {
+				int x = Integer.parseInt(check.get(y));
+
+				//削除する
+				logRepository.deleteById(x);
+			}
+		}
+		List<Log> record = logRepository.findByUserid(userid);
+
+		session.setAttribute("todolists", record);
+		mv.setViewName("log");
+		return mv;
+	}
 }
