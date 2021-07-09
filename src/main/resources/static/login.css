@@ -37,7 +37,7 @@
   border-style: solid;
 }
 
-.ribbon6:after h1{
+.ribbon1:after h1{
   top: -2px;
   right: -2px;
   border-width: 32px 15px 32px 0px;
@@ -47,16 +47,20 @@
 
 .button1 {
   display: inline-block;
-  padding: 0.5em 1em;
   text-decoration: none;
-  background: #668ad8;/*ボタン色*/
-  color: #FFF;
-  border-bottom: solid 4px #627295;
-  border-radius: 3px;
+  color: #668ad8;
+  width: 120px;
+  height: 120px;
+  line-height: 120px;
+  border-radius: 50%;
+  border: double 4px #668ad8;
+  text-align: center;
+  overflow: hidden;
+  transition: .6s;
+  background-color:blue;
 }
-.button1:active {
-  /*ボタンを押したとき*/
-  -webkit-transform: translateY(4px);
-  transform: translateY(4px);/*下に動く*/
-  border-bottom: none;/*線を消す*/
+
+.button1:hover {
+  -webkit-transform: rotateY(360deg);
+  transform: rotateY(360deg);
 }
