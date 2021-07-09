@@ -32,6 +32,9 @@ public class ListController {
 	@Autowired
 	CategoryRepository categoryRepository;
 
+	@Autowired
+	RankRepository rankRepository;
+
 	//全リストを表示
 	@RequestMapping("/list")
 	public ModelAndView items(ModelAndView mv) {

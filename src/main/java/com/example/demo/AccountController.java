@@ -26,6 +26,9 @@ public class AccountController {
 	@Autowired
 	CategoryRepository categoryRepository;
 
+	@Autowired
+	RankRepository rankRepository;
+
 	/**
 	 * ログイン画面を表示
 	 */
@@ -75,6 +78,7 @@ public class AccountController {
 			// セッションスコープにユーザ情報を格納する
 			session.setAttribute("userInfo", user.get());
 			session.setAttribute("category", categoryRepository.findAll());
+			session.setAttribute("rank", rankRepository.findAll());
 
 			//ToDoListの中身をとる。
 			Integer Userid = u.getId();
