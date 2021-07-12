@@ -35,6 +35,9 @@ public class ListController {
 	@Autowired
 	RankRepository rankRepository;
 
+	@Autowired
+	ShareListRepository sharelistRepository;
+
 	//全リストを表示
 	@RequestMapping("/list")
 	public ModelAndView items(ModelAndView mv) {
@@ -378,4 +381,34 @@ public class ListController {
 		mv.setViewName("detail");
 		return mv;
 	}
+
+	//共有への登録
+	@RequestMapping("/share/{code}")
+	public ModelAndView shareList(
+			@PathVariable(name = "code") int code,
+			ModelAndView mv) {
+		//共有のデータの検索
+		Optional<ToDoList> shareList = listRepository.findById(code);
+		ToDoList s = shareList.get();
+		Integer categoryCode = s.getCategoryCode();
+		String content = s.getContent();
+		Date date = s.getDate();
+		Integer rank = s.getRank();
+		Integer userid = s.getUserId();
+		String title = s.getTitle();
+
+		ShareList list = new ShareList(categoryCode, content, date, rank, userid, title);
+
+		//共有用のデータベースに格納
+		sharelistRepository.saveAndFlush(list);
+
+		//共有のデータの全件検索、
+		List<ShareList> sharelist = sharelistRepository.findAll();
+
+		//表示
+		session.setAttribute("shareList", sharelist);
+		mv.setViewName("shareList");
+		return mv;
+	}
+
 }

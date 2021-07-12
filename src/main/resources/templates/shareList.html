@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>共有リスト</title>
+</head>
+<body>
+	<h3>全ToDoList情報</h3>
+	<table border="1">
+		<tr>
+			<th>ユーザID</th>
+			<th>タイトル</th>
+			<th>内容</th>
+			<th>期日</th>
+			<th>カテゴリー</th>
+			<th>優先度</th>
+		</tr>
+		<tr th:each="s:${session.shareList}">
+			<td th:text="${s.userId}"></td>
+			<td th:text="${s.title}"></td>
+			<td th:text="${s.content}"></td>
+			<td th:text="${#dates.format(a.date,'yyyy-MM-dd')}"></td>
+			<td th:text="${s.categoryCode}"></td>
+			<td th:text="${s.rank}"></td>
+		</tr>
+	</table>
+</body>
+</html>
