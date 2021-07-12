@@ -8,6 +8,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ListRepository extends JpaRepository<ToDoList, Integer> {
+	//リスト検索、リスト型で取り出す用
+	List<ToDoList> findByCodeOrderByCodeAsc(Integer code);
+
 	//ユーザid昇順
 	List<ToDoList> findAllByOrderByUseridAscCodeAsc();
 
