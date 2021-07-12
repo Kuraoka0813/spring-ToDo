@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="ribbon1">
-<h1>TODOリスト</h1>
+<h1><span>TODOリスト</span></h1>
 </div>
 <div class="form">
 <form action="/login" method="post" style="text-align:center">
@@ -18,9 +18,10 @@
 	</div>
 	<br>
 	<span th:text="${message}" style="color:red"></span>
+	</form>
 	<hr>
 	<a href="/signup">新規会員登録</a>
-</form>
-</div>
+	</div>
+
 </body>
 </html>
