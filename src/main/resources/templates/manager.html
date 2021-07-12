@@ -29,15 +29,17 @@
 			<th>ユーザID</th>
 			<th>タイトル</th>
 			<th>内容</th>
+			<th>期日</th>
 			<th>カテゴリー</th>
 			<th>優先度</th>
 		</tr>
 		<tr th:each="a:${session.allList}">
-			<td th:text="${a.code}"></td>
-			<td th:text="${a.code}"></td>
-			<td th:text="${a.code}"></td>
-			<td th:text="${a.code}"></td>
-			<td th:text="${a.code}"></td>
+			<td th:text="${a.userId}"></td>
+			<td th:text="${a.title}"></td>
+			<td th:text="${a.content}"></td>
+			<td th:text="${#dates.format(a.date,'yyyy-MM-dd')}"></td>
+			<td th:text="${a.categoryCode}"></td>
+			<td th:text="${a.rank}"></td>
 		</tr>
 	</table>
 </body>
