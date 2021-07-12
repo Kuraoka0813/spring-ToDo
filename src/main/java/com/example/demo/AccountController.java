@@ -84,8 +84,8 @@ public class AccountController {
 				session.setAttribute("users", users);
 
 				//todolistを全件表示
-				List<ToDoList> allList = listRepository.findByOrderByUseridAsc();
-				mv.addObject("allList", allList);
+				List<ToDoList> allList = listRepository.findAllByOrderByUseridAscCodeAsc();
+
 				session.setAttribute("allList", allList);
 
 				mv.setViewName("manager");
