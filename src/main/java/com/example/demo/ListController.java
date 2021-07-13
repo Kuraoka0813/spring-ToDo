@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpSession;
 
@@ -474,8 +476,11 @@ public class ListController {
 
 		//掲示板の情報の取得
 		List<Board> allContents = boardRepository.findByListcode(code);
-
 		mv.addObject("allContents", allContents);
+
+		//ユーザを名前で表示
+		List<User> userlist = userRepository.findAll();
+		mv.addObject("userlist", userlist);
 
 		//投稿者なら編集できる、そうでなければ閲覧のみ
 		//ユーザ情報取得
@@ -485,7 +490,7 @@ public class ListController {
 		if (userid.equals(r.getUserId())) {
 			mv.setViewName("shareupdate");
 		} else {
-			mv.setViewName("detail");
+			mv.setViewName("sharedetail");
 		}
 
 		//リストのコードの登録
@@ -510,26 +515,30 @@ public class ListController {
 		User user = (User) session.getAttribute("userInfo");
 		Integer userid = user.getId();
 
-		//		//正規表現パターンを指定
-		//		Pattern p = Pattern.compile("http(s)?://([\\w-]+\\.)+[\\w-]+(/[\\w- ./?%&=]*)?");
-		//		//対象の文字列を指定
-		//		Matcher m = p.matcher(contents);
-		//		String URL = "";
-		//		while (m.find()) {
-		//			//マッチした文字列を取得
-		//			System.out.println(m.group());
-		//			URL = m.group();
-		//		}
-		//
-		//		int result = contents.indexOf(URL);
-		//		if (result != -1) {
-		//			String start = contents.substring(0, result);
-		//			String end = contents.substring(result + URL.length());
-		//			String frontTag = "<a href='";
-		//			String centerTag = "'>";
-		//			String behindTag = "</a>";
-		//			contents = start + frontTag + URL + centerTag + URL + behindTag + end;
-		//		}
+		//ユーザを名前で表示
+		List<User> userlist = userRepository.findAll();
+		mv.addObject("userlist", userlist);
+
+		//正規表現パターンを指定
+		Pattern p = Pattern.compile("http(s)?://([\\w-]+\\.)+[\\w-]+(/[\\w- ./?%&=]*)?");
+		//対象の文字列を指定
+		Matcher m = p.matcher(contents);
+		String URL = "";
+		while (m.find()) {
+			//マッチした文字列を取得
+			System.out.println(m.group());
+			URL = m.group();
+		}
+
+		int result = contents.indexOf(URL);
+		if (result != -1) {
+			String start = contents.substring(0, result);
+			String end = contents.substring(result + URL.length());
+			String frontTag = "<a href='";
+			String centerTag = "'>";
+			String behindTag = "</a>";
+			contents = start + frontTag + URL + centerTag + URL + behindTag + end;
+		}
 
 		if (contents != "") {
 			//入力情報のDB登録
@@ -543,13 +552,13 @@ public class ListController {
 		}
 
 		//共有のデータの単一検索、
-				Optional<ShareList> record = sharelistRepository.findById(listcode);
-				ShareList r = record.get();
+		Optional<ShareList> record = sharelistRepository.findById(listcode);
+		ShareList r = record.get();
 
-				mv.addObject("record", record.get());
-				mv.addObject("date", r.getDate());
-				mv.addObject("category", r.getCategoryCode());
-				mv.addObject("rank", r.getRank());
+		mv.addObject("record", record.get());
+		mv.addObject("date", r.getDate());
+		mv.addObject("category", r.getCategoryCode());
+		mv.addObject("rank", r.getRank());
 
 		mv.setViewName("shareupdate");
 		return mv;

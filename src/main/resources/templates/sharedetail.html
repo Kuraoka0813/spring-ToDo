@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link th:href="@{/list.css}" rel="stylesheet" type="text/css" />
+<title>リスト編集</title>
+</head>
+<body>
+	<div class="ribbon1-wrapper">
+		<div class="ribbon1">
+			<h1>
+				<span th:text="'（'+${session.userInfo.name}+' さんのTODOリスト）'"></span>
+			</h1>
+		</div>
+		<p style="text-align: center">編集画面</p>
+	</div>
+	<form action="/detail" method="post">
+		<input type="hidden" name="code" th:value="${record.code}">
+		<table border="1">
+			<tr>
+				<th>タイトル</th>
+				<td th:text="${record.title}"></td>
+			</tr>
+			<tr>
+				<th>やること</th>
+				<td th:text="${record.content}"></td>
+			</tr>
+			<tr>
+				<th>期日</th>
+				<td th:text="${#dates.format(record.date,'yyyy-MM-dd')}"></td>
+			<tr>
+				<th>カテゴリー</th>
+				<td th:text="${category}"></td>
+			</tr>
+			<tr>
+				<th>優先順位</th>
+				<td th:text="${rank}"></td>
+			</tr>
+
+		</table>
+	</form>
+
+	<span th:text="${message}" style="color: red"></span>
+
+	<form action="/apply" method="post">
+		<p>
+			<textarea name="contents" placeholder="書き込み"></textarea>
+		</p>
+		<p>
+			<input type="submit" value="投稿する">
+		</p>
+	</form>
+
+	<hr>
+
+	<table style="width: 100%;" border="1">
+		<tr>
+			<th>日時</th>
+			<th>名前</th>
+			<th>書き込み</th>
+		</tr>
+		<tr th:each="rec:${allContents}">
+			<td th:text="${rec.datetime}"></td>
+			<td th:text="${userlist.get(__${rec.userid}__-1).name}"></td>
+			<td th:utext="${rec.contents}"></td>
+		</tr>
+	</table>
+
+	<hr>
+	<a href="/list">リストに戻る</a>
+	<span th:replace="logout"></span>
+</body>
+</html>
