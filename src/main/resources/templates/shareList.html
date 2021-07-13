@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>共有リスト</title>
@@ -16,12 +16,12 @@
 			<th>優先度</th>
 		</tr>
 		<tr th:each="s:${session.shareList}">
-			<td th:text="${s.userId}"></td>
-			<td th:text="${s.title}"></td>
+			<td th:text="${userlist.get(__${s.userId}__-1).name}"></td>
+			<td><a th:href="'/shareDetail/' + ${s.code}" th:text="${s.title}"></a></td>
 			<td th:text="${s.content}"></td>
-			<td th:text="${#dates.format(a.date,'yyyy-MM-dd')}"></td>
-			<td th:text="${s.categoryCode}"></td>
-			<td th:text="${s.rank}"></td>
+			<td th:text="${#dates.format(s.date,'yyyy-MM-dd')}"></td>
+			<td th:text="${categorylist.get(__${s.categoryCode}__-1).name}"></td>
+			<td th:text="${ranklist.get(__${s.rank}__-1).name}"></td>
 		</tr>
 	</table>
 </body>

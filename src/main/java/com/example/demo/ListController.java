@@ -142,6 +142,22 @@ public class ListController {
 			@RequestParam("rank") Integer rank,
 			@RequestParam("code") Integer code,
 			ModelAndView mv) {
+		//未入力項目があった場合
+		if (content == null || content.length() == 0 ||
+				Date == null || Date.length() == 0 ||
+				rank == null ||
+				title == null || title.length() == 0) {
+			// 名前が空の場合にエラーとする
+			mv.addObject("message", "未入力の項目があります");
+			mv.addObject("content", content);
+			mv.addObject("date", Date);
+			mv.addObject("rank", rank);
+			mv.addObject("title", title);
+			mv.addObject("category", categoryCode);
+			mv.setViewName("update");
+			return mv;
+		}
+
 		//編集の対象のテータの取得
 		User u = (User) session.getAttribute("userInfo");
 		Integer userid = u.getId();
@@ -384,7 +400,7 @@ public class ListController {
 
 	//共有への登録
 	@RequestMapping("/share/{code}")
-	public ModelAndView shareList(
+	public ModelAndView addShareList(
 			@PathVariable(name = "code") int code,
 			ModelAndView mv) {
 		//共有のデータの検索
@@ -402,12 +418,126 @@ public class ListController {
 		//共有用のデータベースに格納
 		sharelistRepository.saveAndFlush(list);
 
+		//登録した共有データの削除
+		listRepository.deleteById(code);
+
+		mv.setViewName("list");
+		return mv;
+	}
+
+	//共有リスト確認画面に
+	@RequestMapping("/shareList")
+	public ModelAndView shareList(ModelAndView mv) {
 		//共有のデータの全件検索、
-		List<ShareList> sharelist = sharelistRepository.findAll();
+		List<ShareList> sharelist = sharelistRepository.findAllByOrderByUseridAscCodeAsc();
+
+		//ユーザを名前で表示
+		List<User> userlist = userRepository.findAll();
+		mv.addObject("userlist", userlist);
+
+		//優先度を名前で表示
+		List<Rank> ranklist = rankRepository.findAll();
+		mv.addObject("ranklist", ranklist);
+
+		//カテゴリーを名前で表示
+		List<Category> categorylist = categoryRepository.findAll();
+		mv.addObject("categorylist", categorylist);
 
 		//表示
 		session.setAttribute("shareList", sharelist);
+
 		mv.setViewName("shareList");
+		return mv;
+	}
+
+	//共有リストの詳細画面に
+	@RequestMapping("/shareDetail/{code}")
+	public ModelAndView shareListDetail(
+			@PathVariable(name = "code") int code,
+			ModelAndView mv) {
+		//共有のデータの単一検索、
+		Optional<ShareList> record = sharelistRepository.findById(code);
+		ShareList r = record.get();
+
+		mv.addObject("record", record.get());
+		mv.addObject("date", r.getDate());
+		mv.addObject("category", r.getCategoryCode());
+		mv.addObject("rank", r.getRank());
+
+		//投稿者なら編集できる、そうでなければ閲覧のみ
+		//ユーザ情報取得
+		User u = (User) session.getAttribute("userInfo");
+		Integer userid = u.getId();
+		//もし投稿者なら
+		if (userid.equals(r.getUserId())) {
+			mv.setViewName("shareupdate");
+		} else {
+			mv.setViewName("detail");
+		}
+		return mv;
+	}
+
+	//共有画面での編集
+	@PostMapping("/shareupdate")
+	public ModelAndView shareupdate(
+			@RequestParam("title") String title,
+			@RequestParam("content") String content,
+			@RequestParam("date") String Date,
+			@RequestParam("category") Integer categoryCode,
+			@RequestParam("rank") Integer rank,
+			@RequestParam("code") Integer code,
+			ModelAndView mv) {
+		//未入力項目があった場合
+		if (content == null || content.length() == 0 ||
+				Date == null || Date.length() == 0 ||
+				rank == null ||
+				title == null || title.length() == 0) {
+			// 名前が空の場合にエラーとする
+			mv.addObject("message", "未入力の項目があります");
+
+			//共有のデータの単一検索、
+			Optional<ShareList> record = sharelistRepository.findById(code);
+			ShareList r = record.get();
+
+			mv.addObject("record", record.get());
+			mv.addObject("date", r.getDate());
+			mv.addObject("category", r.getCategoryCode());
+			mv.addObject("rank", r.getRank());
+
+			mv.setViewName("shareupdate");
+			return mv;
+		}
+
+		//編集の対象のテータの取得
+		User u = (User) session.getAttribute("userInfo");
+		Integer userid = u.getId();
+
+		Date date = java.sql.Date.valueOf(Date);
+
+		// 編集情報をDBに格納する
+		ShareList list = new ShareList(code, categoryCode, content, date, rank, userid, title);
+		sharelistRepository.saveAndFlush(list);
+
+		//Listの中身を取得
+		List<ShareList> record = sharelistRepository.findAllByOrderByUseridAscCodeAsc();
+
+		//表示
+		session.setAttribute("shareList", record);
+
+		//ユーザを名前で表示
+		List<User> userlist = userRepository.findAll();
+		mv.addObject("userlist", userlist);
+
+		//優先度を名前で表示
+		List<Rank> ranklist = rankRepository.findAll();
+		mv.addObject("ranklist", ranklist);
+
+		//カテゴリーを名前で表示
+		List<Category> categorylist = categoryRepository.findAll();
+		mv.addObject("categorylist", categorylist);
+
+		mv.setViewName("shareList");
+
 		return mv;
 	}
 

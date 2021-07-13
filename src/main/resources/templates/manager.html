@@ -26,7 +26,7 @@
 	<h3>全ToDoList情報</h3>
 	<table border="1">
 		<tr>
-			<th>ユーザID</th>
+			<th>ユーザ名</th>
 			<th>タイトル</th>
 			<th>内容</th>
 			<th>期日</th>
@@ -34,12 +34,12 @@
 			<th>優先度</th>
 		</tr>
 		<tr th:each="a:${session.allList}">
-			<td th:text="${a.userId}"></td>
+			<td th:text="${userlist.get(__${a.userId}__-1).name}"></td>
 			<td th:text="${a.title}"></td>
 			<td th:text="${a.content}"></td>
 			<td th:text="${#dates.format(a.date,'yyyy-MM-dd')}"></td>
-			<td th:text="${a.categoryCode}"></td>
-			<td th:text="${a.rank}"></td>
+			<td th:text="${categorylist.get(__${a.categoryCode}__-1).name}"></td>
+			<td th:text="${ranklist.get(__${a.rank}__-1).name}"></td>
 		</tr>
 	</table>
 </body>

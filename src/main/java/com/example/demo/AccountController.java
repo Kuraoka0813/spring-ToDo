@@ -86,6 +86,18 @@ public class AccountController {
 				//todolistを全件表示
 				List<ToDoList> allList = listRepository.findAllByOrderByUseridAscCodeAsc();
 
+				//ユーザを名前で表示
+				List<User> userlist = userRepository.findAll();
+				mv.addObject("userlist",userlist);
+
+				//優先度を名前で表示
+				List<Rank> ranklist = rankRepository.findAll();
+				mv.addObject("ranklist", ranklist);
+
+				//カテゴリーを名前で表示
+				List<Category> categorylist = categoryRepository.findAll();
+				mv.addObject("categorylist", categorylist);
+
 				session.setAttribute("allList", allList);
 
 				mv.setViewName("manager");

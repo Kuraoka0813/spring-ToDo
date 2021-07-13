@@ -49,6 +49,7 @@
 				<th>TODO</th>
 				<th>期日</th>
 				<th>削除</th>
+				<th>共有</th>
 			</tr>
 			<tr th:each="todolist:${session.todolists}" style="font-size: 25px">
 				<td><div id="check">
@@ -59,10 +60,11 @@
 					th:text="${todolist.title}"></a></td>
 				<td th:text="${#dates.format(todolist.date,'yyyy-MM-dd')}"></td>
 				<td><a th:href="'/delete/'+ ${todolist.code}">削除</a></td>
+				<td><a th:href="'/share/'+ ${todolist.code}">共有</a></td>
 			</tr>
 		</table>
 		<br><div class="da"><input type="submit" value="まとめて削除"></div><br>
-		<pre><a href="/addList" >追加</a>   <a href="/log" >削除履歴</a></pre>
+		<pre><a href="/addList" >追加</a>   <a href="/log" >削除履歴</a> <a href="/shareList" >共有リスト</a></pre>
 	</form>
 
 
