@@ -37,12 +37,12 @@
 		<br> <br> <span th:replace="menu"></span>
 	</div>
 	<hr>
-	<form action="/selectdelete" method="post">
-		<table border="1" align="center">
-			<div class="menu">
+		<form action="/selectdelete" method="post">
+		<table border="1" style="text-align:center;">
+		<div class="menu">
 				<span th:replace="sort"></span>
-			</div>
-
+				<a href="/addList" >追加</a>
+		</div>
 			<tr style="font-size: 30px">
 				<th><label for="all"><input type="checkbox"
 						name="allChecked" id="all">全選択</label></th>
@@ -63,8 +63,8 @@
 				<td><a th:href="'/share/'+ ${todolist.code}">共有</a></td>
 			</tr>
 		</table>
-		<br><div class="da"><input type="submit" value="まとめて削除"></div><br>
-		<pre><a href="/addList" >追加</a>   <a href="/log" >削除履歴</a> <a href="/shareList" >共有リスト</a></pre>
+		<br><div class="da"><input type="submit" value="まとめて削除" style="font-size:15px"></div><br>
+		<pre><a href="/log" style="font-size:20px">削除履歴</a>    <a href="/shareList" style="font-size:20px">共有リスト</a></pre>
 	</form>
 
 
