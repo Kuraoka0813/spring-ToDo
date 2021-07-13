@@ -3,7 +3,7 @@
 .ribbon1-wrapper {
 	display: block;
 	position: relative;
-	padding: 100px 0;
+	padding: 80px 0;
 	width: 100px;
 	background: #f1f1f1;
 	text-align: center;
@@ -22,7 +22,6 @@
 	box-sizing: border-box;
 	-webkit-transform: rotate(-10deg) skew(-17deg, 4deg);
 	transform: rotate(-10deg) skew(-17deg, 4deg);
-
 }
 
 .ribbon1:before {
@@ -58,7 +57,6 @@
 	font-size: 50px;
 	color: white;
 	background: #f8aa37;
-
 }
 
 .ribbon1 h1:before {
@@ -69,7 +67,6 @@
 	border: none;
 	border-bottom: solid 7px transparent;
 	border-right: solid 25px #c6821e;
-
 }
 
 .ribbon1 h1:after {
@@ -80,63 +77,65 @@
 	border: none;
 	border-bottom: solid 10px transparent;
 	border-left: solid 15px #c6821e;
-
 }
 
-table{
-  width: 100%;
-  border-collapse:separate;
-  border-spacing: 0;
+table {
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 0;
 }
 
-table th:first-child{
-  border-radius: 5px 0 0 0;
+table th:first-child {
+	border-radius: 5px 0 0 0;
 }
 
-table th:last-child{
-  border-radius: 0 5px 0 0;
-  border-right: 1px solid #3c6690;
+table th:last-child {
+	border-radius: 0 5px 0 0;
+	border-right: 1px solid #3c6690;
 }
 
-table th{
-  text-align: center;
-  color:white;
-  background: linear-gradient(#829ebc,#225588);
-  border-left: 1px solid #3c6690;
-  border-top: 1px solid #3c6690;
-  border-bottom: 1px solid #3c6690;
-  box-shadow: 0px 1px 1px rgba(255,255,255,0.3) inset;
-  width: 5%;
-  padding: 10px 0;
+table th {
+	text-align: center;
+	color: white;
+	background: linear-gradient(#829ebc, #225588);
+	border-left: 1px solid #3c6690;
+	border-top: 1px solid #3c6690;
+	border-bottom: 1px solid #3c6690;
+	box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.3) inset;
+	width: 5%;
+	padding: 10px 0;
 }
 
-table td{
-  text-align: center;
-  border-left: 1px solid #a8b7c5;
-  border-bottom: 1px solid #a8b7c5;
-  border-top:none;
-  box-shadow: 0px -3px 5px 1px #eee inset;
-  width: 5%;
-  padding: 10px 0;
+table td {
+	text-align: center;
+	border-left: 1px solid #a8b7c5;
+	border-bottom: 1px solid #a8b7c5;
+	border-top: none;
+	box-shadow: 0px -3px 5px 1px #eee inset;
+	width: 5%;
+	padding: 10px 0;
 }
 
-table td:last-child{
-  border-right: 1px solid #a8b7c5;
+table td:last-child {
+	border-right: 1px solid #a8b7c5;
 }
 
 table tr:last-child td:first-child {
-  border-radius: 0 0 0 5px;
+	border-radius: 0 0 0 5px;
 }
 
 table tr:last-child td:last-child {
-  border-radius: 0 0 5px 0;
+	border-radius: 0 0 5px 0;
 }
 
-.add input[type="submit"]{
-	font-size:20px;
-
+.add input[type="submit"] {
+	font-size: 20px;
 }
-.menu a{
-	font-size:20px;
-	text-align:right;
+
+.menu {
+	text-align: center;
+}
+
+.update input[type="submit"] {
+	font-size: 20px;
 }

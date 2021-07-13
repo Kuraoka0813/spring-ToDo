@@ -30,19 +30,22 @@
 				<td th:text="${#dates.format(record.date,'yyyy-MM-dd')}"></td>
 			<tr>
 				<th>カテゴリー</th>
-				<td th:text="${category}" >
-				</td>
+				<td th:text="${category}"></td>
 			</tr>
 			<tr>
-				<td>優先順位</td>
+				<th>優先順位</th>
 				<td th:text="${rank}"></td>
 			</tr>
 
 		</table>
 	</form>
 	<hr>
-	<a href="/list">リストに戻る</a>
-	<a href="/log">削除履歴リストに戻る</a>
+	<pre>
+		<a href="/list" style="font-size: 20px">リストに戻る</a>
+
+<a href="/log" style="font-size: 20px">削除履歴リストに戻る</a>
+	</pre>
+	<hr>
 	<span th:replace="logout"></span>
 </body>
 </html>

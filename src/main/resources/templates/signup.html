@@ -2,32 +2,36 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<link th:href="@{/signup.css}" rel="stylesheet" type="text/css" />
+
 <title>新規登録</title>
 </head>
 <body>
-
+<div class="signup">
 	<h3>会員登録</h3>
 
 	<form action="/signup" method="post">
 		<table>
-		<tr>
-			<td>名前</td>
-			<td><input type="text" name="name" th:value="${name}"></td>
-		</tr>
-		<tr>
-			<td>e-mail</td>
-			<td><input type="text" name="email"th:value="${email}"></td>
-		</tr>
-		<tr>
-			<td>パスワード</td>
-			<td><input type="text" name="password" th:value="${password}"></td>
-		</tr>
+			<tr>
+				<td>名前</td>
+				<td><input type="text" name="name" th:value="${name}"></td>
+			</tr>
+			<tr>
+				<td>e-mail</td>
+				<td><input type="text" name="email" th:value="${email}"></td>
+			</tr>
+			<tr>
+				<td>パスワード</td>
+				<td><input type="text" name="password" th:value="${password}"></td>
+			</tr>
 
 		</table>
 		<input type="submit" value="登録">
 	</form>
 	<br>
-	<span th:text="${message}" style="color:red"></span>
-
+	<span th:text="${message}" style="color: red"></span>
+	<br>
+	<a href="/" style="color:yellow;">ログイン画面へ</a>
+	</div>
 </body>
 </html>
