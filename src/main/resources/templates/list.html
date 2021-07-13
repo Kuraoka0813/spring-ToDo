@@ -34,15 +34,21 @@
 				<span th:text="'（'+${session.userInfo.name}+' さんのTODOリスト）'"></span>
 			</h1>
 		</div>
-		<br><br><span th:replace="menu"></span>
+		<br>
+		<br>
+		<span th:replace="menu"></span>
 	</div>
 	<hr>
+	<pre>
+<a href="/addList" style="font-size: 20px;">リスト追加</a>   <a href="/log"
+			style="font-size: 20px">削除履歴</a>   <a href="/shareList"
+			style="font-size: 20px">共有リスト</a>
+	</pre>
+	<hr>
 	<div class="menu">
-				<span th:replace="sort"></span>
-			</div>
+		<span th:replace="sort"></span>
+	</div>
 	<form action="/selectdelete" method="post">
-		<pre><a href="/addList" style="font-size: 20px;">リスト追加</a>   <a href="/log" style="font-size: 20px">削除履歴</a>   <a href="/shareList" style="font-size: 20px">共有リスト</a></pre>
-		<hr>
 		<table border="1" style="text-align: center;">
 
 			<tr style="font-size: 22px">
