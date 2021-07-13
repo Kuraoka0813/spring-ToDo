@@ -91,6 +91,7 @@ public class ListController {
 		//ToDoListの中身をとる。
 		Integer Userid = u.getId();
 
+		//現在表示しているカテゴリの情報
 		int categoryCode = (int) session.getAttribute("categoryCode");
 
 		if (categoryCode == 0) {

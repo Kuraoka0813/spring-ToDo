@@ -37,13 +37,14 @@
 		<br><br><span th:replace="menu"></span>
 	</div>
 	<hr>
+	<div class="menu">
+				<span th:replace="sort"></span>
+			</div>
 	<form action="/selectdelete" method="post">
 		<pre><a href="/addList" style="font-size: 20px;">リスト追加</a>   <a href="/log" style="font-size: 20px">削除履歴</a>   <a href="/shareList" style="font-size: 20px">共有リスト</a></pre>
 		<hr>
 		<table border="1" style="text-align: center;">
-			<div class="menu">
-				<span th:replace="sort"></span>
-			</div>
+
 			<tr style="font-size: 22px">
 				<th><label for="all"><input type="checkbox"
 						name="allChecked" id="all">全選択</label></th>
