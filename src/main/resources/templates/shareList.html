@@ -29,5 +29,9 @@
 			<td th:text="${ranklist.get(__${s.rank}__-1).name}"></td>
 		</tr>
 	</table>
+	<br>
+	<a href="/list" style="font-size: 20px">自分のリストに戻る</a>
+	<hr>
+	<span th:replace="logout"></span>
 </body>
 </html>

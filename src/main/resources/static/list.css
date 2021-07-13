@@ -139,3 +139,7 @@ table tr:last-child td:last-child {
 .update input[type="submit"] {
 	font-size: 20px;
 }
+.da input[type="submit"]{
+	font-size:15px;
+	width:100%;
+}

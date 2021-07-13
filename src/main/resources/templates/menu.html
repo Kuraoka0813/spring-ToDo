@@ -1,5 +1,4 @@
-
-<a href="/list">全リスト</a>
-<a th:each="c:${session.category}" th:href="'/list/'+${c.code}">
+<a href="/list" style="font-size:30px;">全リスト</a>
+<a th:each="c:${session.category}" th:href="'/list/'+${c.code}" style="font-size:30px;">
 	<span th:text="${c.name}" style="padding-left:10px;" ></span>
 </a>

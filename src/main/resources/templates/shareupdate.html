@@ -12,28 +12,28 @@
 				<span th:text="'（'+${session.userInfo.name}+' さんのTODOリスト）'"></span>
 			</h1>
 		</div>
-		<p style="text-align: center">編集画面</p>
+		<p style="text-align: center">共有リスト編集画面</p>
 	</div>
 	<form action="/share/edit" method="post">
 		<input type="hidden" name="code" th:value="${record.code}">
 		<table border="1">
 			<tr>
 				<th>タイトル</th>
-				<td><input type="text" th:value="${record.title}" name="title"></td>
+				<td><input type="text" th:value="${record.title}" name="title" style="font-size: 15px"></td>
 			</tr>
 			<tr>
 				<th>やること</th>
 				<td><input type="text" th:value="${record.content}"
-					name="content"></td>
+					name="content" style="font-size: 15px"></td>
 			</tr>
 			<tr>
 				<th>期日</th>
 				<td><input type="date"
-					th:value="${#dates.format(date, 'yyyy-MM-dd')}" name="date"></td>
+					th:value="${#dates.format(date, 'yyyy-MM-dd')}" name="date" style="font-size: 15px"></td>
 			</tr>
 			<tr>
 				<th>カテゴリー</th>
-				<td><select name="category">
+				<td><select name="category" style="font-size: 15px">
 						<option th:each="c:${session.category}" th:value="${c.code}"
 							th:text="${c.name}" th:selected="${c.code==category}"></option>
 				</select></td>
@@ -41,24 +41,25 @@
 
 			<tr>
 				<th>優先順位</th>
-				<td><select name="rank">
+				<td><select name="rank" style="font-size: 15px">
 						<option th:each="r:${session.rank}" th:value="${r.code}"
 							th:text="${r.name}" th:selected="${r.code==rank}"></option>
 				</select></td>
 			</tr>
 
 		</table>
-		<input type="submit" name="regi" value="登録"> <input
-			type="submit" name="rele" value="共有の解除">
+		<input type="submit" name="regi" value="登録" style="font-size: 20px"> <input
+			type="submit" name="rele" value="共有の解除" style="font-size: 20px">
 	</form>
 	<span th:text="${message}" style="color: red"></span>
-
+	<br><hr>
+	<h3>共有メモ</h3>
 	<form action="/apply" method="post">
 		<p>
-			<textarea name="contents" placeholder="書き込み"></textarea>
+			<textarea name="contents" placeholder="書き込み" rows="6" cols="40"></textarea>
 		</p>
 		<p>
-			<input type="submit" value="投稿する">
+			<input type="submit" value="書き込む" style="font-size: 15px">
 		</p>
 	</form>
 
@@ -68,7 +69,7 @@
 		<tr>
 			<th>日時</th>
 			<th>名前</th>
-			<th>書き込み</th>
+			<th>メモ</th>
 		</tr>
 		<tr th:each="rec:${allContents}">
 			<td th:text="${rec.datetime}"></td>
@@ -78,7 +79,11 @@
 	</table>
 
 	<hr>
-	<a href="/list">リストに戻る</a>
+
+	<a href="/shareList" style="font-size: 20px">共有リストに戻る</a>
+	<br>
+	<a href="/list" style="font-size: 20px">自分のリストに戻る</a>
+	<hr>
 	<span th:replace="logout"></span>
 </body>
 </html>
