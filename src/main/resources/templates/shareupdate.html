@@ -73,8 +73,8 @@
 		</tr>
 		<tr th:each="rec:${allContents}">
 			<td th:text="${rec.datetime}"></td>
-			<td th:text="${rec.userid}"></td>
-			<td th:text="${rec.contents}"></td>
+			<td th:text="${userlist.get(__${rec.userid}__-1).name}"></td>
+			<td th:utext="${rec.contents}"></td>
 		</tr>
 	</table>
 
