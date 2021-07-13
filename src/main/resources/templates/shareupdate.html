@@ -40,7 +40,7 @@
 			</tr>
 
 			<tr>
-				<td>優先順位</td>
+				<th>優先順位</th>
 				<td><select name="rank">
 						<option th:each="r:${session.rank}" th:value="${r.code}"
 							th:text="${r.name}" th:selected="${r.code==rank}"></option>
