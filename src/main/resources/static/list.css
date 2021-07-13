@@ -5,7 +5,7 @@
 	position: relative;
 	padding: 80px 0;
 	width: 100px;
-	background:yellow;
+	background: yellow;
 	text-align: center;
 	height: 200px;
 	font-size: 40px;
@@ -129,7 +129,23 @@ table tr:last-child td:last-child {
 }
 
 .add input[type="submit"] {
-	font-size: 20px;
+	font-size: 17px;
+	width: 100%;
+	background: black;
+	color: white;
+	cursor: pointer; /* カーソル   */
+	padding: 12px 12px; /* 余白       */
+	color: #ffffff; /* 文字色     */
+	line-height: 1em; /* 1行の高さ  */
+	transition: .3s; /* なめらか変化 */
+	box-shadow: 6px 6px 3px #666666; /* 影の設定 */
+	border: 2px solid #000066; /* 枠の指定 */
+}
+
+.add input[type="submit"]:hover {
+	box-shadow: none; /* カーソル時の影消去 */
+	color: #000066; /* 文字色     */
+	background: pink; /* 背景色     */
 }
 
 .menu {
@@ -137,11 +153,86 @@ table tr:last-child td:last-child {
 }
 
 .update input[type="submit"] {
-	font-size: 20px;
+	font-size: 17px;
+	width: 100%;
+	background: black;
+	color: white;
+	cursor: pointer; /* カーソル   */
+	padding: 12px 12px; /* 余白       */
+	color: #ffffff; /* 文字色     */
+	line-height: 1em; /* 1行の高さ  */
+	transition: .3s; /* なめらか変化 */
+	box-shadow: 6px 6px 3px #666666; /* 影の設定 */
+	border: 2px solid #000066; /* 枠の指定 */
 }
-.da input[type="submit"]{
-	font-size:15px;
-	width:100%;
-	background:black;
-	color:white;
+
+.update input[type="submit"]:hover {
+	box-shadow: none; /* カーソル時の影消去 */
+	color: #000066; /* 文字色     */
+	background: pink; /* 背景色     */
+}
+
+.da input[type="submit"] {
+	font-size: 17px;
+	width: 100%;
+	background: black;
+	color: white;
+	cursor: pointer; /* カーソル   */
+	padding: 12px 12px; /* 余白       */
+	color: #ffffff; /* 文字色     */
+	line-height: 1em; /* 1行の高さ  */
+	transition: .3s; /* なめらか変化 */
+	box-shadow: 6px 6px 3px #666666; /* 影の設定 */
+	border: 2px solid #000066; /* 枠の指定 */
+}
+
+.da input[type="submit"]:hover {
+	box-shadow: none; /* カーソル時の影消去 */
+	color: #000066; /* 文字色     */
+	background: red; /* 背景色     */
+}
+
+.common input[type="submit"] {
+	font-size: 17px;
+	width: 50%;
+	background: black;
+	color: white;
+	cursor: pointer; /* カーソル   */
+	padding: 12px 12px; /* 余白       */
+	color: #ffffff; /* 文字色     */
+	line-height: 1em; /* 1行の高さ  */
+	transition: .3s; /* なめらか変化 */
+	box-shadow: 6px 6px 3px #666666; /* 影の設定 */
+	border: 2px solid #000066; /* 枠の指定 */
+}
+
+.common input[type="submit"]:hover {
+	box-shadow: none; /* カーソル時の影消去 */
+	color: #000066; /* 文字色     */
+	background: pink; /* 背景色     */
+}
+
+.board textarea {
+	width: 100%;
+	height: 80px;
+}
+
+.board input[type="submit"] {
+	font-size: 17px;
+	width: 100%;
+	background: black;
+	color: white;
+	cursor: pointer; /* カーソル   */
+	padding: 12px 12px; /* 余白       */
+	color: #ffffff; /* 文字色     */
+	line-height: 1em; /* 1行の高さ  */
+	transition: .3s; /* なめらか変化 */
+	box-shadow: 6px 6px 3px #666666; /* 影の設定 */
+	border: 2px solid #000066; /* 枠の指定 */
+}
+
+.board input[type="submit"]:hover {
+	box-shadow: none; /* カーソル時の影消去 */
+	color: #000066; /* 文字色     */
+	background: pink; /* 背景色     */
 }

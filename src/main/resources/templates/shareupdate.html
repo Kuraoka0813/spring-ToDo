@@ -19,7 +19,8 @@
 		<table border="1">
 			<tr>
 				<th>タイトル</th>
-				<td><input type="text" th:value="${record.title}" name="title" style="font-size: 15px"></td>
+				<td><input type="text" th:value="${record.title}" name="title"
+					style="font-size: 15px"></td>
 			</tr>
 			<tr>
 				<th>やること</th>
@@ -29,7 +30,8 @@
 			<tr>
 				<th>期日</th>
 				<td><input type="date"
-					th:value="${#dates.format(date, 'yyyy-MM-dd')}" name="date" style="font-size: 15px"></td>
+					th:value="${#dates.format(date, 'yyyy-MM-dd')}" name="date"
+					style="font-size: 15px"></td>
 			</tr>
 			<tr>
 				<th>カテゴリー</th>
@@ -48,19 +50,19 @@
 			</tr>
 
 		</table>
-		<input type="submit" name="regi" value="登録" style="font-size: 20px"> <input
-			type="submit" name="rele" value="共有の解除" style="font-size: 20px">
+		<div class="common">
+			<input type="submit" name="regi" value="登録" ><input type="submit" name="rele" value="共有の解除" >
+		</div>
 	</form>
 	<span th:text="${message}" style="color: red"></span>
-	<br><hr>
+	<br>
+	<hr>
 	<h3>共有メモ</h3>
 	<form action="/apply" method="post">
-		<p>
-			<textarea name="contents" placeholder="書き込み" rows="6" cols="40"></textarea>
-		</p>
-		<p>
+	<div class="board">
+			<textarea name="contents" placeholder="書き込み" ></textarea>
 			<input type="submit" value="書き込む" style="font-size: 15px">
-		</p>
+	</div>
 	</form>
 
 	<hr>
