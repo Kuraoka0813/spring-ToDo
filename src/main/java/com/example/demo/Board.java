@@ -64,8 +64,8 @@ public class Board {
 		this.listcode = listcode;
 	}
 
-	public LocalDateTime getDatetime() {
-		return datetime;
+	public String getDatetime() {
+		return datetime.format(fmt);
 	}
 
 	public void setDatetime(LocalDateTime datetime) {
