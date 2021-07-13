@@ -14,7 +14,7 @@
 		</div>
 		<p style="text-align: center">編集画面</p>
 	</div>
-	<form action="/shareupdate" method="post">
+	<form action="/share/edit" method="post">
 		<input type="hidden" name="code" th:value="${record.code}">
 		<table border="1">
 			<tr>
@@ -48,7 +48,8 @@
 			</tr>
 
 		</table>
-		<input type="submit" value="登録">
+		<input type="submit" name="regi" value="登録">
+		<input type="submit" name="rele" value="共有の解除">
 	</form>
 	<span th:text="${message}" style="color:red"></span>
 	<hr>
