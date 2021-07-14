@@ -150,16 +150,19 @@ public class ListController {
 			ModelAndView mv) {
 		//未入力項目があった場合
 		if (content == null || content.length() == 0 ||
-				Date == null || Date.length() == 0 ||
-				rank == null ||
 				title == null || title.length() == 0) {
-			// 名前が空の場合にエラーとする
+			// エラーメッセージ
 			mv.addObject("message", "未入力の項目があります");
-			mv.addObject("content", content);
-			mv.addObject("date", Date);
-			mv.addObject("rank", rank);
-			mv.addObject("title", title);
-			mv.addObject("category", categoryCode);
+
+			//情報を返す
+			Optional<ToDoList> record = listRepository.findById(code);
+			ToDoList r = record.get();
+
+			mv.addObject("record", record.get());
+
+			mv.addObject("date", r.getDate());
+			mv.addObject("rank", r.getRank());
+			mv.addObject("category", r.getCategoryCode());
 			mv.setViewName("update");
 			return mv;
 		}
@@ -207,7 +210,7 @@ public class ListController {
 				Date == null || Date.length() == 0 ||
 				rank == null ||
 				title == null || title.length() == 0) {
-			// 名前が空の場合にエラーとする
+			// エラーメッセージ
 			mv.addObject("message", "未入力の項目があります");
 			mv.addObject("content", content);
 			mv.addObject("date", Date);
@@ -515,9 +518,9 @@ public class ListController {
 		//表示しているリストのコードの取得
 		Integer listcode = (Integer) session.getAttribute("listcode");
 
-		if (contents == "") {
+		if (contents == null || contents.length() == 0) {
 			String ErrorMsg = "書き込みを入力してください";
-			mv.addObject("ErrorMsg", ErrorMsg);
+			mv.addObject("message", ErrorMsg);
 		}
 
 		//投稿したユーザidを取得
@@ -580,9 +583,9 @@ public class ListController {
 		//表示しているリストのコードの取得
 		Integer listcode = (Integer) session.getAttribute("listcode");
 
-		if (contents == "") {
+		if (contents == null || contents.length() == 0) {
 			String ErrorMsg = "書き込みを入力してください";
-			mv.addObject("ErrorMsg", ErrorMsg);
+			mv.addObject("message", ErrorMsg);
 		}
 
 		//投稿したユーザidを取得
