@@ -12,11 +12,15 @@
 				<span th:text="'（'+${session.userInfo.name}+' さんのTODOリスト）'"></span>
 			</h1>
 		</div>
-		<p style="text-align: center">編集画面</p>
+		<p style="text-align: center">詳細画面</p>
 	</div>
 	<form action="/detail" method="post">
 		<input type="hidden" name="code" th:value="${record.code}">
 		<table border="1">
+			<tr>
+				<th>投稿者</th>
+				<td th:text="${userlist.get(__${record.userId}__-1).name}"></td>
+			</tr>
 			<tr>
 				<th>タイトル</th>
 				<td th:text="${record.title}"></td>
@@ -30,11 +34,11 @@
 				<td th:text="${#dates.format(record.date,'yyyy-MM-dd')}"></td>
 			<tr>
 				<th>カテゴリー</th>
-				<td th:text="${category}"></td>
+				<td th:text="${categorylist.get(__${record.categoryCode}__-1).name}"></td>
 			</tr>
 			<tr>
 				<th>優先順位</th>
-				<td th:text="${rank}"></td>
+				<td th:text="${ranklist.get(__${record.rank}__-1).name}"></td>
 			</tr>
 
 		</table>

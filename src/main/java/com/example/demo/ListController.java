@@ -483,6 +483,15 @@ public class ListController {
 		List<User> userlist = userRepository.findAll();
 		mv.addObject("userlist", userlist);
 
+		//優先度を名前で表示
+		List<Rank> ranklist = rankRepository.findAll();
+		mv.addObject("ranklist", ranklist);
+
+		//カテゴリーを名前で表示
+		List<Category> categorylist = categoryRepository.findAll();
+		mv.addObject("categorylist", categorylist);
+
+
 		//投稿者なら編集できる、そうでなければ閲覧のみ
 		//ユーザ情報取得
 		User u = (User) session.getAttribute("userInfo");
