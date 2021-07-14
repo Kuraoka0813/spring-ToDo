@@ -12,7 +12,11 @@
 				<span th:text="'（'+${session.userInfo.name}+' さんのTODOリスト）'"></span>
 			</h1>
 		</div>
-		<p style="text-align: center">共有リスト編集画面</p>
+		<br>
+		<br> 共有リスト編集画面
+		<div class="error">
+			<span th:text="${message}"></span>
+		</div>
 	</div>
 	<form action="/share/edit" method="post">
 		<input type="hidden" name="code" th:value="${record.code}">
@@ -55,12 +59,9 @@
 				type="submit" name="rele" value="共有の解除">
 		</div>
 	</form>
-	<div class="error">
-		<span th:text="${message}"></span>
-	</div>
 	<br>
 	<hr>
-	<h3>共有メモ</h3>
+	<h3 style="font-size:30px">共有メモ</h3>
 	<form action="/apply/update" method="post">
 		<div class="board">
 			<textarea name="contents" placeholder="書き込み"></textarea>
@@ -81,7 +82,7 @@
 			<td th:text="${#temporals.format(rec.date, 'yyyy/MM/dd')}"></td>
 			<td th:text="${#temporals.format(rec.time, 'HH:mm')}"></td>
 			<td th:text="${userlist.get(__${rec.userid}__-1).name}"></td>
-			<td th:utext="${rec.contents}"></td>
+			<td class="memo" th:utext="${rec.contents}"></td>
 		</tr>
 	</table>
 
