@@ -476,7 +476,7 @@ public class ListController {
 		mv.addObject("rank", r.getRank());
 
 		//掲示板の情報の取得
-		List<Board> allContents = boardRepository.findByListcode(code);
+		List<Board> allContents = boardRepository.findByListcodeOrderByCodeDesc(code);
 		mv.addObject("allContents", allContents);
 
 		//ユーザを名前で表示
@@ -555,7 +555,7 @@ public class ListController {
 			boardRepository.saveAndFlush(record);
 
 			//掲示板の情報の取得
-			List<Board> allContents = boardRepository.findByListcode(listcode);
+			List<Board> allContents = boardRepository.findByListcodeOrderByCodeDesc(listcode);
 
 			mv.addObject("allContents", allContents);
 		}
@@ -628,7 +628,7 @@ public class ListController {
 			boardRepository.saveAndFlush(record);
 
 			//掲示板の情報の取得
-			List<Board> allContents = boardRepository.findByListcode(listcode);
+			List<Board> allContents = boardRepository.findByListcodeOrderByCodeDesc(listcode);
 
 			mv.addObject("allContents", allContents);
 		}
@@ -637,10 +637,7 @@ public class ListController {
 		Optional<ShareList> record = sharelistRepository.findById(listcode);
 		ShareList r = record.get();
 
-		mv.addObject("record", record.get());
-		mv.addObject("date", r.getDate());
-		mv.addObject("category", r.getCategoryCode());
-		mv.addObject("rank", r.getRank());
+		mv.addObject("record", r);
 
 		mv.setViewName("sharedetail");
 		return mv;
