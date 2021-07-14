@@ -72,10 +72,12 @@
 			<td th:text="${#temporals.format(rec.date, 'yyyy/MM/dd')}"></td>
 			<td th:text="${#temporals.format(rec.time, 'HH:mm')}"></td>
 			<td th:text="${userlist.get(__${rec.userid}__-1).name}"></td>
-			<td th:utext="${rec.contents}"></td>
+			<td class="memo" th:utext="${rec.contents}"></td>
 		</tr>
 	</table>
 	<hr>
+	<a href="/shareList" style="font-size: 20px">共有リストに戻る</a>
+	<br>
 	<a href="/list" style="font-size: 20px">自分のリストに戻る</a>
 	<hr>
 	<span th:replace="logout"></span>
