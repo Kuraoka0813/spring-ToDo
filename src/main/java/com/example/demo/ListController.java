@@ -469,6 +469,9 @@ public class ListController {
 	public ModelAndView shareListDetail(
 			@PathVariable(name = "code") int code,
 			ModelAndView mv) {
+		//コードの登録
+		session.setAttribute("code", code);
+
 		//共有のデータの単一検索、
 		Optional<ShareList> record = sharelistRepository.findById(code);
 		ShareList r = record.get();
@@ -502,6 +505,7 @@ public class ListController {
 		if (userid.equals(r.getUserId())) {
 			mv.setViewName("shareupdate");
 		} else {
+			//そうでないなら
 			mv.setViewName("sharedetail");
 		}
 
@@ -518,9 +522,40 @@ public class ListController {
 		//表示しているリストのコードの取得
 		Integer listcode = (Integer) session.getAttribute("listcode");
 
+		//コメントが未入力の場合
 		if (contents == null || contents.length() == 0) {
 			String ErrorMsg = "書き込みを入力してください";
 			mv.addObject("message", ErrorMsg);
+			//コードの取得
+			Integer code = (Integer) session.getAttribute("code");
+
+			//共有のデータの単一検索、
+			Optional<ShareList> record = sharelistRepository.findById(code);
+			ShareList r = record.get();
+
+			mv.addObject("record", record.get());
+			mv.addObject("date", r.getDate());
+			mv.addObject("category", r.getCategoryCode());
+			mv.addObject("rank", r.getRank());
+
+			//掲示板の情報の取得
+			List<Board> allContents = boardRepository.findByListcodeOrderByCodeDesc(code);
+			mv.addObject("allContents", allContents);
+
+			//ユーザを名前で表示
+			List<User> userlist = userRepository.findAll();
+			mv.addObject("userlist", userlist);
+
+			//優先度を名前で表示
+			List<Rank> ranklist = rankRepository.findAll();
+			mv.addObject("ranklist", ranklist);
+
+			//カテゴリーを名前で表示
+			List<Category> categorylist = categoryRepository.findAll();
+			mv.addObject("categorylist", categorylist);
+
+			mv.setViewName("shareupdate");
+			return mv;
 		}
 
 		//投稿したユーザidを取得
@@ -583,9 +618,40 @@ public class ListController {
 		//表示しているリストのコードの取得
 		Integer listcode = (Integer) session.getAttribute("listcode");
 
+		//コメントが未入力の場合
 		if (contents == null || contents.length() == 0) {
 			String ErrorMsg = "書き込みを入力してください";
 			mv.addObject("message", ErrorMsg);
+			//コードの取得
+			Integer code = (Integer) session.getAttribute("code");
+
+			//共有のデータの単一検索、
+			Optional<ShareList> record = sharelistRepository.findById(code);
+			ShareList r = record.get();
+
+			mv.addObject("record", record.get());
+			mv.addObject("date", r.getDate());
+			mv.addObject("category", r.getCategoryCode());
+			mv.addObject("rank", r.getRank());
+
+			//掲示板の情報の取得
+			List<Board> allContents = boardRepository.findByListcodeOrderByCodeDesc(code);
+			mv.addObject("allContents", allContents);
+
+			//ユーザを名前で表示
+			List<User> userlist = userRepository.findAll();
+			mv.addObject("userlist", userlist);
+
+			//優先度を名前で表示
+			List<Rank> ranklist = rankRepository.findAll();
+			mv.addObject("ranklist", ranklist);
+
+			//カテゴリーを名前で表示
+			List<Category> categorylist = categoryRepository.findAll();
+			mv.addObject("categorylist", categorylist);
+
+			mv.setViewName("sharedetail");
+			return mv;
 		}
 
 		//投稿したユーザidを取得
