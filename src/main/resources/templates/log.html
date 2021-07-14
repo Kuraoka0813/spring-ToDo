@@ -33,8 +33,9 @@
 			<h1>
 				<span th:text="'（'+${session.userInfo.name}+' さんのTODOリスト）'"></span>
 			</h1>
-		</div><br><br>
-		削除履歴
+		</div>
+		<br>
+		<br> 削除履歴
 	</div>
 	<hr>
 	<form action="/selectdeletelog" method="post">
@@ -59,11 +60,14 @@
 			</tr>
 
 		</table>
-		<div class="da"><input type="submit" value="まとめて完全削除"></div>
+		<div class="da">
+			<input type="submit" value="まとめて完全削除">
+		</div>
 	</form>
-
-	<a href="/list" style="font-size:20px">リストに戻る</a>
-	<hr><span th:replace="logout"></span>
+	<br>
+	<a href="/list" style="font-size: 20px">リストに戻る</a>
+	<hr>
+	<span th:replace="logout"></span>
 
 </body>
 </html>

@@ -20,22 +20,22 @@
 			<tr>
 				<th>タイトル</th>
 				<td><input type="text" th:value="${record.title}" name="title"
-					style="font-size: 15px"></td>
+					style="font-size: 18px"></td>
 			</tr>
 			<tr>
 				<th>やること</th>
 				<td><input type="text" th:value="${record.content}"
-					name="content" style="font-size: 15px"></td>
+					name="content" style="font-size: 18px"></td>
 			</tr>
 			<tr>
 				<th>期日</th>
 				<td><input type="date"
 					th:value="${#dates.format(date, 'yyyy-MM-dd')}" name="date"
-					style="font-size: 15px"></td>
+					style="font-size: 18px"></td>
 			</tr>
 			<tr>
 				<th>カテゴリー</th>
-				<td><select name="category" style="font-size: 15px">
+				<td><select name="category" style="font-size: 18px">
 						<option th:each="c:${session.category}" th:value="${c.code}"
 							th:text="${c.name}" th:selected="${c.code==category}"></option>
 				</select></td>
@@ -43,7 +43,7 @@
 
 			<tr>
 				<th>優先順位</th>
-				<td><select name="rank" style="font-size: 15px">
+				<td><select name="rank" style="font-size: 18px">
 						<option th:each="r:${session.rank}" th:value="${r.code}"
 							th:text="${r.name}" th:selected="${r.code==rank}"></option>
 				</select></td>

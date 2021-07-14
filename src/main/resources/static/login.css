@@ -10,7 +10,7 @@
   text-align: center;/*中身を中央寄せ*/
   font-size: 50px;/*文字のサイズ*/
   font-family:Monotype Corsiva;
-  line-height: 80px;/*高さと合わせる*/
+  line-height: 100px;/*高さと合わせる*/
   background: linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;/*グラデーション①*/
   overflow: hidden;/*はみ出た部分を隠す*/
   text-decoration:none;/*下線は消す*/
@@ -92,9 +92,9 @@ body{
 }
 
 /* 入力ボックスがフォーカスされたときのスタイル（幅が大きくなる＆枠の色が変わる） */
-.form input[type="text"]:focus, .box input[type="password"]:focus{
+.form input[type="text"]:focus, .box input[type="text"]:focus{
     width: 280px;
-    border-color: #2ecc71;
+    border-color: blue;
 }
 
 /* Loginボタンのスタイル */
