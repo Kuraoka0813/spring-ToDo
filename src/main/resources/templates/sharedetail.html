@@ -71,7 +71,7 @@
 		<tr th:each="rec:${allContents}">
 			<td th:text="${#temporals.format(rec.date, 'yyyy/MM/dd')}"></td>
 			<td th:text="${#temporals.format(rec.time, 'HH:mm')}"></td>
-			<td th:text="${userlist.get(__${rec.userid}__-1).name}"></td>
+			<td class="NAME" th:text="${userlist.get(__${rec.userid}__-1).name}"></td>
 			<td class="memo" th:utext="${rec.contents}"></td>
 		</tr>
 	</table>
