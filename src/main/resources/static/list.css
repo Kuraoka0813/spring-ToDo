@@ -3,11 +3,11 @@
 .ribbon1-wrapper {
 	display: block;
 	position: relative;
-	padding: 80px 0;
+	padding: 70px 0;
 	width: 100px;
 	background: yellow;
 	text-align: center;
-	height: 200px;
+	height: 230px;
 	font-size: 40px;
 	-webkit-appearance: none;
 	appearance: none;
@@ -244,3 +244,8 @@ input[type=checkbox] {
   margin: 0 6px 0 0;
 }
 
+.error{
+	color:red;
+	font-size:20px;
+	text-align:center;
+}

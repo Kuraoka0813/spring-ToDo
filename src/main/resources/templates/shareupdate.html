@@ -51,18 +51,21 @@
 
 		</table>
 		<div class="common">
-			<input type="submit" name="regi" value="登録" ><input type="submit" name="rele" value="共有の解除" >
+			<input type="submit" name="regi" value="登録"><input
+				type="submit" name="rele" value="共有の解除">
 		</div>
 	</form>
-	<span th:text="${message}" style="color: red"></span>
+	<div class="error">
+		<span th:text="${message}"></span>
+	</div>
 	<br>
 	<hr>
 	<h3>共有メモ</h3>
 	<form action="/apply/update" method="post">
-	<div class="board">
-			<textarea name="contents" placeholder="書き込み" ></textarea>
+		<div class="board">
+			<textarea name="contents" placeholder="書き込み"></textarea>
 			<input type="submit" value="書き込む" style="font-size: 15px">
-	</div>
+		</div>
 	</form>
 
 	<hr>

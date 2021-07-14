@@ -11,9 +11,12 @@
 			<h1>
 				<span th:text="'（'+${session.userInfo.name}+' さんのTODOリスト）'"></span>
 			</h1>
+		</div><br><br>
+			編集画面
+		<div class="error">
+			<span th:text="${message}"></span>
 		</div>
-		<p style="text-align: center">編集画面</p>
-	</div>
+		</div>
 	<form action="/update" method="post">
 		<input type="hidden" name="code" th:value="${record.code}">
 		<table border="1">
@@ -52,7 +55,6 @@
 		<input type="submit" value="登録">
 		</div>
 	</form>
-	<span th:text="${message}" style="color:red"></span>
 	<br>
 	<a href="/list"style="font-size:20px">リストに戻る</a>
 	<hr>

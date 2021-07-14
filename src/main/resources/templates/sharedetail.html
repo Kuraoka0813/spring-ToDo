@@ -12,7 +12,11 @@
 				<span th:text="'（'+${session.userInfo.name}+' さんのTODOリスト）'"></span>
 			</h1>
 		</div>
-		<p style="text-align: center">詳細画面</p>
+		<br>
+		<br>詳細画面
+		<div class="error">
+			<span th:text="${message}"></span>
+		</div>
 	</div>
 	<form action="/detail" method="post">
 		<input type="hidden" name="code" th:value="${record.code}">
@@ -43,8 +47,6 @@
 
 		</table>
 	</form>
-
-	<span th:text="${message}" style="color: red"></span>
 
 	<form action="/apply/detail" method="post">
 		<p>
