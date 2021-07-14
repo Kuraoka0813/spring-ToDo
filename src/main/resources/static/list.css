@@ -152,6 +152,7 @@ table tr:last-child td:last-child {
 	text-align: center;
 }
 
+
 .update input[type="submit"] {
 	font-size: 17px;
 	width: 100%;
@@ -235,4 +236,8 @@ table tr:last-child td:last-child {
 	box-shadow: none; /* カーソル時の影消去 */
 	color: #000066; /* 文字色     */
 	background: pink; /* 背景色     */
+}
+input[type=checkbox] {
+  transform: scale(1.5);
+  margin: 0 6px 0 0;
 }

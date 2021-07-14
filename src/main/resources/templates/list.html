@@ -61,7 +61,7 @@
 			<tr th:each="todolist:${session.todolists}" style="font-size: 18px">
 				<td><div id="check">
 						<input type="checkbox" name="check" th:value="${todolist.code}"><label
-							class="checkbox">チェック</label>
+							for="checkbox"></label>
 					</div></td>
 				<td><a th:href="'/update/' + ${todolist.code}"
 					th:text="${todolist.title}"></a></td>

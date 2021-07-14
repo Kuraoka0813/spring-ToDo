@@ -5,10 +5,11 @@
   border-radius: 7px;/*角丸に*/
   position: center;
   display: inline-block;
-  height: 80px;/*高さ*/
+  height: 100px;/*高さ*/
   width: 300px;/*幅*/
   text-align: center;/*中身を中央寄せ*/
-  font-size: 25px;/*文字のサイズ*/
+  font-size: 50px;/*文字のサイズ*/
+  font-family:Monotype Corsiva;
   line-height: 80px;/*高さと合わせる*/
   background: linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;/*グラデーション①*/
   overflow: hidden;/*はみ出た部分を隠す*/
@@ -28,22 +29,24 @@
 
 .ribbon1 h1 {
   /*アイコン*/
-  font-size: 35px;/*アイコンサイズ*/
+  font-size: 40px;/*アイコンサイズ*/
   position: relative;
-  top: 5px;/*アイコン位置の微調整*/
+  top: 10px;/*アイコン位置の微調整*/
+  width: 100%;/*全体を覆う*/
 }
 
 .ribbon1 h1{
   /*テキスト*/
   display:inline-block;
   position: relative;
-  transition: 3s}
+  transition: 3s
+  }
 
 .ribbon1 h1:hover{
   /*ホバーで一周回転*/
   -webkit-transform: rotateX(360deg);
   transform: rotateX(360deg);
-  transition: 1s
+  transition: 5s
 }
 
 
