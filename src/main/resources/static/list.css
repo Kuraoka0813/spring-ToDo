@@ -54,10 +54,11 @@
 	margin: 0;
 	padding: 0 20px;
 	line-height: 150px;
-	font-size: 55px;
+	font-size: 50px;
 	color: white;
 	background: #f8aa37;
 	font-family:HG行書体;
+	text-align:center;
 }
 
 .ribbon1 h1:before {

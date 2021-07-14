@@ -49,12 +49,14 @@
 	</form>
 
 	<form action="/apply/detail" method="post">
+		<div class="board">
 		<p>
 			<textarea name="contents" placeholder="書き込み"></textarea>
 		</p>
 		<p>
 			<input type="submit" value="投稿する">
 		</p>
+		</div>
 	</form>
 
 	<hr>
@@ -73,9 +75,9 @@
 			<td th:utext="${rec.contents}"></td>
 		</tr>
 	</table>
-
 	<hr>
-	<a href="/list">リストに戻る</a>
+	<a href="/list" style="font-size: 20px">自分のリストに戻る</a>
+	<hr>
 	<span th:replace="logout"></span>
 </body>
 </html>
