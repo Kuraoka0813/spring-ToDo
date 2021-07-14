@@ -491,7 +491,6 @@ public class ListController {
 		List<Category> categorylist = categoryRepository.findAll();
 		mv.addObject("categorylist", categorylist);
 
-
 		//投稿者なら編集できる、そうでなければ閲覧のみ
 		//ユーザ情報取得
 		User u = (User) session.getAttribute("userInfo");
@@ -509,8 +508,8 @@ public class ListController {
 		return mv;
 	}
 
-	@PostMapping(value = "/apply")
-	public ModelAndView apply(
+	@PostMapping(value = "/apply/update")
+	public ModelAndView applyupdate(
 			@RequestParam("contents") String contents,
 			ModelAndView mv) {
 		//表示しているリストのコードの取得
@@ -573,4 +572,78 @@ public class ListController {
 		mv.setViewName("shareupdate");
 		return mv;
 	}
+
+	@PostMapping(value = "/apply/detail")
+	public ModelAndView applydetail(
+			@RequestParam("contents") String contents,
+			ModelAndView mv) {
+		//表示しているリストのコードの取得
+		Integer listcode = (Integer) session.getAttribute("listcode");
+
+		if (contents == "") {
+			String ErrorMsg = "書き込みを入力してください";
+			mv.addObject("ErrorMsg", ErrorMsg);
+		}
+
+		//投稿したユーザidを取得
+		User user = (User) session.getAttribute("userInfo");
+		Integer userid = user.getId();
+
+		//ユーザを名前で表示
+		List<User> userlist = userRepository.findAll();
+		mv.addObject("userlist", userlist);
+
+		//優先度を名前で表示
+		List<Rank> ranklist = rankRepository.findAll();
+		mv.addObject("ranklist", ranklist);
+
+		//カテゴリーを名前で表示
+		List<Category> categorylist = categoryRepository.findAll();
+		mv.addObject("categorylist", categorylist);
+
+		//正規表現パターンを指定
+		Pattern p = Pattern.compile("http(s)?://([\\w-]+\\.)+[\\w-]+(/[\\w- ./?%&=]*)?");
+		//対象の文字列を指定
+		Matcher m = p.matcher(contents);
+		String URL = "";
+		while (m.find()) {
+			//マッチした文字列を取得
+			System.out.println(m.group());
+			URL = m.group();
+		}
+
+		int result = contents.indexOf(URL);
+		if (result != -1) {
+			String start = contents.substring(0, result);
+			String end = contents.substring(result + URL.length());
+			String frontTag = "<a href='";
+			String centerTag = "'>";
+			String behindTag = "</a>";
+			contents = start + frontTag + URL + centerTag + URL + behindTag + end;
+		}
+
+		if (contents != "") {
+			//入力情報のDB登録
+			Board record = new Board(listcode, userid, contents);
+			boardRepository.saveAndFlush(record);
+
+			//掲示板の情報の取得
+			List<Board> allContents = boardRepository.findByListcode(listcode);
+
+			mv.addObject("allContents", allContents);
+		}
+
+		//共有のデータの単一検索、
+		Optional<ShareList> record = sharelistRepository.findById(listcode);
+		ShareList r = record.get();
+
+		mv.addObject("record", record.get());
+		mv.addObject("date", r.getDate());
+		mv.addObject("category", r.getCategoryCode());
+		mv.addObject("rank", r.getRank());
+
+		mv.setViewName("sharedetail");
+		return mv;
+	}
+
 }

@@ -1,7 +1,6 @@
 package com.example.demo;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Entity
 @Table(name="board")
@@ -20,12 +18,11 @@ public class Board {
 	private Integer code;
 	private Integer listcode;
 	@Column(name="date")
-	private LocalDateTime datetime;
+	private LocalDateTime date;
+	private LocalDateTime time;
 	private Integer userid;
 	@Column(name="content")
 	private String contents;
-	@Transient
-	private static DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 
 	//コンストラクタ
 	public Board() {
@@ -34,20 +31,13 @@ public class Board {
 
 	public Board(Integer listcode, Integer userid, String contents) {
 		this.listcode = listcode;
-		this.datetime = LocalDateTime.now();
+		this.date = LocalDateTime.now();
+		this.time = LocalDateTime.now();
 		this.userid = userid;
 		this.contents = contents;
 	}
 
 	//アクセッサメソッド
-	public static DateTimeFormatter getFmt() {
-		return fmt;
-	}
-
-	public static void setFmt(DateTimeFormatter fmt) {
-		Board.fmt = fmt;
-	}
-
 	public Integer getCode() {
 		return code;
 	}
@@ -64,12 +54,20 @@ public class Board {
 		this.listcode = listcode;
 	}
 
-	public String getDatetime() {
-		return datetime.format(fmt);
+	public LocalDateTime getDate() {
+		return date;
 	}
 
-	public void setDatetime(LocalDateTime datetime) {
-		this.datetime = datetime;
+	public void setDate(LocalDateTime date) {
+		this.date = date;
+	}
+
+	public LocalDateTime getTime() {
+		return time;
+	}
+
+	public void setTime(LocalDateTime time) {
+		this.time = time;
 	}
 
 	public Integer getUserid() {

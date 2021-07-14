@@ -58,7 +58,7 @@
 	<br>
 	<hr>
 	<h3>共有メモ</h3>
-	<form action="/apply" method="post">
+	<form action="/apply/update" method="post">
 	<div class="board">
 			<textarea name="contents" placeholder="書き込み" ></textarea>
 			<input type="submit" value="書き込む" style="font-size: 15px">
@@ -69,12 +69,14 @@
 
 	<table style="width: 100%;" border="1">
 		<tr>
-			<th>日時</th>
+			<th>日</th>
+			<th>時</th>
 			<th>名前</th>
 			<th>メモ</th>
 		</tr>
 		<tr th:each="rec:${allContents}">
-			<td th:text="${rec.datetime}"></td>
+			<td th:text="${#temporals.format(rec.date, 'yyyy/MM/dd')}"></td>
+			<td th:text="${#temporals.format(rec.time, 'HH:mm')}"></td>
 			<td th:text="${userlist.get(__${rec.userid}__-1).name}"></td>
 			<td th:utext="${rec.contents}"></td>
 		</tr>
