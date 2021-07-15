@@ -6,21 +6,51 @@
 <link th:href="@{/login.css}" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<div class="ribbon1">
-<h1><span>A LIST OF THINGS TO DO</span></h1>
-</div>
-<div class="form">
-<form action="/login" method="post" style="text-align:center">
-	<div class="email"><input type="text" name="email" placeholder="E-MAIL"></div><br>
-	<div class="password"><input type="text" name="password" placeholder="PASSWORD"></div><br>
-	<div class="button1">
-	<input type="submit" value="ログイン">
+	<div class="ribbon1">
+		<h1>
+			<span>A LIST OF THINGS TO DO</span>
+		</h1>
 	</div>
-	<br>
-	<span th:text="${message}" style="color:red"></span>
-	</form>
-	<hr>
-	<a href="/signup" style="color:yellow;">新規会員登録</a>
+	<script src="https://code.jquery.com/jquery-3.6.0.js"
+		integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+		crossorigin="anonymous"></script>
+	<
+	<script type="text/javascript">
+		var msg = new Array();
+
+		// 設定開始（メッセージの内容を設定してください）
+
+		msg[0] = '<b>大吉！</b> … 今日はものすごく良いことがあるでしょう';
+		msg[1] = '<b>吉！</b> … 今日はまあまあ良いことがあるでしょう';
+		msg[2] = '<b>小吉！</b> … 今日は普通の日ですね';
+		msg[3] = '<b>凶！</b> … 今日は凶。。。';
+		msg[4] = '<b>大・激・凶！</b> … もう最悪っスね！！（ウソです）';
+
+		// 設定終了
+
+		var no = Math.floor(Math.random() * msg.length);
+
+		// 表示開始
+		document.write(msg[no]);
+		// 表示終了
+	</script>
+	<div class="form">
+		<form action="/login" method="post" style="text-align: center">
+			<div class="email">
+				<input type="text" name="email" placeholder="E-MAIL">
+			</div>
+			<br>
+			<div class="password">
+				<input type="text" name="password" placeholder="PASSWORD">
+			</div>
+			<br>
+			<div class="button1">
+				<input type="submit" value="ログイン">
+			</div>
+			<br> <span th:text="${message}" style="color: red"></span>
+		</form>
+		<hr>
+		<a href="/signup" style="color: yellow;">新規会員登録</a>
 	</div>
 
 </body>

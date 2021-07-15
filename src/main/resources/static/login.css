@@ -118,3 +118,10 @@ body{
     background: #2ecc71;
 
 }
+
+#randomWords {
+  width: 80%;
+  height: 30px;
+  text-align: center;
+
+}
