@@ -11,40 +11,43 @@
 			<h1>
 				<span th:text="'（'+${session.userInfo.name}+' さんのTODOリスト）'"></span>
 			</h1>
-		</div><br><br>
-			編集画面
-		<div class="error">
-			<span th:text="${message}"></span>
 		</div>
-		</div>
+		<br>
+		<br> 編集画面
+		<br><span class="error"
+			th:text="${message}"></span>
+	</div>
 	<form action="/update" method="post">
 		<input type="hidden" name="code" th:value="${record.code}">
 		<table border="1">
 			<tr>
-				<th style="font-size:20px">タイトル</th>
-				<td><input type="text" th:value="${record.title}" name="title" style="font-size:20px"></td>
-			</tr>
-			<tr>
-				<th style="font-size:20px">やること</th>
-				<td><textarea th:text="${record.content}"
-					name="content" style="font-size:20px"></textarea></td>
-			</tr>
-			<tr>
-				<th style="font-size:20px">期日</th>
-				<td><input type="date"
-					th:value="${#dates.format(date, 'yyyy-MM-dd')}" name="date" style="font-size:20px"></td>
-			</tr>
-			<tr>
-				<th style="font-size:20px">カテゴリー</th>
-				<td><select name="category" style="font-size:20px">
+				<th style="font-size: 20px">カテゴリー</th>
+				<td><select name="category" style="font-size: 20px">
 						<option th:each="c:${session.category}" th:value="${c.code}"
 							th:text="${c.name}" th:selected="${c.code==category}"></option>
 				</select></td>
 			</tr>
+			<tr>
+				<th style="font-size: 20px">タイトル</th>
+				<td><input type="text" th:value="${record.title}" name="title"
+					style="font-size: 20px"></td>
+			</tr>
+			<tr>
+				<th style="font-size: 20px">やること</th>
+				<td><textarea th:text="${record.content}" name="content"
+						style="font-size: 20px"></textarea></td>
+			</tr>
+			<tr>
+				<th style="font-size: 20px">期日</th>
+				<td><input type="date"
+					th:value="${#dates.format(date, 'yyyy-MM-dd')}" name="date"
+					style="font-size: 20px"></td>
+			</tr>
+
 
 			<tr>
-				<th style="font-size:20px">優先順位</th>
-				<td><select name="rank" style="font-size:20px">
+				<th style="font-size: 20px">優先順位</th>
+				<td><select name="rank" style="font-size: 20px">
 						<option th:each="r:${session.rank}" th:value="${r.code}"
 							th:text="${r.name}" th:selected="${r.code==rank}"></option>
 				</select></td>
@@ -52,11 +55,11 @@
 
 		</table>
 		<div class="update">
-		<input type="submit" value="登録">
+			<input type="submit" value="登録">
 		</div>
 	</form>
 	<br>
-	<a href="/list"style="font-size:20px">リストに戻る</a>
+	<a href="/list" style="font-size: 20px">リストに戻る</a>
 	<hr>
 	<span th:replace="logout"></span>
 </body>

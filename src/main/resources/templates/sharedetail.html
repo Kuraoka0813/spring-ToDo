@@ -13,10 +13,9 @@
 			</h1>
 		</div>
 		<br>
-		<br>詳細画面
-		<div class="error">
-			<span th:text="${message}"></span>
-		</div>
+		<br>詳細画面<br>
+		<span class="error"
+			th:text="${message}"></span>
 	</div>
 	<form action="/detail" method="post">
 		<input type="hidden" name="code" th:value="${record.code}">

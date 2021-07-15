@@ -14,9 +14,8 @@
 		</div>
 		<br>
 		<br> 共有リスト編集画面
-		<div class="error">
-			<span th:text="${message}"></span>
-		</div>
+		<br><span class="error"
+			th:text="${message}"></span>
 	</div>
 	<form action="/share/edit" method="post">
 		<input type="hidden" name="code" th:value="${record.code}">
