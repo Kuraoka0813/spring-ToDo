@@ -56,6 +56,7 @@ public class ListController {
 		//ToDoListの中身をセッションスコープに格納する
 		session.setAttribute("todolists", record);
 
+		//カテゴリーごとの表示に使う
 		session.setAttribute("categoryCode", 0);
 
 		mv.setViewName("list");
@@ -70,11 +71,12 @@ public class ListController {
 		//ユーザ情報の取得
 		User u = (User) session.getAttribute("userInfo");
 
-		//ToDoListの中身をとる。
+		//ユーザごとのToDoListの中身をとる。
 		Integer Userid = u.getId();
 		List<ToDoList> listByCategoryCode = listRepository.findByUseridAndCategoryCode(Userid, categoryCode);
 		session.setAttribute("todolists", listByCategoryCode);
 
+		//カテゴリーコードを変更、ソートの時に使う
 		session.setAttribute("categoryCode", categoryCode);
 		mv.setViewName("list");
 		return mv;
@@ -94,6 +96,7 @@ public class ListController {
 		//現在表示しているカテゴリの情報
 		int categoryCode = (int) session.getAttribute("categoryCode");
 
+		//全件検索の場合
 		if (categoryCode == 0) {
 			if (sort.equals("asc")) {
 				//優先度のみでのソート
@@ -105,6 +108,7 @@ public class ListController {
 				session.setAttribute("todolists", todoList);
 			}
 		} else {
+			//カテゴリーコードごとの検索の場合
 			if (sort.equals("asc")) {
 				//優先度のみでのソート
 				List<ToDoList> todoList = listRepository.findByUseridAndCategoryCodeOrderByRankAsc(Userid,
@@ -130,6 +134,7 @@ public class ListController {
 		Optional<ToDoList> record = listRepository.findById(code);
 		ToDoList r = record.get();
 
+		//編集する前のデータの表示
 		mv.addObject("record", record.get());
 		mv.addObject("date", r.getDate());
 		mv.addObject("category", r.getCategoryCode());
@@ -158,6 +163,8 @@ public class ListController {
 			Optional<ToDoList> record = listRepository.findById(code);
 			ToDoList r = record.get();
 
+			//エラーの時に変更前の情報が出るのを直したい
+			//編集前の情報の表示
 			mv.addObject("record", record.get());
 
 			mv.addObject("date", r.getDate());
@@ -171,6 +178,7 @@ public class ListController {
 		User u = (User) session.getAttribute("userInfo");
 		Integer userid = u.getId();
 
+		//データ型の変更
 		Date date = java.sql.Date.valueOf(Date);
 
 		// 編集情報をDBに格納する
@@ -212,6 +220,7 @@ public class ListController {
 				title == null || title.length() == 0) {
 			// エラーメッセージ
 			mv.addObject("message", "未入力の項目があります");
+			//入力した項目は値がそのままになるように設定
 			mv.addObject("content", content);
 			mv.addObject("date", Date);
 			mv.addObject("rank", rank);
@@ -221,9 +230,11 @@ public class ListController {
 			return mv;
 		}
 
+		//ユーザ情報の取得
 		User u = (User) session.getAttribute("userInfo");
 		Integer userid = u.getId();
 
+		//データ型の変更
 		Date date = java.sql.Date.valueOf(Date);
 
 		// ToDoListをDBに格納する
@@ -259,6 +270,7 @@ public class ListController {
 		Integer rank = l.getRank();
 		String title = l.getTitle();
 
+		//削除するデータの情報
 		Log list = new Log(categoryCode, content, date, rank, userid, title);
 
 		//削除履歴に登録する
@@ -300,6 +312,7 @@ public class ListController {
 				Integer rank = l.getRank();
 				String title = l.getTitle();
 
+				//削除するデータの項目
 				Log list = new Log(categoryCode, content, date, rank, userid, title);
 
 				//削除履歴に登録する
@@ -309,6 +322,7 @@ public class ListController {
 				listRepository.deleteById(x);
 			}
 		}
+		//削除後のデータの検索
 		List<ToDoList> record = listRepository.findByUserid(userid);
 
 		session.setAttribute("todolists", record);
@@ -371,6 +385,7 @@ public class ListController {
 				logRepository.deleteById(x);
 			}
 		}
+		//削除後のデータの検索
 		List<Log> record = logRepository.findByUserid(userid);
 
 		session.setAttribute("todolists", record);
@@ -422,6 +437,7 @@ public class ListController {
 		Integer userid = s.getUserId();
 		String title = s.getTitle();
 
+		//削除するデータの情報
 		ShareList list = new ShareList(categoryCode, content, date, rank, userid, title);
 
 		//共有用のデータベースに格納
@@ -577,6 +593,7 @@ public class ListController {
 			URL = m.group();
 		}
 
+		//マッチした場合、リンクにする
 		int result = contents.indexOf(URL);
 		if (result != -1) {
 			String start = contents.substring(0, result);
@@ -681,6 +698,7 @@ public class ListController {
 			URL = m.group();
 		}
 
+		//マッチしていたらリンクにする
 		int result = contents.indexOf(URL);
 		if (result != -1) {
 			String start = contents.substring(0, result);

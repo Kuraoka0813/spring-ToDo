@@ -60,6 +60,7 @@ public class AccountController {
 			return mv;
 		}
 
+		//DBからユーザ情報の検索
 		Optional<User> user = userRepository.findByEmail(email);
 		User u = user.get();
 
@@ -117,6 +118,7 @@ public class AccountController {
 			//ToDoListの中身をセッションスコープに格納する
 			session.setAttribute("todolists", record);
 
+			//カテゴリー検索に使う
 			session.setAttribute("categoryCode", 0);
 
 			mv.setViewName("list");
