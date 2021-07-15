@@ -75,7 +75,7 @@ public class AccountController {
 			return mv;
 		} else if (!u.getPassword().equals(password)) {
 			//登録されたメールアドレスのパスワードと一致しているか確認する
-			mv.addObject("message", "パスワードが正しくありません。");
+			mv.addObject("message", "パスワードは正しくありません。");
 			mv.setViewName("login");
 			return mv;
 		} else {
