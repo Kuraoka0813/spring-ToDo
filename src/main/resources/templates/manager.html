@@ -43,6 +43,25 @@
 		</tr>
 	</table>
 	<hr>
+	<h3><span>USER'S SHARE LIST</span></h3>
+	<table border="1">
+		<tr>
+			<th>ユーザ名</th>
+			<th>タイトル</th>
+			<th>内容</th>
+			<th>期日</th>
+			<th>カテゴリー</th>
+			<th>優先度</th>
+		</tr>
+		<tr th:each="s:${session.shareList}">
+			<td th:text="${userlist.get(__${s.userId}__-1).name}"></td>
+			<td><a th:href="'/shareDetail/' + ${s.code}" th:text="${s.title}"></a></td>
+			<td th:text="${s.content}"></td>
+			<td th:text="${#dates.format(s.date,'yyyy-MM-dd')}"></td>
+			<td th:text="${categorylist.get(__${s.categoryCode}__-1).name}"></td>
+			<td th:text="${ranklist.get(__${s.rank}__-1).name}"></td>
+		</tr>
+	</table>
 
 	<a href="/logout" style="color:gold;">ログアウト</a>
 
