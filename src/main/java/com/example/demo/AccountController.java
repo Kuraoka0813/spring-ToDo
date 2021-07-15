@@ -83,6 +83,11 @@ public class AccountController {
 			String manageremail = "manager@gmail.com";
 			String managerpassword = "manager";
 			if(email.equals(manageremail) && password.equals(managerpassword)) {
+				// セッションスコープにユーザ情報を格納する
+				session.setAttribute("userInfo", user.get());
+				session.setAttribute("category", categoryRepository.findAll());
+				session.setAttribute("rank", rankRepository.findAll());
+
 				//ユーザ情報を全件取得
 				List<User> users = userRepository.findAll();
 				session.setAttribute("users", users);
