@@ -56,11 +56,11 @@
 	<form action="/selectdelete" method="post">
 		<table border="1" style="text-align: center;">
 
-			<tr style="font-size: 22px">
-				<th><label for="all"><input type="checkbox"
-						name="allChecked" id="all">全選択</label></th>
-				<th>TODO</th>
-				<th>期日</th>
+			<tr>
+				<th style="font-size: 17px"><label for="all"><input type="checkbox"
+						name="allChecked" id="all">全選択/全解除</label></th>
+				<th style="font-size: 22px">TODO</th>
+				<th style="font-size: 22px">期日</th>
 				<th colspan="2">
 			</tr>
 			<tr th:each="todolist:${session.todolists}" style="font-size: 18px">
