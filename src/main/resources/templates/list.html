@@ -11,42 +11,25 @@
 	$(function() {
 		// 1. 「全選択」する
 		$('#all').on('click', function() {
+			$("input[name='check']").prop('checked', this.checked);
 			var checked = $(this).prop("checked");
-
-			if(checked){
-				$(this).closest("tr").css("text-decoration", "line-through");
-			}else{
-				$(this).closest("tr").css("text-decoration", "none");
+			if (checked) {
+				$("input[name='check']").closest("tr").css("text-decoration", "line-through");
+			} else {
+				$("input[name='check']").closest("tr").css("text-decoration", "none");
 			}
 		});
-
 
 		// 2. 「全選択」以外のチェックボックスがクリックされたら、
 		$("input[name='check']").on('click', function() {
-//			$(this).closest("tr").css("text-decoration", "line-through");
-
 			var checked = $(this).prop("checked");
-
-			if(checked){
-				$(this).closest("tr").css("text-decoration", "line-through");
-
-			}else{
-				$(this).closest("tr").css("text-decoration", "none");
-
-			}
-
-			//console.log($(this).checked);
-
-			/*if ($('#check :checked').length == $('#check :input').length) {
-				$('#all').prop('checked', false);
+			if (checked) {
 				$(this).closest("tr").css("text-decoration", "line-through");
 			} else {
-				$('#all').closest("tr").css("text-decoration", "none");
-			}*/
+				$(this).closest("tr").css("text-decoration", "none");
+			}
 		});
 	});
-
-
 </script>
 
 </head>
