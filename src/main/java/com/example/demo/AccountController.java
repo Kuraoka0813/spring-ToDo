@@ -2,6 +2,7 @@ package com.example.demo;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 import javax.servlet.http.HttpSession;
 
@@ -39,6 +40,18 @@ public class AccountController {
 	public String login() {
 		// セッション情報はクリアする
 		session.invalidate();
+
+		//格言情報の登録
+		String[] proverblist = {"a", "b"};
+
+		//ランダムで取得
+		Random random = new Random();
+		int r = random.nextInt(2);
+
+		//ランダムで検索
+		String proverb = proverblist[r];
+
+		session.setAttribute("proverb", proverb);
 		return "login";
 	}
 
