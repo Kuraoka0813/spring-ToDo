@@ -10,30 +10,13 @@
 		<h1>
 			<span>A LIST OF THINGS TO DO</span>
 		</h1>
+		<h4>
+			<span th:text="${session.proverb}"></span>
+			<br><span th:text="${session.proverbname}"></span>
+		</h4>
+
 	</div>
-	<script src="https://code.jquery.com/jquery-3.6.0.js"
-		integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-		crossorigin="anonymous"></script>
-	<
-	<script type="text/javascript">
-		var msg = new Array();
-
-		// 設定開始（メッセージの内容を設定してください）
-
-		msg[0] = '<b>お</b> … 今日はものすごく良いことがあるでしょう';
-		msg[1] = '<b>え</b> … 今日はまあまあ良いことがあるでしょう';
-		msg[2] = '<b>う</b> … 今日は普通の日ですね';
-		msg[3] = '<b>い</b> … 今日は凶。。。';
-		msg[4] = '<b>あ</b> … もう最悪っスね！！（ウソです）';
-
-		// 設定終了
-
-		var no = Math.floor(Math.random() * msg.length);
-
-		// 表示開始
-		document.write(msg[no]);
-		// 表示終了
-	</script>
+	<br>
 	<div class="form">
 		<form action="/login" method="post" style="text-align: center">
 			<div class="email">

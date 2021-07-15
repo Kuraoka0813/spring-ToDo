@@ -1,127 +1,161 @@
 @charset "UTF-8";
+
 .ribbon1 h1 {
-  /*ボタンの下地*/
-  color: #FFF;/*文字・アイコン色*/
-  border-radius: 7px;/*角丸に*/
-  position: center;
-  display: inline-block;
-  height: 100px;/*高さ*/
-  width: 300px;/*幅*/
-  text-align: center;/*中身を中央寄せ*/
-  font-size: 50px;/*文字のサイズ*/
-  font-family:Monotype Corsiva;
-  line-height: 100px;/*高さと合わせる*/
-  background: linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;/*グラデーション①*/
-  overflow: hidden;/*はみ出た部分を隠す*/
-  text-decoration:none;/*下線は消す*/
+	/*ボタンの下地*/
+	color: #FFF; /*文字・アイコン色*/
+	border-radius: 7px; /*角丸に*/
+	position: center;
+	display: inline-block;
+	height: 140px; /*高さ*/
+	width: 300px; /*幅*/
+	text-align: center; /*中身を中央寄せ*/
+	font-size: 50px; /*文字のサイズ*/
+	font-family: Monotype Corsiva;
+	line-height: 120px; /*高さと合わせる*/
+	background: linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;
+	/*グラデーション①*/
+	overflow: hidden; /*はみ出た部分を隠す*/
+	text-decoration: none; /*下線は消す*/
 }
 
 .ribbon1 h1:before {
-  /*グラデーション②*/
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;/*全体を覆う*/
-  height: 100%;/*全体を覆う*/
-  background: linear-gradient(15deg, #ffdb2c, rgb(249, 118, 76) 25%, rgba(255, 77, 64, 0) 50%) no-repeat;
+	/*グラデーション②*/
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%; /*全体を覆う*/
+	height: 100%; /*全体を覆う*/
+	background: linear-gradient(15deg, #ffdb2c, rgb(249, 118, 76) 25%,
+		rgba(255, 77, 64, 0) 50%) no-repeat;
 }
 
 .ribbon1 h1 {
-  /*アイコン*/
-  font-size: 40px;/*アイコンサイズ*/
-  position: relative;
-  top: 10px;/*アイコン位置の微調整*/
-  width: 100%;/*全体を覆う*/
+	/*アイコン*/
+	font-size: 55px; /*アイコンサイズ*/
+	position: relative;
+	top: 0; /*アイコン位置の微調整*/
+	width: 100%; /*全体を覆う*/
 }
 
-.ribbon1 h1{
-  /*テキスト*/
-  display:inline-block;
-  position: relative;
-  transition: 3s
-  }
-
-.ribbon1 h1:hover{
-  /*ホバーで一周回転*/
-  -webkit-transform: rotateX(360deg);
-  transform: rotateX(360deg);
-  transition: 5s
+.ribbon1 h1 {
+	/*テキスト*/
+	display: inline-block;
+	position: relative;
+	transition: 3s
 }
 
+.ribbon1 h1:hover {
+	/*ホバーで一周回転*/
+	-webkit-transform: rotateX(360deg);
+	transform: rotateX(360deg);
+	transition: 5s
+}
 
-body{
-    margin: 0;
-    padding: 0px;
-    font-family: sans-serif;
-    background: #34495e;
+body {
+	margin: 0;
+	padding: 0px;
+	font-family: sans-serif;
+	background: #34495e;
 }
 
 /*ログインフォームのエリア内のスタイル*/
-.form{
-    width: 300px;
-    padding: 60px;
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #191919;
-    text-align: center;
+.form {
+	width: 300px;
+	padding: 60px;
+	position: absolute;
+	top: 87%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: #191919;
+	text-align: center;
 }
 
-.form{
-    color: white;
-    text-transform: uppercase;
-    font-weight: 500;
+.form {
+	color: white;
+	text-transform: uppercase;
+	font-weight: 500;
 }
 
 /* ユーザーIDとパスワード入力ボックスのスタイル */
-.form input[type="text"], .form input[type="text"]{
-    border: 0;
-    background: none;
-    display: block;
-    margin: 20px auto;
-    text-align: center;
-    border: 2px solid #3498db;
-    padding: 14px 10px;
-    width: 200px;
-    outline: none;
-    color: white;
-    border-radius: 24px;
-    transition: 0.5s;
+.form input[type="text"], .form input[type="text"] {
+	border: 0;
+	background: none;
+	display: block;
+	margin: 20px auto;
+	text-align: center;
+	border: 2px solid #3498db;
+	padding: 14px 10px;
+	width: 200px;
+	outline: none;
+	color: white;
+	border-radius: 24px;
+	transition: 0.5s;
 }
 
 /* 入力ボックスがフォーカスされたときのスタイル（幅が大きくなる＆枠の色が変わる） */
-.form input[type="text"]:focus, .box input[type="text"]:focus{
-    width: 280px;
-    border-color: blue;
+.form input[type="text"]:focus, .box input[type="text"]:focus {
+	width: 280px;
+	border-color: blue;
 }
 
 /* Loginボタンのスタイル */
-.form input[type="submit"]{
-    border: 0;
-    background: none;
-    display: block;
-    margin: 20px auto;
-    text-align: center;
-    border: 2px solid #2ecc71;;
-    padding: 14px 40px;
-    outline: none;
-    color: white;
-    border-radius: 24px;
-    transition: 0.25s;
-    cursor: pointer;
+.form input[type="submit"] {
+	border: 0;
+	background: none;
+	display: block;
+	margin: 20px auto;
+	text-align: center;
+	border: 2px solid #2ecc71;;
+	padding: 14px 40px;
+	outline: none;
+	color: white;
+	border-radius: 24px;
+	transition: 0.25s;
+	cursor: pointer;
 }
 
 /* Loginボタンをマウスオーバーしたときのスタイル */
-.form input[type="submit"]:hover{
-    background: #2ecc71;
-
+.form input[type="submit"]:hover {
+	background: #2ecc71;
 }
 
-#randomWords {
-  width: 80%;
-  height: 30px;
-  text-align: center;
+h4 {
+	height:80px;
+	text-align: center;
+	position: relative;
+	background: #faf0e6;
+	padding: 2px 5px 2px 24px;
+	font-size: 22px;
+	color: #474747;
+	border-radius: 40px;
+	margin: 1em 1em 2.5em 1em;
+	font-family: HG行書体;
+	font-weight:500;
+}
 
+h4:first-letter {
+	position: relative;
+	color: red;
+	margin: 2em 0 1em 0;
+	font-size: 40px;
+	font-weight: bold;
+	text-align: center;
+}
+
+h4:before {
+	font-family: FontAwesome;
+	content: "\f0a4";
+	transform: rotate(-30deg);
+	display: inline-block;
+	position: absolute;
+	padding: 0em;
+	color: white;
+	background: #ff6363;
+	width: 40px;
+	text-align: center;
+	height: 40px;
+	line-height: 40px;
+	left: -0.5em;
+	border-radius: 20%;
 }
