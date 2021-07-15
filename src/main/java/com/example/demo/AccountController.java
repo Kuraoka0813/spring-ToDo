@@ -29,6 +29,9 @@ public class AccountController {
 	@Autowired
 	RankRepository rankRepository;
 
+	@Autowired
+	ShareListRepository sharelistRepository;
+
 	/**
 	 * ログイン画面を表示
 	 */
@@ -98,6 +101,14 @@ public class AccountController {
 				//カテゴリーを名前で表示
 				List<Category> categorylist = categoryRepository.findAll();
 				mv.addObject("categorylist", categorylist);
+
+				//共有のデータの全件検索、
+				List<ShareList> sharelist = sharelistRepository.findAllByOrderByUseridAscCodeAsc();
+
+
+				//表示
+				session.setAttribute("shareList", sharelist);
+
 
 				session.setAttribute("allList", allList);
 
