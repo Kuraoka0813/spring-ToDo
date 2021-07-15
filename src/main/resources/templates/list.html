@@ -11,14 +11,38 @@
 	$(function() {
 		// 1. 「全選択」する
 		$('#all').on('click', function() {
-			$("input[name='check']").prop('checked', this.checked);
-			});
+			var checked = $(this).prop("checked");
+
+			if(checked){
+				$(this).closest("tr").css("text-decoration", "line-through");
+			}else{
+				$(this).closest("tr").css("text-decoration", "none");
+			}
+		});
+
+
 		// 2. 「全選択」以外のチェックボックスがクリックされたら、
 		$("input[name='check']").on('click', function() {
-			if ($('#check :checked').length == $('#check :input').length) {
+//			$(this).closest("tr").css("text-decoration", "line-through");
+
+			var checked = $(this).prop("checked");
+
+			if(checked){
+				$(this).closest("tr").css("text-decoration", "line-through");
+
+			}else{
+				$(this).closest("tr").css("text-decoration", "none");
+
+			}
+
+			//console.log($(this).checked);
+
+			/*if ($('#check :checked').length == $('#check :input').length) {
 				$('#all').prop('checked', false);
 				$(this).closest("tr").css("text-decoration", "line-through");
-			}
+			} else {
+				$('#all').closest("tr").css("text-decoration", "none");
+			}*/
 		});
 	});
 
@@ -39,7 +63,7 @@
 	<hr>
 	<pre>
 <a href="/addList" style="font-size: 20px;">リスト追加</a>   <a href="/log"
-			style="font-size: 20px">７削除履歴</a>   <a href="/shareList"
+			style="font-size: 20px">削除履歴</a>   <a href="/shareList"
 			style="font-size: 20px">共有リスト</a>
 	</pre>
 	<hr>
