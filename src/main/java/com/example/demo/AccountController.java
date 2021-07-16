@@ -53,7 +53,7 @@ public class AccountController {
 				"目標を達成するためには、思い切って今の自分から脱皮しなくちゃ。",
 				"忙しさにこれで十分ということはない。蟻も忙しいのだ。問題は、何にそんなに忙しいのかということである。",
 				"とにかく、とりかかれば心が燃え上がるし、続けていれば仕事は完成する。",
-				"結果が出ないとき、どういう自分でいられるか。決してあきらめない姿勢が何かを生み出すきっかけをつくる。"};
+				"結果が出ないとき、どういう自分でいられるか。決してあきらめない姿勢が何かを生み出すきっかけをつくる。" };
 
 		//格言の発言者の登録
 		String[] proverbnamelist = {
@@ -91,6 +91,45 @@ public class AccountController {
 			@RequestParam("password") String password,
 			ModelAndView mv) {
 		session.invalidate();
+		//格言情報の登録
+		String[] proverblist = {
+				"そのことはできる、それをやる、と決断せよ。それからその方法を見つけるのだ。",
+				"最も重要なことから始めよ。",
+				"何事であれ、最終的には自分で考える覚悟がないと、情報の山に埋もれるだけである。",
+				"我々は、最初から苦しむ方向をとったから、あとは楽になった。真似をして楽をしたものは、その後に苦しむことになる。",
+				"一方はこれで十分だと考えるが、もう一方はまだ足りないかもしれないと考える。そうしたいわば紙一枚の差が、大きな成果の違いを生む。",
+				"最も重要な決定とは、何をするかではなく、何をしないかを決めることだ。",
+				"考えなさい。調査し、探究し、問いかけ、熟考するのです。",
+				"目標を達成するためには、思い切って今の自分から脱皮しなくちゃ。",
+				"忙しさにこれで十分ということはない。蟻も忙しいのだ。問題は、何にそんなに忙しいのかということである。",
+				"とにかく、とりかかれば心が燃え上がるし、続けていれば仕事は完成する。",
+				"結果が出ないとき、どういう自分でいられるか。決してあきらめない姿勢が何かを生み出すきっかけをつくる。" };
+
+		//格言の発言者の登録
+		String[] proverbnamelist = {
+				"エイブラハム・リンカーン",
+				"ピーター・ドラッカー",
+				"羽生善治",
+				"本田宗一郎",
+				"松下幸之助",
+				"スティーブ・ジョブズ",
+				"ウォルト・ディズニー",
+				"バーバラ・ブラハム",
+				"ソロー",
+				"ゲーテ",
+				"イチロー"
+		};
+		//ランダムで取得
+		Random random = new Random();
+		int r = random.nextInt(11);
+
+		//ランダムで検索
+		String proverb = proverblist[r];
+		String proverbname = proverbnamelist[r];
+
+		session.setAttribute("proverb", proverb);
+		session.setAttribute("proverbname", proverbname);
+
 		// メールアドレスが空の場合にエラーとする
 		if (email == null || email.length() == 0) {
 			mv.addObject("message", "メールアドレスを入力してください");
@@ -122,7 +161,7 @@ public class AccountController {
 			//管理者の場合
 			String manageremail = "manager@gmail.com";
 			String managerpassword = "manager";
-			if(email.equals(manageremail) && password.equals(managerpassword)) {
+			if (email.equals(manageremail) && password.equals(managerpassword)) {
 				// セッションスコープにユーザ情報を格納する
 				session.setAttribute("userInfo", user.get());
 				session.setAttribute("category", categoryRepository.findAll());
@@ -137,7 +176,7 @@ public class AccountController {
 
 				//ユーザを名前で表示
 				List<User> userlist = userRepository.findAll();
-				mv.addObject("userlist",userlist);
+				mv.addObject("userlist", userlist);
 
 				//優先度を名前で表示
 				List<Rank> ranklist = rankRepository.findAll();
@@ -150,10 +189,8 @@ public class AccountController {
 				//共有のデータの全件検索、
 				List<ShareList> sharelist = sharelistRepository.findAllByOrderByUseridAscCodeAsc();
 
-
 				//表示
 				session.setAttribute("shareList", sharelist);
-
 
 				session.setAttribute("allList", allList);
 
