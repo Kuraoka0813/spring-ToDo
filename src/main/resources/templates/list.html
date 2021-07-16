@@ -10,15 +10,19 @@
 <script type="text/javascript">
 	$(function() {
 		// 1. 「全選択」する
-		$('#all').on('click', function() {
-			$("input[name='check']").prop('checked', this.checked);
-			var checked = $(this).prop("checked");
-			if (checked) {
-				$("input[name='check']").closest("tr").css("text-decoration", "line-through");
-			} else {
-				$("input[name='check']").closest("tr").css("text-decoration", "none");
-			}
-		});
+		$('#all').on(
+				'click',
+				function() {
+					$("input[name='check']").prop('checked', this.checked);
+					var checked = $(this).prop("checked");
+					if (checked) {
+						$("input[name='check']").closest("tr").css(
+								"text-decoration", "line-through");
+					} else {
+						$("input[name='check']").closest("tr").css(
+								"text-decoration", "none");
+					}
+				});
 
 		// 2. 「全選択」以外のチェックボックスがクリックされたら、
 		$("input[name='check']").on('click', function() {
@@ -57,8 +61,8 @@
 		<table border="1" style="text-align: center;">
 
 			<tr>
-				<th style="font-size: 17px"><label for="all"><input type="checkbox"
-						name="allChecked" id="all">全選択/全解除</label></th>
+				<th style="font-size: 17px"><label for="all"><input
+						type="checkbox" name="allChecked" id="all">全選択/全解除</label></th>
 				<th style="font-size: 22px">TODO</th>
 				<th style="font-size: 22px">期日</th>
 				<th colspan="2">
@@ -71,8 +75,8 @@
 				<td><a th:href="'/update/' + ${todolist.code}"
 					th:text="${todolist.title}"></a></td>
 				<td th:text="${#dates.format(todolist.date,'yyyy-MM-dd')}"></td>
-				<td><a th:href="'/delete/'+ ${todolist.code}">削除</a></td>
 				<td><a th:href="'/share/'+ ${todolist.code}">共有</a></td>
+				<td><a th:href="'/delete/'+ ${todolist.code}">削除</a></td>
 			</tr>
 		</table>
 		<div class="da">
