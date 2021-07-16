@@ -5,7 +5,6 @@ body{
     font-family: sans-serif;
     background: #34495e;
 }
-
 /*ログインフォームのエリア内のスタイル*/
 .signup{
     width: 400px;
@@ -14,8 +13,10 @@ body{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: purple;
+    background: #002D62;
     text-align: center;
+    font-family:SimSun;
+    font-size:25px;
 }
 
 .signup{
@@ -31,7 +32,7 @@ body{
     display: block;
     margin: 20px auto;
     text-align: center;
-    border: 2px solid #3498db;
+    border: 2px solid orange;
     padding: 14px 10px;
     width: 200px;
     outline: none;
@@ -43,7 +44,7 @@ body{
 /* 入力ボックスがフォーカスされたときのスタイル（幅が大きくなる＆枠の色が変わる） */
 .signup input[type="text"]:focus, .box input[type="password"]:focus{
     width: 280px;
-    border-color: #2ecc71;
+    border-color: red;
 }
 
 /* Loginボタンのスタイル */
