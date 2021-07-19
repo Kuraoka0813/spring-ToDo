@@ -25,6 +25,10 @@
 				<td th:text="${userlist.get(__${record.userId}__-1).name}"></td>
 			</tr>
 			<tr>
+				<th>カテゴリー</th>
+				<td th:text="${categorylist.get(__${record.categoryCode}__-1).name}"></td>
+			</tr>
+			<tr>
 				<th>タイトル</th>
 				<td th:text="${record.title}"></td>
 			</tr>
@@ -35,10 +39,7 @@
 			<tr>
 				<th>期日</th>
 				<td th:text="${#dates.format(record.date,'yyyy-MM-dd')}"></td>
-			<tr>
-				<th>カテゴリー</th>
-				<td th:text="${categorylist.get(__${record.categoryCode}__-1).name}"></td>
-			</tr>
+
 			<tr>
 				<th>優先順位</th>
 				<td th:text="${ranklist.get(__${record.rank}__-1).name}"></td>

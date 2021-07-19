@@ -9,6 +9,8 @@
 <body>
 <div class="signup">
 	<h3>会員登録</h3>
+<br>
+	<span th:text="${message}" style="color:red"></span>
 
 	<form action="/signup" method="post">
 		<table>
@@ -28,8 +30,6 @@
 		</table>
 		<input type="submit" value="登録">
 	</form>
-	<br>
-	<span th:text="${message}" style="color:red"></span>
 	<br>
 	<a href="/" style="color:yellow;">ログイン画面へ</a>
 	</div>

@@ -20,6 +20,13 @@
 	<form action="/share/edit" method="post">
 		<input type="hidden" name="code" th:value="${record.code}">
 		<table border="1">
+		<tr>
+				<th>カテゴリー</th>
+				<td><select name="category" style="font-size: 18px">
+						<option th:each="c:${session.category}" th:value="${c.code}"
+							th:text="${c.name}" th:selected="${c.code==category}"></option>
+				</select></td>
+			</tr>
 			<tr>
 				<th>タイトル</th>
 				<td><input type="text" th:value="${record.title}" name="title"
@@ -36,13 +43,7 @@
 					th:value="${#dates.format(date, 'yyyy-MM-dd')}" name="date"
 					style="font-size: 18px"></td>
 			</tr>
-			<tr>
-				<th>カテゴリー</th>
-				<td><select name="category" style="font-size: 18px">
-						<option th:each="c:${session.category}" th:value="${c.code}"
-							th:text="${c.name}" th:selected="${c.code==category}"></option>
-				</select></td>
-			</tr>
+
 
 			<tr>
 				<th>優先順位</th>
