@@ -12,9 +12,7 @@
 				<span th:text="'（'+${session.userInfo.name}+' さんのTODOリスト）'"></span>
 			</h1>
 		</div>
-		<br>
-		<br>詳細画面<br>
-		<span class="error"
+		<br> <br>詳細画面<br> <span class="error"
 			th:text="${message}"></span>
 	</div>
 	<form action="/detail" method="post">
@@ -39,7 +37,6 @@
 			<tr>
 				<th>期日</th>
 				<td th:text="${#dates.format(record.date,'yyyy-MM-dd')}"></td>
-
 			<tr>
 				<th>優先順位</th>
 				<td th:text="${ranklist.get(__${record.rank}__-1).name}"></td>
@@ -47,15 +44,16 @@
 
 		</table>
 	</form>
-
+	<hr>
+	<h3 style="font-size: 30px">共有メモ</h3>
 	<form action="/apply/detail" method="post">
 		<div class="board">
-		<p>
-			<textarea name="contents" placeholder="書き込み"></textarea>
-		</p>
-		<p>
-			<input type="submit" value="投稿する">
-		</p>
+			<p>
+				<textarea name="contents" placeholder="書き込み"></textarea>
+			</p>
+			<p>
+				<input type="submit" value="投稿する">
+			</p>
 		</div>
 	</form>
 
