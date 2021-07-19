@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,6 +37,10 @@ public class ShareListEditController {
 
 	@Autowired
 	ShareListRepository sharelistRepository;
+
+	@Autowired
+	BoardRepository boardRepository;
+
 	//共有画面での編集
 	@PostMapping(value = "edit", params = "regi")
 	public ModelAndView shareupdate(
@@ -101,6 +106,7 @@ public class ShareListEditController {
 	}
 
 	//共有の取り消し
+	@Transactional
 	@PostMapping(value = "edit", params = "rele")
 	public ModelAndView removeshare(
 			@RequestParam("code") Integer code,
@@ -122,6 +128,9 @@ public class ShareListEditController {
 
 		//登録した共有データの削除
 		sharelistRepository.deleteById(code);
+
+		//掲示板のデータの削除
+		boardRepository.deleteByListcode(code);
 
 		//ユーザ情報の取得
 		User u = (User) session.getAttribute("userInfo");
