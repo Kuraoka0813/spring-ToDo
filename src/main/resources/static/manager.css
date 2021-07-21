@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+body{
+	background:#E6FFE9;
+}
+
 table {
 	width: 100%;
 	border-collapse: separate;

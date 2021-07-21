@@ -1,11 +1,15 @@
 @charset "UTF-8";
 
+body{
+	background:#FFF8DC;
+}
+
 .ribbon1-wrapper {
 	display: block;
 	position: relative;
 	padding: 70px 0;
 	width: 100px;
-	background: white;
+	background: #FFF8DC;
 	text-align: center;
 	height: 250px;
 	font-size: 40px;
