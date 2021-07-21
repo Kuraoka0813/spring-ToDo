@@ -1,7 +1,8 @@
 @charset "UTF-8";
 
 body{
-	background:#FFF8DC;
+	background:black;
+	color:white;
 }
 
 .ribbon1-wrapper {
@@ -9,7 +10,7 @@ body{
 	position: relative;
 	padding: 70px 0;
 	width: 100px;
-	background: #FFF8DC;
+	background: black;
 	text-align: center;
 	height: 250px;
 	font-size: 40px;
@@ -19,6 +20,7 @@ body{
 }
 
 .ribbon1 {
+
 	display: inline-block;
 	position: relative;
 	height: 150px;
@@ -26,6 +28,7 @@ body{
 	box-sizing: border-box;
 	-webkit-transform: rotate(-10deg) skew(-17deg, 4deg);
 	transform: rotate(-10deg) skew(-17deg, 4deg);
+
 }
 
 .ribbon1:before {
@@ -33,7 +36,7 @@ body{
 	position: absolute;
 	width: 150px;
 	height: 150px;
-	background: linear-gradient(black,blue);
+	background: linear-gradient(black,skyblue);
 	bottom: -10px;
 	left: -100px;
 	z-index: -2;
@@ -46,7 +49,7 @@ body{
 	position: absolute;
 	width: 150px;
 	height: 150px;
-	background: linear-gradient(black,blue);
+	background: linear-gradient(black,skyblue);
 	bottom: -10px;
 	right: -100px;
 	z-index: -2;
@@ -60,8 +63,7 @@ body{
 	line-height: 150px;
 	font-size: 50px;
 	color: white;
-	background: linear-gradient(navy, black);
-	font-family:HG行書体;
+	background: linear-gradient(skyblue, black);
 	text-align:center;
 
 }
@@ -104,7 +106,7 @@ table th:last-child {
 table th {
 	text-align: center;
 	color: white;
-	background: linear-gradient(#829ebc, #225588);
+	background: linear-gradient(silver, black);
 	border-left: 1px solid #3c6690;
 	border-top: 1px solid #3c6690;
 	border-bottom: 1px solid #3c6690;
@@ -154,7 +156,7 @@ table tr:last-child td:last-child {
 .add input[type="submit"]:hover {
 	box-shadow: none; /* カーソル時の影消去 */
 	color: #000066; /* 文字色     */
-	background: pink; /* 背景色     */
+	background: skyblue; /* 背景色     */
 }
 
 .menu {
@@ -179,7 +181,8 @@ table tr:last-child td:last-child {
 .update input[type="submit"]:hover {
 	box-shadow: none; /* カーソル時の影消去 */
 	color: #000066; /* 文字色     */
-	background: pink; /* 背景色     */
+	background: skyblue; /* 背景色     */
+	font-weight:1000;
 }
 
 .da input[type="submit"] {
@@ -215,12 +218,13 @@ table tr:last-child td:last-child {
 	transition: .3s; /* なめらか変化 */
 	box-shadow: 6px 6px 3px #666666; /* 影の設定 */
 	border: 2px solid #000066; /* 枠の指定 */
+	font-weight:1000;
 }
 
 .common input[type="submit"]:hover {
 	box-shadow: none; /* カーソル時の影消去 */
 	color: #000066; /* 文字色     */
-	background: pink; /* 背景色     */
+	background: skyblue; /* 背景色     */
 }
 
 .board textarea {
@@ -246,7 +250,7 @@ table tr:last-child td:last-child {
 .board input[type="submit"]:hover {
 	box-shadow: none; /* カーソル時の影消去 */
 	color: #000066; /* 文字色     */
-	background: pink; /* 背景色     */
+	background: skyblue; /* 背景色     */
 }
 input[type=checkbox] {
   transform: scale(1.5);
@@ -267,10 +271,13 @@ input[type=checkbox] {
 }
 
 .drop th{
-	background: linear-gradient(#829ebc, #225588);
+	background: linear-gradient(silver, black);
 	color:white;
 }
 .drop input[type="text"],textarea,input[type="date"],select,input[type="text"]{
 	font-size:20px;
 	font-weight:1000;
+}
+a{
+	color:skyblue;
 }

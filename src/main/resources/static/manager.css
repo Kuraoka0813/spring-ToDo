@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 body{
-	background:#E6FFE9;
+	background:black;
 }
 
 table {
@@ -22,7 +22,7 @@ table th:last-child {
 table th {
 	text-align: center;
 	color: white;
-	background: linear-gradient(navy, black);
+	background: linear-gradient(skyblue, black);
 	border-left: 1px solid #3c6690;
 	border-top: 1px solid #3c6690;
 	border-bottom: 1px solid #3c6690;
@@ -41,7 +41,6 @@ table td {
 	width: 5%;
 	padding: 10px 0;
 	font-size:17px;
-	font-weight:1000;
 }
 
 table td:last-child {
@@ -57,32 +56,39 @@ table tr:last-child td:last-child {
 }
 
 h1 {
-	font-family:HG行書体;
-	padding: 50px 10px;
-	font-size: 80px;
-	background: linear-gradient(navy, black);
-	color:white;
+
+	font-size:100px;
+	text-align:center;
+	line-height:0.95em;
+	font-weight:bold;
+	color: transparent;
+	background: repeating-linear-gradient(0deg, #757575 0.1em, #9E9E9E 0.2em, #E8E8E8 0.3em, #9E9E9E 0.4em, #757575 0.5em);
+	-webkit-background-clip: text;
 }
 
 
 
 h3 {
-	background: linear-gradient(black,purple);
 	text-align:center;
-	padding: 1rem 2rem;
-	border-top: 4px solid #d8dcdc;
-	border-right: 4px solid #666;
-	border-bottom: 4px solid #333;
-	border-left: 4px solid #868888;
+	line-height:60px;
+	font-weight:1000;
+	color: transparent;
+	background: repeating-linear-gradient(0deg, #757575 0.1em, #9E9E9E 0.2em, #E8E8E8 0.3em, #9E9E9E 0.4em, #757575 0.5em);
+	-webkit-background-clip: text;
+	font-size:50px;
+	border-top: 6px solid #d8dcdc;
+	border-right: 6px solid #666;
+	border-bottom: 6px solid #333;
+	border-left: 6px solid #868888;
 	border-radius: 0;
-	font-family:Monotype Corsiva;
-	font-size:40px;
-	color: white;
+
+	font-size:50px;
 }
 
 table{
-	color:black;
+	color:white;
 }
 a{
 	font-size:17px;
+	color:skyblue;
 }
