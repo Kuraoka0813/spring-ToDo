@@ -63,6 +63,7 @@ body{
 	background: linear-gradient(navy, black);
 	font-family:HG行書体;
 	text-align:center;
+
 }
 
 .ribbon1 h1:before {
@@ -110,6 +111,7 @@ table th {
 	box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.3) inset;
 	width: 5%;
 	padding: 10px 0;
+
 }
 
 table td {
@@ -120,6 +122,7 @@ table td {
 	box-shadow: 0px -3px 5px 1px #eee inset;
 	width: 5%;
 	padding: 10px 0;
+	font-weight:1000;
 }
 
 table td:last-child {
@@ -191,6 +194,7 @@ table tr:last-child td:last-child {
 	transition: .3s; /* なめらか変化 */
 	box-shadow: 6px 6px 3px #666666; /* 影の設定 */
 	border: 2px solid #000066; /* 枠の指定 */
+	font-weight:1000;
 }
 
 .da input[type="submit"]:hover {
@@ -268,4 +272,5 @@ input[type=checkbox] {
 }
 .drop input[type="text"],textarea,input[type="date"],select,input[type="text"]{
 	font-size:20px;
+	font-weight:1000;
 }

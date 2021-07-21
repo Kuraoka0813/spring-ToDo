@@ -41,6 +41,7 @@ table td {
 	width: 5%;
 	padding: 10px 0;
 	font-size:17px;
+	font-weight:1000;
 }
 
 table td:last-child {
