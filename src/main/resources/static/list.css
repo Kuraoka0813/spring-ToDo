@@ -5,7 +5,7 @@
 	position: relative;
 	padding: 70px 0;
 	width: 100px;
-	background: yellow;
+	background: white;
 	text-align: center;
 	height: 250px;
 	font-size: 40px;
@@ -29,7 +29,7 @@
 	position: absolute;
 	width: 150px;
 	height: 150px;
-	background: #eb9920;
+	background: linear-gradient(black,blue);
 	bottom: -10px;
 	left: -100px;
 	z-index: -2;
@@ -42,7 +42,7 @@
 	position: absolute;
 	width: 150px;
 	height: 150px;
-	background: #eb9920;
+	background: linear-gradient(black,blue);
 	bottom: -10px;
 	right: -100px;
 	z-index: -2;
@@ -56,7 +56,7 @@
 	line-height: 150px;
 	font-size: 50px;
 	color: white;
-	background: #f8aa37;
+	background: linear-gradient(navy, black);
 	font-family:HG行書体;
 	text-align:center;
 }
@@ -68,7 +68,7 @@
 	left: 0;
 	border: none;
 	border-bottom: solid 7px transparent;
-	border-right: solid 25px #c6821e;
+	border-right: solid 25px black;
 }
 
 .ribbon1 h1:after {
@@ -78,7 +78,7 @@
 	right: 0;
 	border: none;
 	border-bottom: solid 10px transparent;
-	border-left: solid 15px #c6821e;
+	border-left: solid 15px black;
 }
 
 table {
@@ -259,8 +259,8 @@ input[type=checkbox] {
 }
 
 .drop th{
-	background:skyblue;
-	color:black;
+	background: linear-gradient(#829ebc, #225588);
+	color:white;
 }
 .drop input[type="text"],textarea,input[type="date"],select,input[type="text"]{
 	font-size:20px;

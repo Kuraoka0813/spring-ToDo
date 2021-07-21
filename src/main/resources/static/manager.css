@@ -17,14 +17,15 @@ table th:last-child {
 
 table th {
 	text-align: center;
-	color: black;
-	background: linear-gradient(gold, yellow);
+	color: white;
+	background: linear-gradient(navy, black);
 	border-left: 1px solid #3c6690;
 	border-top: 1px solid #3c6690;
 	border-bottom: 1px solid #3c6690;
 	box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.3) inset;
 	width: 5%;
 	padding: 10px 0;
+	font-size:20px;
 }
 
 table td {
@@ -35,6 +36,7 @@ table td {
 	box-shadow: 0px -3px 5px 1px #eee inset;
 	width: 5%;
 	padding: 10px 0;
+	font-size:17px;
 }
 
 table td:last-child {
@@ -52,22 +54,15 @@ table tr:last-child td:last-child {
 h1 {
 	font-family:HG行書体;
 	padding: 50px 10px;
-	color: #fff;
-	background: #000;
 	font-size: 80px;
+	background: linear-gradient(navy, black);
+	color:white;
 }
 
-h1 span {
-	background-image: -webkit-linear-gradient(315deg, #b8751e 0%, #ffce08 37%, #fefeb2 47%,
-		#fafad6 50%, #fefeb2 53%, #e1ce08 63%, #b8751e 100%);
-	background-image: linear-gradient(135deg, #b8751e 0%, #ffce08 37%, #fefeb2 47%, #fafad6
-		50%, #fefeb2 53%, #e1ce08 63%, #b8751e 100%);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-}
+
 
 h3 {
-	background: #000;
+	background: linear-gradient(black,purple);
 	text-align:center;
 	padding: 1rem 2rem;
 	border-top: 4px solid #d8dcdc;
@@ -76,15 +71,13 @@ h3 {
 	border-left: 4px solid #868888;
 	border-radius: 0;
 	font-family:Monotype Corsiva;
-	font-size:30px;
-	color: gold;
+	font-size:40px;
+	color: white;
 }
-body{
-	background:black;
-}
+
 table{
-	color:white;
+	color:black;
 }
 a{
-	font-size:20px;
+	font-size:17px;
 }

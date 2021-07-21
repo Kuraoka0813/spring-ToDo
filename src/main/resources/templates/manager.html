@@ -55,7 +55,7 @@
 		</tr>
 		<tr th:each="s:${session.shareList}">
 			<td th:text="${userlist.get(__${s.userId}__-1).name}"></td>
-			<td><a th:href="'/shareDetail/' + ${s.code}" th:text="${s.title}" style="color: #F8A900;"></a></td>
+			<td><a th:href="'/shareDetail/' + ${s.code}" th:text="${s.title}" ></a></td>
 			<td th:text="${s.content}"></td>
 			<td th:text="${#dates.format(s.date,'yyyy-MM-dd')}"></td>
 			<td th:text="${categorylist.get(__${s.categoryCode}__-1).name}"></td>
@@ -63,7 +63,7 @@
 		</tr>
 	</table>
 	<hr>
-	<a href="/logout" style="color:gold;">ログアウト</a>
+	<a href="/logout" style="font-size:20px;">ログアウト</a>
 
 </body>
 </html>
