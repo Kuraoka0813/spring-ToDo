@@ -62,18 +62,17 @@ h1 {
 	line-height:0.95em;
 	font-weight:bold;
 	color: transparent;
-	background: repeating-linear-gradient(0deg, #757575 0.1em, #9E9E9E 0.2em, #E8E8E8 0.3em, #9E9E9E 0.4em, #757575 0.5em);
+	background: linear-gradient(0deg, #75A9FF 0%, #75A9FF 55%, #b0d683 70%, #75A9FF 85%, #75A9FF 90% 100%);
 	-webkit-background-clip: text;
+
 }
-
-
 
 h3 {
 	text-align:center;
 	line-height:60px;
 	font-weight:1000;
 	color: transparent;
-	background: repeating-linear-gradient(0deg, #757575 0.1em, #9E9E9E 0.2em, #E8E8E8 0.3em, #9E9E9E 0.4em, #757575 0.5em);
+	background: linear-gradient(0deg, #75A9FF 0%, #75A9FF 55%, #b0d683 70%, #75A9FF 85%, #75A9FF 90% 100%);
 	-webkit-background-clip: text;
 	font-size:50px;
 	border-top: 6px solid #d8dcdc;
@@ -81,7 +80,6 @@ h3 {
 	border-bottom: 6px solid #333;
 	border-left: 6px solid #868888;
 	border-radius: 0;
-
 	font-size:50px;
 }
 
