@@ -156,7 +156,7 @@ table tr:last-child td:last-child {
 .add input[type="submit"]:hover {
 	box-shadow: none; /* カーソル時の影消去 */
 	color: #000066; /* 文字色     */
-	background: skyblue; /* 背景色     */
+	background: #6699CC; /* 背景色     */
 }
 
 .menu {
@@ -181,7 +181,7 @@ table tr:last-child td:last-child {
 .update input[type="submit"]:hover {
 	box-shadow: none; /* カーソル時の影消去 */
 	color: #000066; /* 文字色     */
-	background: skyblue; /* 背景色     */
+	background: #6699CC; /* 背景色     */
 	font-weight:1000;
 }
 
@@ -224,7 +224,7 @@ table tr:last-child td:last-child {
 .common input[type="submit"]:hover {
 	box-shadow: none; /* カーソル時の影消去 */
 	color: #000066; /* 文字色     */
-	background: skyblue; /* 背景色     */
+	background: #6699CC; /* 背景色     */
 }
 
 .board textarea {
@@ -250,7 +250,7 @@ table tr:last-child td:last-child {
 .board input[type="submit"]:hover {
 	box-shadow: none; /* カーソル時の影消去 */
 	color: #000066; /* 文字色     */
-	background: skyblue; /* 背景色     */
+	background: #6699CC; /* 背景色     */
 }
 input[type=checkbox] {
   transform: scale(1.5);
@@ -271,7 +271,7 @@ input[type=checkbox] {
 }
 
 .drop th{
-	background: linear-gradient(silver, black);
+	background: linear-gradient(#9BF9CC, black);
 	color:white;
 }
 .drop input[type="text"],textarea,input[type="date"],select,input[type="text"]{
