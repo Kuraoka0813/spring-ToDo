@@ -125,7 +125,7 @@ h4 {
 	height:80px;
 	text-align: center;
 	position: relative;
-	background: #faf0e6;
+	background: #E6FFE9;
 	padding: 2px 5px 2px 24px;
 	font-size: 22px;
 	color: #474747;
@@ -137,7 +137,7 @@ h4 {
 
 h4:first-letter {
 	position: relative;
-	color: red;
+	color: blue;
 	margin: 2em 0 1em 0;
 	font-size: 40px;
 	font-weight: bold;
@@ -152,7 +152,7 @@ h4:before {
 	position: absolute;
 	padding: 0em;
 	color: white;
-	background: #ff6363;
+	background: skyblue;
 	width: 40px;
 	text-align: center;
 	height: 40px;
