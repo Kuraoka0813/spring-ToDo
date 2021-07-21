@@ -12,7 +12,7 @@
 	font-size: 50px; /*文字のサイズ*/
 
 	line-height: 120px; /*高さと合わせる*/
-	background: linear-gradient(135deg, #427eff 0%, #3333FF 20%) no-repeat;
+	background: linear-gradient(135deg, #427eff 0%, #75A9FF 80%) no-repeat;
 	/*グラデーション①*/
 	overflow: hidden; /*はみ出た部分を隠す*/
 	text-decoration: none; /*下線は消す*/
