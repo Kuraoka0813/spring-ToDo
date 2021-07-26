@@ -563,6 +563,7 @@ public class pokerController {
 
 	}
 
+
 	public int num(int num) {
 		int number = num % 13 + 1;
 		return number;
