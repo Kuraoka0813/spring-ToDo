@@ -406,6 +406,8 @@ public class pokerController {
 			usermsg = "フラッシュです。";
 		} else if (rank == 6) {
 			usermsg = "フルハウスです。";
+		} else if (rank == 6) {
+			usermsg = "ストレートフラッシュです。";
 		}
 		session.setAttribute("usermsg", usermsg);
 
@@ -424,6 +426,8 @@ public class pokerController {
 			cpumsg = "フラッシュです。";
 		} else if (rank2 == 6) {
 			cpumsg = "フルハウスです。";
+		} else if (rank2 == 6) {
+			cpumsg = "ストレートフラッシュです。";
 		}
 		session.setAttribute("cpumsg", cpumsg);
 
