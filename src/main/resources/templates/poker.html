@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	あなたの資金
+	<a th:text="${session.total}"></a>
+	<hr>
+	ボード
+	<br>
+	<a th:if="${session.x>=1}"> <span th:utext="${session.suit5}"></span>
+		<span th:text="${session.num5%13+1}"></span> <span
+		th:utext="${session.suit6}"></span> <span
+		th:text="${session.num6%13+1}"></span> <span
+		th:utext="${session.suit7}"></span> <span
+		th:text="${session.num7%13+1}"></span>
+	</a>
+	<a th:if="${session.x>=2}"> <span th:utext="${session.suit8}"></span>
+		<span th:text="${session.num8%13+1}"></span>
+	</a>
+	<a th:if="${session.x>=3}"> <span th:utext="${session.suit9}"></span>
+		<span th:text="${session.num9%13+1}"></span>
+	</a>
+	<hr>
+	あなたの手札
+	<span th:utext="${session.suit1}"></span>
+	<span th:text="${session.num1%13+1}"></span>
+	<span th:utext="${session.suit2}"></span>
+	<span th:text="${session.num2%13+1}"></span>
+	<a th:if="${session.y==1}">
+	<span th:text="${session.usermsg}"></span>
+	</a>
+	<br>
+	<a th:if="${session.y==1}"> <span th:utext="${session.suit3}"></span>
+		<span th:text="${session.num3%13+1}"></span> <span
+		th:utext="${session.suit4}"></span> <span
+		th:text="${session.num4%13+1}"></span> <span
+		th:text="${session.cpumsg}"></span>
+	</a>
+	<hr>
+	<a th:if="${session.y==0}">
+	CPUのBET:
+	<span th:text="${session.cpubet}"></span>
+	</a>
+	<form action="frop" method="POST">
+	<a th:if="${session.y==0}">
+		<input type="submit" value="コール・レイズ"> <input type="number"
+			name="bet" step="10"> </a>POT額<span th:text="${session.pool}"></span>
+	</form>
+	<hr>
+	<form action="open">
+		<a th:if="${session.x>=3}"><span th:if="${session.y==0}">  <input type="submit" value="オープン">
+		</span></a>
+	</form>
+	<form action="/top">
+	<a th:if="${session.y==1}">
+		<input type="submit" value="RESET">
+		</a>
+	</form>
+	<form action="/top">
+	<a th:if="${session.y==0}">
+		<input type="submit" value="フォールド">
+		</a>
+	</form>
+
+	<a th:if="${session.y==1}">
+	<span th:text="${session.msg}"></span>
+	</a>
+</body>
+</html>
