@@ -550,12 +550,12 @@ public class pokerController {
 
 		if (num <= 13) {
 			//suit = "&#x2666";
-			suit = "&#9830";
+			suit = "&#x1f538;";
 		} else if (num <= 26) {
 			suit = "&#x2660";
 		} else if (num <= 39) {
 			//suit = "&#x2665";
-			suit = "&#9829";
+			suit = "&#x1f9e1";
 		} else {
 			suit = "&#x2663";
 		}
