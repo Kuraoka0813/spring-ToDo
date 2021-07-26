@@ -56,7 +56,6 @@ public class pokerController {
 		int y = 0;
 		session.setAttribute("y", y);
 
-
 		//CPUのBET
 		Random random = new Random();
 		int cpubet = (random.nextInt(9) + 1) * 10;
@@ -164,7 +163,7 @@ public class pokerController {
 		x++;
 		session.setAttribute("x", x);
 
-		int y =(int)session.getAttribute("y");
+		int y = (int) session.getAttribute("y");
 		y = 1;
 		session.setAttribute("y", y);
 
@@ -186,7 +185,7 @@ public class pokerController {
 		Integer h3 = list.get(3);
 		Integer h4 = list.get(4);
 
-		String suit3 = "CPUの手札" + suit(h3);
+		String suit3 = suit(h3);
 		int num3 = num(h3);
 
 		String suit4 = suit(h4);
@@ -241,7 +240,11 @@ public class pokerController {
 		suitlist2.add(suit9);
 
 		int rank = 0;
+		int ranksecond = 0;
+		int rankthird = 0;
 		int rank2 = 0;
+		int ranksecond2 = 0;
+		int rankthird2 = 0;
 
 		ArrayList<Integer> numlist = new ArrayList<Integer>();
 		numlist.add(num1);
@@ -267,40 +270,50 @@ public class pokerController {
 		//ワンペア・ツーペア・スリーカード・フルハウス
 		for (var i = 0; i <= 5; i++) {
 			if (numlist.get(i) == numlist.get(i + 1)) {
-				if (rank == 1) {
-					if (i >= 1) {
-						if (numlist.get(i) == numlist.get(i - 1)) {
-							rank = 3;
-						} else {
-							rank = 2;
-						}
-					}
-				} else if (rank == 2 && numlist.get(i) == numlist.get(i - 1)) {
+				if (rank == 2 && numlist.get(i) == numlist.get(i - 1)) {
 					rank = 6;
+					ranksecond = numlist.get(i);
 				} else if (rank == 3) {
 					rank = 6;
 				} else if (rank == 0) {
 					rank = 1;
+					ranksecond = numlist.get(i);
+					rankthird = numlist.get(i);
+				} else if (rank != 6) {
+					if (i >= 1) {
+						if (numlist.get(i) == numlist.get(i - 1)) {
+							rank = 3;
+							ranksecond = numlist.get(i);
+						} else {
+							rank = 2;
+							ranksecond = numlist.get(i);
+						}
+					}
 				}
 			}
 		}
 
 		for (var i = 0; i <= 5; i++) {
 			if (numlist2.get(i) == numlist2.get(i + 1)) {
-				if (rank2 == 1) {
+				if (rank2 == 2 && numlist2.get(i) == numlist2.get(i - 1)) {
+					rank2 = 6;
+					ranksecond2 = numlist2.get(i);
+				} else if (rank2 == 3) {
+					rank2 = 6;
+				} else if (rank2 == 0) {
+					rank2 = 1;
+					ranksecond2 = numlist2.get(i);
+					rankthird2 = numlist2.get(i);
+				} else if (rank2 != 6) {
 					if (i >= 1) {
 						if (numlist2.get(i) == numlist2.get(i - 1)) {
 							rank2 = 3;
+							ranksecond2 = numlist2.get(i);
 						} else {
 							rank2 = 2;
+							ranksecond2 = numlist2.get(i);
 						}
 					}
-				} else if (rank2 == 2 && numlist2.get(i) == numlist2.get(i - 1)) {
-					rank2 = 6;
-				} else if (rank2 == 3) {
-					rank = 6;
-				} else if (rank2 == 0) {
-					rank2 = 1;
 				}
 			}
 		}
@@ -313,6 +326,7 @@ public class pokerController {
 						&& numlist.get(i + 2) + 2 == numlist.get(i + 3) + 1
 						&& numlist.get(i + 3) + 1 == numlist.get(i + 4)) {
 					rank = 4;
+					ranksecond = numlist.get(i + 4);
 				}
 			}
 		}
@@ -324,37 +338,57 @@ public class pokerController {
 						&& numlist2.get(i + 2) + 2 == numlist2.get(i + 3) + 1
 						&& numlist2.get(i + 3) + 1 == numlist2.get(i + 4)) {
 					rank2 = 4;
+					ranksecond2 = numlist2.get(i + 4);
 				}
 			}
 		}
 
-		if(rank != 6) {
-		//判定フラッシュかどうか
-		for (var k = 0; k <= 6; k++) {
-			for (var i = 0; i <= 6; i++) {
-				int j = 0;
-				if (suitlist.get(k).equals(suitlist.get(i))) {
-					j++;
-				}
-				if (j >= 6) {
-					rank = 5;
+		if (rank != 6) {
+			//判定フラッシュかどうか
+			for (var k = 0; k <= 6; k++) {
+				for (var i = 0; i <= 6; i++) {
+					int j = 0;
+					if (suitlist.get(k).equals(suitlist.get(i))) {
+						j++;
+					}
+					if (j >= 6) {
+						ranksecond = numlist.get(i);
+						rank = 5;
+					}
 				}
 			}
-		}
 		}
 
-		if(rank2 != 6) {
-		for (var k = 0; k <= 6; k++) {
-			for (var i = 0; i <= 6; i++) {
-				int j = 0;
-				if (suitlist2.get(k).equals(suitlist2.get(i))) {
-					j++;
-				}
-				if (j >= 6) {
-					rank2 = 5;
+		if (rank2 != 6) {
+			for (var k = 0; k <= 6; k++) {
+				for (var i = 0; i <= 6; i++) {
+					int j = 0;
+					if (suitlist2.get(k).equals(suitlist2.get(i))) {
+						j++;
+					}
+					if (j >= 6) {
+						rank2 = 5;
+						ranksecond2 = numlist2.get(i);
+					}
 				}
 			}
 		}
+
+		if (rank == 4 && rank2 != 6) {
+
+			//判定フラッシュかどうか
+			for (var k = 0; k <= 6; k++) {
+				for (var i = 0; i <= 6; i++) {
+					int j = 0;
+					if (suitlist.get(k).equals(suitlist.get(i))) {
+						j++;
+					}
+					if (j >= 6) {
+						ranksecond = numlist.get(i);
+						rank = 7;
+					}
+				}
+			}
 		}
 
 		String usermsg = "";
@@ -389,11 +423,11 @@ public class pokerController {
 		} else if (rank2 == 5) {
 			cpumsg = "フラッシュです。";
 		} else if (rank2 == 6) {
-			usermsg = "フルハウスです。";
+			cpumsg = "フルハウスです。";
 		}
 		session.setAttribute("cpumsg", cpumsg);
 
-		if (rank == rank2) {
+		if (rank == 0 && rank2 == 0) {
 			for (var i = 6; i >= 0; i--) {
 				if (numlist.get(i) > numlist2.get(i)) {
 					rank++;
@@ -413,8 +447,44 @@ public class pokerController {
 			msg = "あなたの勝ちです";
 			total += pool;
 		} else if (rank == rank2) {
-			msg = "引き分けです";
-			total = total + pool/2;
+			if (ranksecond > ranksecond2) {
+				msg = "あなたの勝ちです";
+				total += pool;
+			} else if (ranksecond < ranksecond2) {
+				msg = "あなたの負けです";
+			} else if (rank == 1) {
+				if (rank == 1 && rank2 == 1) {
+					for (var i = 6; i >= 0; i--) {
+						if (numlist.get(i) > numlist2.get(i)) {
+							msg = "あなたの勝ちです";
+							total += pool;
+							break;
+						} else if (numlist.get(i) < numlist2.get(i)) {
+							msg = "あなたの負けです";
+							break;
+						}
+					}
+				} else if (rankthird > rankthird2) {
+					msg = "あなたの勝ちです";
+					total += pool;
+				} else if (rankthird < rankthird2) {
+					msg = "あなたの負けです";
+				} else if (rank == 2 && rank2 == 2) {
+					for (var i = 6; i >= 0; i--) {
+						if (numlist.get(i) > numlist2.get(i)) {
+							rank++;
+							break;
+						} else if (numlist.get(i) < numlist2.get(i)) {
+							rank2++;
+							break;
+						}
+					}
+
+				}
+			} else {
+				msg = "引き分けです";
+				total = total + pool / 2;
+			}
 		} else {
 			msg = "あなたの負けです";
 		}
@@ -479,11 +549,13 @@ public class pokerController {
 		String suit;
 
 		if (num <= 13) {
-			suit = "&#x2666";
+			//suit = "&#x2666";
+			suit = "&#9830";
 		} else if (num <= 26) {
 			suit = "&#x2660";
 		} else if (num <= 39) {
-			suit = "&#x2665";
+			//suit = "&#x2665";
+			suit = "&#9829";
 		} else {
 			suit = "&#x2663";
 		}
