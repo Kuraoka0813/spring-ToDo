@@ -10,10 +10,10 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
-	あなたの資金
-	<a th:text="${session.total}"></a>
-	<hr>
-	ボード
+	<h3>あなたの資金 :
+	<a th:text="${session.total}"></a></h3>
+	<hr class="bar1">
+	<h4>ボード</h4>
 	<a th:if="${session.x>=1}">
 		<div class="card card-skin">
 			<div class="card__imgframe">
@@ -91,8 +91,8 @@
 			</div>
 		</div>
 	</a>
-	<hr>
-	あなたの手札
+	<hr class="bar1">
+	<h4>あなたの手札</h4>
 	<div class="card card-skin">
 		<div class="card__imgframe">
 			<span th:utext="${session.suit1}"></span> <span
@@ -122,14 +122,12 @@
 			</div>
 		</div>
 	</div>
-
+<h4>
 	<a th:if="${session.y==1}"> <span th:text="${session.usermsg}"></span>
-	</a>
-	<a th:if="${session.y==1}">
+	</a></h4>
 	<br>
-	<hr>
-	CPUの手札
-	</a>
+	<hr class="bar1">
+	<h4>CPUの手札</h4>
 	<a th:if="${session.y==1}">
 		<div class="card card-skin">
 			<div class="card__imgframe">
@@ -160,19 +158,20 @@
 						th:text="${session.num4%13+1}"></span>
 				</div>
 			</div>
-		</div> <span th:text="${session.cpumsg}"></span>
+		</div> <h4><span th:text="${session.cpumsg}"></span></h4>
 	</a>
-	<hr>
+	<hr class="bar1">
 
-	<a th:if="${session.y==0}"> CPUのBET: <span
-		th:text="${session.cpubet}"></span>
+	<a th:if="${session.y==0}"> <h3>CPUのBET: <span
+		th:text="${session.cpubet}"></span></h3>
 	</a>
 	<form action="frop" method="POST">
 		<a th:if="${session.y==0}"> <input type="submit" value="コール・レイズ">
 			<input type="number" name="bet" step="10">
-		</a>POT額<span th:text="${session.pool}"></span>
-	</form>
-	<hr>
+		</a><h3>POT額 : <span th:text="${session.pool}"></span></h3>
+	</form><h2><a th:if="${session.y==1}"> <span th:text="${session.msg}"></span>
+	</a></h2>
+	<hr class="bar1">
 	<form action="open">
 		<a th:if="${session.x>=3}"><span th:if="${session.y==0}"> <input
 				type="submit" value="オープン">
@@ -186,8 +185,7 @@
 		<a th:if="${session.y==0}"> <input type="submit" value="フォールド">
 		</a>
 	</form>
-	<a th:if="${session.y==1}"> <span th:text="${session.msg}"></span>
-	</a>
+
 
 </body>
 </html>

@@ -1,5 +1,6 @@
 body{
-	background:white;
+	background:#003300;
+	color:white;
 }
 .card {
 	width: 150px;
@@ -47,4 +48,29 @@ body{
 	text-align: center;
 	font-size: 30px;
 
+}
+.bar1{
+	display:block;
+	  width: 100%;
+  height: 5px;
+  border: 0;
+  border: 1px solid #cacaca;
+  -webkit-border-radius: 10px;
+	background: repeating-linear-gradient(0deg, #C62828 0.1em, #EF5350 0.2em, #FFEBEE 0.3em, #EF5350 0.4em, #C62828 0.5em);
+}
+h3{
+	font-size:30px;
+}
+h4{
+	font-size:20px;
+}
+input[type=submit]{
+	font-size:20px;
+}
+h2{
+	text-align:center;
+	font-size:40px;
+}
+input[type=number]{
+	font-size:20px;
 }
