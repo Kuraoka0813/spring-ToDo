@@ -57,8 +57,9 @@ public class pokerController {
 		session.setAttribute("y", y);
 
 		//CPUのBET
-		Random random = new Random();
-		int cpubet = (random.nextInt(9) + 1) * 10;
+		//		Random random = new Random();
+		//		int cpubet = (random.nextInt(9) + 1) * 10;
+		int cpubet = 50;
 		session.setAttribute("cpubet", cpubet);
 
 		session.setAttribute("pool", 0);
@@ -76,13 +77,34 @@ public class pokerController {
 	public ModelAndView frop(
 			@RequestParam(name = "bet", defaultValue = "0") int bet,
 			ModelAndView mv) {
+		ArrayList<Integer> list = new ArrayList<Integer>();
+
+		list = (ArrayList<Integer>) session.getAttribute("list");
+
 		int cpubet2 = (int) session.getAttribute("cpubet");
+
+		//ハンド
+		Integer h3 = list.get(3);
+		Integer h4 = list.get(4);
+
+		String suit3 = suit(h3);
+		int num3 = num(h3);
+
+		String suit4 = suit(h4);
+		int num4 = num(h4);
+
 		if (cpubet2 > bet) {
 			bet = cpubet2;
 		}
 
 		if (cpubet2 < bet) {
 			cpubet2 = bet;
+		}
+
+		if (num3 == num4) {
+			if (cpubet2 > bet) {
+				bet = cpubet2*3;
+			}
 		}
 
 		int total = (int) session.getAttribute("total");
@@ -101,10 +123,6 @@ public class pokerController {
 		int pool = (int) session.getAttribute("pool");
 		pool += bet * 2;
 		session.setAttribute("pool", pool);
-
-		ArrayList<Integer> list = new ArrayList<Integer>();
-
-		list = (ArrayList<Integer>) session.getAttribute("list");
 
 		if (x == 1) {
 			//フロップ
@@ -538,8 +556,9 @@ public class pokerController {
 		session.setAttribute("y", y);
 
 		//CPUのBET
-		Random random = new Random();
-		int cpubet = (random.nextInt(9) + 1) * 10;
+//		Random random = new Random();
+//		int cpubet = (random.nextInt(9) + 1) * 10;
+		int cpubet = 50;
 		session.setAttribute("cpubet", cpubet);
 
 		session.setAttribute("pool", 0);
@@ -566,7 +585,6 @@ public class pokerController {
 		return suit;
 
 	}
-
 
 	public int num(int num) {
 		int number = num % 13 + 1;
