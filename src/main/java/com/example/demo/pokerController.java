@@ -101,12 +101,6 @@ public class pokerController {
 			cpubet2 = bet;
 		}
 
-		if (num3 == num4) {
-			if (cpubet2 > bet) {
-				bet = cpubet2*3;
-			}
-		}
-
 		int total = (int) session.getAttribute("total");
 		total -= bet;
 		session.setAttribute("total", total);
@@ -369,7 +363,7 @@ public class pokerController {
 					if (suitlist.get(k).equals(suitlist.get(i))) {
 						j++;
 					}
-					if (j >= 6) {
+					if (j >= 4) {
 						ranksecond = numlist.get(i);
 						rank = 5;
 					}
@@ -385,14 +379,14 @@ public class pokerController {
 						j++;
 					}
 					if (j >= 6) {
-						rank2 = 5;
+						rank2 = 4;
 						ranksecond2 = numlist2.get(i);
 					}
 				}
 			}
 		}
 
-		if (rank == 4 && rank2 != 6) {
+		if (rank == 4 && rank != 6) {
 
 			//判定フラッシュかどうか
 			for (var k = 0; k <= 6; k++) {
@@ -401,13 +395,31 @@ public class pokerController {
 					if (suitlist.get(k).equals(suitlist.get(i))) {
 						j++;
 					}
-					if (j >= 6) {
+					if (j >= 4) {
 						ranksecond = numlist.get(i);
 						rank = 7;
 					}
 				}
 			}
 		}
+
+		if (rank2 == 4 && rank2 != 6) {
+
+			//判定フラッシュかどうか
+			for (var k = 0; k <= 6; k++) {
+				for (var i = 0; i <= 6; i++) {
+					int j = 0;
+					if (suitlist2.get(k).equals(suitlist2.get(i))) {
+						j++;
+					}
+					if (j >= 4) {
+						ranksecond2 = numlist2.get(i);
+						rank2 = 7;
+					}
+				}
+			}
+		}
+
 
 		String usermsg = "";
 		if (rank == 0) {
@@ -556,8 +568,8 @@ public class pokerController {
 		session.setAttribute("y", y);
 
 		//CPUのBET
-//		Random random = new Random();
-//		int cpubet = (random.nextInt(9) + 1) * 10;
+		//		Random random = new Random();
+		//		int cpubet = (random.nextInt(9) + 1) * 10;
 		int cpubet = 50;
 		session.setAttribute("cpubet", cpubet);
 
@@ -589,5 +601,45 @@ public class pokerController {
 	public int num(int num) {
 		int number = num % 13 + 1;
 		return number;
+	}
+
+	public int rank(ArrayList<Integer> numlist, ArrayList<String> suitlist, int xS) {
+		int rank = 0;
+
+		for (var i = 0; i <= 5; i++) {
+			if (numlist.get(i) == numlist.get(i + 1)) {
+				if (rank == 20 && numlist.get(i) == numlist.get(i - 1)) {
+					rank = 60;
+				} else if (rank == 30) {
+					rank = 6;
+				} else if (rank == 0) {
+					rank = 1;
+				} else if (rank != 60) {
+					if (i >= 1) {
+						if (numlist.get(i) == numlist.get(i - 1)) {
+							rank = 30;
+						} else {
+							rank = 20;
+						}
+					}
+				}
+			}
+		}
+
+		if (rank != 60) {
+			for (var k = 0; k <= 6; k++) {
+				for (var i = 0; i <= 6; i++) {
+					int j = 0;
+					if (suitlist.get(k).equals(suitlist.get(i))) {
+						j++;
+					}
+					if (j >= 6) {
+						rank = 5;
+					}
+				}
+			}
+		}
+
+		return rank;
 	}
 }
